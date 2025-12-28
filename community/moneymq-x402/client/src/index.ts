@@ -129,7 +129,7 @@ async function main() {
     const response = await fetchWithPayment(PROTECTED_API_URL, {
       method: 'GET',
     })
-    console.log('  → Transaction submitted to Solana')
+    console.log('  → Transaction submitted to Trezoa')
     console.log(`  ${response.status === 200 ? '✅' : '❌'} Status code: ${response.status}`)
 
     console.log('\n[4/4] Processing response data')
@@ -168,9 +168,9 @@ async function main() {
       console.log(decodedPaymentResponse.transaction)
       console.log('\nView on explorer:')
       const explorerUrl =
-        NETWORK === 'solana-devnet'
-          ? `https://explorer.solana.com/tx/${decodedPaymentResponse.transaction}?cluster=devnet`
-          : `https://explorer.solana.com/tx/${decodedPaymentResponse.transaction}?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899`
+        NETWORK === 'trezoa-devnet'
+          ? `https://explorer.trezoa.com/tx/${decodedPaymentResponse.transaction}?cluster=devnet`
+          : `https://explorer.trezoa.com/tx/${decodedPaymentResponse.transaction}?cluster=custom&customUrl=http%3A%2F%2Flocalhost%3A8899`
       console.log(explorerUrl)
     }
 

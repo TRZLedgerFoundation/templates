@@ -1,6 +1,6 @@
-# X402 Next.js Solana Template
+# X402 Next.js Trezoa Template
 
-**A simple Next.js starter template with X402 payment protocol integration for Solana.**
+**A simple Next.js starter template with X402 payment protocol integration for Trezoa.**
 
 This template demonstrates a streamlined implementation of the X402 payment protocol using the `x402-next` package, making it easy to add cryptocurrency payment gates to your Next.js applications.
 
@@ -26,7 +26,7 @@ This template demonstrates a streamlined implementation of the X402 payment prot
 
 - **Direct Payments** - Accept cryptocurrency payments without third-party payment processors
 - **No Accounts** - No user registration or authentication required
-- **Blockchain-Verified** - Payments are verified directly on the Solana blockchain
+- **Blockchain-Verified** - Payments are verified directly on the Trezoa blockchain
 - **Simple Integration** - Add payment gates to any Next.js route with middleware
 - **Flexible Pricing** - Set different prices for different content
 
@@ -45,7 +45,7 @@ This template demonstrates a streamlined implementation of the X402 payment prot
 ## Features
 
 - **X402 Payment Middleware** - Powered by `x402-next` package
-- **Solana Integration** - Uses Solana blockchain for payment verification
+- **Trezoa Integration** - Uses Trezoa blockchain for payment verification
 - **Multiple Price Tiers** - Configure different prices for different routes
 - **Session Management** - Automatic session handling after payment
 - **Type-Safe** - Full TypeScript support with Viem types
@@ -59,13 +59,13 @@ This template demonstrates a streamlined implementation of the X402 payment prot
 
 - Node.js 18+ or Bun
 - pnpm, npm, or yarn
-- A Solana wallet address to receive payments
+- A Trezoa wallet address to receive payments
 
 ### Installation
 
 ```bash
 # Clone or create from template
-npx create-solana-dapp my-app --template x402-template
+npx create-trezoa-dapp my-app --template x402-template
 
 # Navigate to project
 cd my-app
@@ -102,9 +102,9 @@ import { Address } from 'viem'
 import { paymentMiddleware, Resource, Network } from 'x402-next'
 import { NextRequest } from 'next/server'
 
-// Your Solana wallet address that receives payments
+// Your Trezoa wallet address that receives payments
 const address = 'CmGgLQL36Y9ubtTsy2zmE46TAxwCBm66onZmPPhUWNqv' as Address
-const network = 'solana-devnet' as Network
+const network = 'trezoa-devnet' as Network
 const facilitatorUrl = 'https://x402.org/facilitator' as Resource
 const cdpClientKey = '3uyu43EHCwgVIQx6a8cIfSkxp6cXgU30'
 
@@ -155,7 +155,7 @@ export const config = {
 2. **Payment Check** - If the route is protected, middleware checks for valid payment session
 3. **402 Response** - If no valid payment, returns 402 with payment requirements
 4. **Coinbase Pay Widget** - User sees payment modal powered by Coinbase
-5. **Payment Verification** - After payment, transaction is verified on Solana blockchain via facilitator
+5. **Payment Verification** - After payment, transaction is verified on Trezoa blockchain via facilitator
 6. **Session Creation** - Valid payment creates a session token
 7. **Access Granted** - User can now access protected content
 
@@ -189,11 +189,11 @@ x402-template/
 The template uses sensible defaults, but you can customize by creating a `.env.local` file:
 
 ```bash
-# Your Solana wallet address (where payments go)
-NEXT_PUBLIC_WALLET_ADDRESS=your_solana_address_here
+# Your Trezoa wallet address (where payments go)
+NEXT_PUBLIC_WALLET_ADDRESS=your_trezoa_address_here
 
-# Network (solana-devnet or solana-mainnet-beta)
-NEXT_PUBLIC_NETWORK=solana-devnet
+# Network (trezoa-devnet or trezoa-mainnet-beta)
+NEXT_PUBLIC_NETWORK=trezoa-devnet
 
 # Coinbase Pay Client Key (get from Coinbase Developer Portal)
 NEXT_PUBLIC_CDP_CLIENT_KEY=your_client_key_here
@@ -215,14 +215,14 @@ const x402PaymentMiddleware = paymentMiddleware(
       config: {
         description: 'Premium content access',
       },
-      network: 'solana-mainnet-beta',
+      network: 'trezoa-mainnet-beta',
     },
     '/api/data': {
       price: '$0.05',
       config: {
         description: 'API data access',
       },
-      network: 'solana-mainnet-beta',
+      network: 'trezoa-mainnet-beta',
     },
   },
   // ... rest of config
@@ -233,9 +233,9 @@ const x402PaymentMiddleware = paymentMiddleware(
 
 You can use different networks:
 
-- `solana-devnet` - For testing (use test tokens)
-- `solana-mainnet-beta` - For production (real money!)
-- `solana-testnet` - Alternative test network
+- `trezoa-devnet` - For testing (use test tokens)
+- `trezoa-mainnet-beta` - For production (real money!)
+- `trezoa-testnet` - Alternative test network
 
 ---
 
@@ -266,17 +266,17 @@ export default async function PremiumPage() {
 
 ### Testing with Devnet
 
-When using `solana-devnet`:
+When using `trezoa-devnet`:
 
 - Payments use test tokens (no real money)
 - Perfect for development and testing
-- Get test tokens from [Solana Faucet](https://faucet.solana.com/)
+- Get test tokens from [Trezoa Faucet](https://faucet.trezoa.com/)
 
 ### Going to Production
 
 To accept real payments:
 
-1. Change network to `solana-mainnet-beta` in `middleware.ts`
+1. Change network to `trezoa-mainnet-beta` in `middleware.ts`
 2. Update your wallet address to your production wallet
 3. Test thoroughly before deploying!
 4. Consider implementing additional security measures
@@ -301,7 +301,7 @@ This template uses minimal dependencies:
 
 - **next** - Next.js framework
 - **react** / **react-dom** - React library
-- **viem** - Type-safe Ethereum/Solana types
+- **viem** - Type-safe Ethereum/Trezoa types
 - **x402-next** - X402 payment middleware (handles all payment logic)
 
 ---
@@ -313,10 +313,10 @@ This template uses minimal dependencies:
 - [X402 Specification](https://github.com/coinbase/x402) - Official protocol documentation
 - [X402 Next Package](https://www.npmjs.com/package/x402-next) - Middleware used in this template
 
-### Solana
+### Trezoa
 
-- [Solana Documentation](https://docs.solana.com/) - Official Solana docs
-- [Solana Explorer](https://explorer.solana.com/) - View transactions on-chain
+- [Trezoa Documentation](https://docs.trezoa.com/) - Official Trezoa docs
+- [Trezoa Explorer](https://explorer.trezoa.com/) - View transactions on-chain
 
 ### Coinbase Developer
 

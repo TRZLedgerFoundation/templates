@@ -11,7 +11,7 @@ pub async fn health_check(
         "status": "healthy",
         "service": "x402-rust-server",
         "framework": "axum",
-        "network": config.solana_network,
+        "network": config.trezoa_network,
         "receiver": config.receiver_address,
     }))
 }

@@ -1,4 +1,4 @@
-import { PublicKey, type Keypair } from '@solana/web3.js'
+import { PublicKey, type Keypair } from '@trezoa/web3.js'
 import BN from 'bn.js'
 import { createRpc, type Rpc } from '@lightprotocol/stateless.js'
 import { mintTo } from '@lightprotocol/compressed-token'
@@ -18,7 +18,7 @@ export async function executeAirdropBatch(
 }
 
 export function createRpcConnection(endpoint: string): Rpc {
-  // createRpc accepts 3 endpoints: (1) standard Solana RPC, (2) compression API (Photon indexer), (3) prover
+  // createRpc accepts 3 endpoints: (1) standard Trezoa RPC, (2) compression API (Photon indexer), (3) prover
   // Helius provides all three services on the same endpoint, so we pass it three times
   // See: https://www.zkcompression.com/learn/node-operators
   return createRpc(endpoint, endpoint, endpoint)

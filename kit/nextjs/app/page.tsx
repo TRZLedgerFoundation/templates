@@ -1,5 +1,5 @@
 "use client";
-import { useWalletConnection } from "@solana/react-hooks";
+import { useWalletConnection } from "@trezoa/react-hooks";
 
 export default function Home() {
   const { connectors, connect, disconnect, wallet, status } =
@@ -12,13 +12,13 @@ export default function Home() {
       <main className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col gap-10 border-x border-border-low px-6 py-16">
         <header className="space-y-3">
           <p className="text-sm uppercase tracking-[0.18em] text-muted">
-            Solana starter kit
+            Trezoa starter kit
           </p>
           <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Ship a Solana dapp fast
+            Ship a Trezoa dapp fast
           </h1>
           <p className="max-w-3xl text-base leading-relaxed text-muted">
-            Drop in <code className="font-mono">@solana/react-hooks</code>, wrap
+            Drop in <code className="font-mono">@trezoa/react-hooks</code>, wrap
             your tree once, and you get wallet connect/disconnect plus
             ready-to-use hooks for balances and transactions—no manual RPC
             wiring.
@@ -32,11 +32,11 @@ export default function Home() {
               <div>
                 <a
                   className="font-medium underline underline-offset-2"
-                  href="https://solana.com/docs"
+                  href="https://trezoa.com/docs"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Solana docs
+                  Trezoa docs
                 </a>{" "}
                 — core concepts, RPC, programs, and client patterns.
               </div>
@@ -67,13 +67,13 @@ export default function Home() {
               <div>
                 <a
                   className="font-medium underline underline-offset-2"
-                  href="https://faucet.solana.com/"
+                  href="https://faucet.trezoa.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Solana faucet (devnet)
+                  Trezoa faucet (devnet)
                 </a>{" "}
-                — grab free devnet SOL to try transfers and transactions.
+                — grab free devnet TRZ to try transfers and transactions.
               </div>
             </li>
             <li className="flex gap-2">
@@ -84,11 +84,11 @@ export default function Home() {
               <div>
                 <a
                   className="font-medium underline underline-offset-2"
-                  href="https://github.com/solana-foundation/framework-kit/tree/main/packages/react-hooks"
+                  href="https://github.com/trezoa-foundation/framework-kit/tree/main/packages/react-hooks"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  @solana/react-hooks README
+                  @trezoa/react-hooks README
                 </a>{" "}
                 — how this starter wires the client, connectors, and hooks.
               </div>

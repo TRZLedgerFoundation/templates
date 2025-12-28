@@ -6,7 +6,7 @@
 import { createKeyPairSignerFromBytes } from 'gill';
 import type { Address, KeyPairSigner } from 'gill';
 import bs58 from 'bs58';
-import { SolanaUtils } from './solana-utils.js';
+import { TrezoaUtils } from './trezoa-utils.js';
 import { NonceDatabase } from './nonce-database.js';
 import { FacilitatorConfig, getFacilitatorConfig } from './get-facilitator-config.js';
 import { ApiLogger, log } from './api-logger.js';
@@ -16,7 +16,7 @@ export interface FacilitatorContext {
   log: ApiLogger;
   facilitatorKeypair: KeyPairSigner;
   facilitatorAddress: Address;
-  solanaUtils: SolanaUtils;
+  trezoaUtils: TrezoaUtils;
   nonceDb: NonceDatabase;
 }
 
@@ -34,8 +34,8 @@ export async function getFacilitatorContext(): Promise<FacilitatorContext> {
   const facilitatorKeypair = await createKeyPairSignerFromBytes(privateKeyBytes);
   const facilitatorAddress = facilitatorKeypair.address;
 
-  // Initialize Solana utilities
-  const solanaUtils = new SolanaUtils({
+  // Initialize Trezoa utilities
+  const solanaUtils = new TrezoaUtils({
     rpcEndpoint: config.solanaRpcUrl,
     rpcSubscriptionsEndpoint: config.solanaWsUrl,
   });

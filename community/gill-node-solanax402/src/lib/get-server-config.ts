@@ -9,10 +9,10 @@ import { z } from 'zod';
 const ServerConfigSchema = z.object({
   port: z.coerce.number().int().positive(),
   facilitatorUrl: z.string().url(),
-  merchantSolanaAddress: z.string().optional(),
+  merchantTrezoaAddress: z.string().optional(),
   facilitatorPublicKey: z.string().optional(),
   solanaRpcUrl: z.string().url().optional(),
-  solanaNetwork: z.enum(['mainnet-beta', 'devnet', 'testnet', 'localnet']).optional(),
+  trezoaNetwork: z.enum(['mainnet-beta', 'devnet', 'testnet', 'localnet']).optional(),
 });
 
 export type ServerConfig = z.infer<typeof ServerConfigSchema>;
@@ -28,10 +28,10 @@ export function getServerConfig(): ServerConfig {
     config = ServerConfigSchema.parse({
       port: process.env.SERVER_PORT ?? 3000,
       facilitatorUrl: process.env.FACILITATOR_URL ?? 'http://localhost:3001',
-      merchantSolanaAddress: process.env.MERCHANT_SOLANA_ADDRESS,
+      merchantTrezoaAddress: process.env.MERCHANT_TRZANA_ADDRESS,
       facilitatorPublicKey: process.env.FACILITATOR_PUBLIC_KEY,
-      solanaRpcUrl: process.env.SOLANA_RPC_URL,
-      solanaNetwork: process.env.SOLANA_NETWORK ?? 'devnet',
+      solanaRpcUrl: process.env.TRZANA_RPC_URL,
+      trezoaNetwork: process.env.TRZANA_NETWORK ?? 'devnet',
     });
 
     return config;

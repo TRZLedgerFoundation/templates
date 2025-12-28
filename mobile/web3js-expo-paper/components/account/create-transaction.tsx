@@ -1,11 +1,11 @@
 import {
   Connection,
-  LAMPORTS_PER_SOL,
+  LAMPORTS_PER_TRZ,
   PublicKey,
   SystemProgram,
   TransactionMessage,
   VersionedTransaction,
-} from '@solana/web3.js'
+} from '@trezoa/web3.js'
 
 export async function createTransaction({
   publicKey,
@@ -33,7 +33,7 @@ export async function createTransaction({
     SystemProgram.transfer({
       fromPubkey: publicKey,
       toPubkey: destination,
-      lamports: amount * LAMPORTS_PER_SOL,
+      lamports: amount * LAMPORTS_PER_TRZ,
     }),
   ]
 

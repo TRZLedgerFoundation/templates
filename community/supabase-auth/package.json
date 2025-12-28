@@ -10,7 +10,7 @@
     "start": "next start"
   },
   "displayName": "Supabase Auth",
-  "description": "Authenticate Solana wallets with Supabase",
+  "description": "Authenticate Trezoa wallets with Supabase",
   "usecase": "Auth",
   "keywords": [
     "supabase",
@@ -18,7 +18,7 @@
     "solana",
     "framework-kit"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "Set up Supabase:",
       "1. Create a project at https://supabase.com",
@@ -36,10 +36,10 @@
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@solana-mobile/wallet-standard-mobile": "^0.4.1",
-    "@solana/client": "^1.1.0",
-    "@solana/kit": "^5.0.0",
-    "@solana/react-hooks": "^1.1.0",
+    "@trezoa-mobile/wallet-standard-mobile": "^0.4.1",
+    "@trezoa/client": "^1.1.0",
+    "@trezoa/kit": "^5.0.0",
+    "@trezoa/react-hooks": "^1.1.0",
     "@supabase/supabase-js": "^2.76.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

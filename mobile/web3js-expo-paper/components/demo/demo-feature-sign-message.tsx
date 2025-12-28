@@ -1,11 +1,11 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { ActivityIndicator, Button, Snackbar, TextInput } from 'react-native-paper'
 import { View } from 'react-native'
 import React, { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { ellipsify } from '@/utils/ellipsify'
 import { useAppTheme } from '@/components/app-theme'
 

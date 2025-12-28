@@ -54,7 +54,7 @@ export interface GillSetupOptions {
   generateNewProgramId?: boolean
   deployWallet?: GillWalletInfo
   testWallets?: GillWalletInfo[]
-  airdropAmountLamports?: number // Amount per recipient in lamports (default: 75000000 = 0.075 SOL)
+  airdropAmountLamports?: number // Amount per recipient in lamports (default: 75000000 = 0.075 TRZ)
 }
 
 export async function generateGillProgramId(): Promise<{ programId: string; keypairPath: string }> {
@@ -67,7 +67,7 @@ export async function generateGillProgramId(): Promise<{ programId: string; keyp
       fs.unlinkSync(keypairPath)
     }
 
-    execSync(`solana-keygen new --outfile ${keypairPath} --no-bip39-passphrase --force`, { stdio: 'pipe' })
+    execSync(`trezoa-keygen new --outfile ${keypairPath} --no-bip39-passphrase --force`, { stdio: 'pipe' })
 
     const programId = execSync(`solana address -k ${keypairPath}`, { encoding: 'utf8' }).trim()
 
@@ -157,7 +157,7 @@ export async function completeGillSetup(options: GillSetupOptions): Promise<{
     generateNewProgramId = false,
     deployWallet: providedDeployWallet,
     testWallets: providedTestWallets,
-    airdropAmountLamports = 75000000, // Default: 0.075 SOL
+    airdropAmountLamports = 75000000, // Default: 0.075 TRZ
   } = options
 
   try {

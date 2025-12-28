@@ -22,7 +22,7 @@ const FacilitatorConfigSchema = z.object({
     .default('true')
     .transform((val) => val !== 'false' && val !== '0' && val !== '')
     .pipe(z.boolean()),
-  solanaNetwork: z.enum(['mainnet-beta', 'devnet', 'testnet', 'localnet']),
+  trezoaNetwork: z.enum(['mainnet-beta', 'devnet', 'testnet', 'localnet']),
 });
 
 export type FacilitatorConfig = z.infer<typeof FacilitatorConfigSchema>;
@@ -39,15 +39,15 @@ export function getFacilitatorConfig(): FacilitatorConfig {
       port: process.env.FACILITATOR_PORT ?? 3001,
       facilitatorPrivateKey: process.env.FACILITATOR_PRIVATE_KEY,
       facilitatorPublicKey: process.env.FACILITATOR_PUBLIC_KEY,
-      solanaRpcUrl: process.env.SOLANA_RPC_URL ?? 'https://api.devnet.solana.com',
-      solanaWsUrl: process.env.SOLANA_WS_URL ?? 'wss://api.devnet.solana.com',
+      solanaRpcUrl: process.env.TRZANA_RPC_URL ?? 'https://api.devnet.trezoa.com',
+      solanaWsUrl: process.env.TRZANA_WS_URL ?? 'wss://api.devnet.trezoa.com',
       databasePath: process.env.DATABASE_PATH ?? './src/facilitator/nonce.db',
       usdcMintAddress: process.env.USDC_MINT_ADDRESS ?? '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
       usdcDecimals: process.env.USDC_DECIMALS ?? 6,
       maxPaymentAmount: process.env.MAX_PAYMENT_AMOUNT ?? '1000000000',
       nonceExpiryHours: process.env.NONCE_EXPIRY_HOURS ?? 24,
       simulateTransactions: process.env.SIMULATE_TRANSACTIONS ?? 'true',
-      solanaNetwork: process.env.SOLANA_NETWORK ?? 'devnet',
+      trezoaNetwork: process.env.TRZANA_NETWORK ?? 'devnet',
     });
 
     return config;

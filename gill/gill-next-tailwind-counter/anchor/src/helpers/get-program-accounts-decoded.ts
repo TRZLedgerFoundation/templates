@@ -6,7 +6,7 @@ import {
   Decoder,
   MaybeEncodedAccount,
   parseBase64RpcAccount,
-  SolanaClient,
+  TrezoaClient,
 } from 'gill'
 import { getProgramAccounts, GetProgramAccountsConfig } from './get-program-accounts'
 
@@ -18,7 +18,7 @@ export interface GetProgramAccountsDecodedConfig<T extends object> extends GetPr
 // See https://github.com/codama-idl/codama/issues/586
 // Thanks @mikemaccana for inspiration on this logic
 export async function getProgramAccountsDecoded<T extends object>(
-  rpc: SolanaClient['rpc'],
+  rpc: TrezoaClient['rpc'],
   config: GetProgramAccountsDecodedConfig<T>,
 ): Promise<Account<T, string>[]> {
   const programAccounts = await getProgramAccounts(rpc, {

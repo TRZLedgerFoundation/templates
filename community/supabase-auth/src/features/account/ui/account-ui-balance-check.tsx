@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import { toAddress } from '@solana/client'
-import { useBalance, useClusterState, useSolanaClient } from '@solana/react-hooks'
+import { toAddress } from '@trezoa/client'
+import { useBalance, useClusterState, useTrezoaClient } from '@trezoa/react-hooks'
 import { AppAlert } from '@/components/app-alert'
 import { Button } from '@/components/ui/button'
-import { resolveCluster } from '@/components/solana/clusters'
+import { resolveCluster } from '@/components/trezoa/clusters'
 
 export function AccountUiBalanceCheck({ address }: { address: string }) {
   const clusterState = useClusterState()
   const cluster = resolveCluster(clusterState.endpoint)
-  const client = useSolanaClient()
+  const client = useTrezoaClient()
   const balance = useBalance(address ? toAddress(address) : undefined, { watch: true })
   const [isPending, setIsPending] = useState(false)
 

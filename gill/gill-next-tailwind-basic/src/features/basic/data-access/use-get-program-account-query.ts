@@ -1,9 +1,9 @@
 import { BASIC_PROGRAM_ADDRESS } from '@project/anchor'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useQuery } from '@tanstack/react-query'
 
 export function useGetProgramAccountQuery() {
-  const { client, cluster } = useSolana()
+  const { client, cluster } = useTrezoa()
 
   return useQuery({
     queryKey: ['get-program-account', { cluster }],

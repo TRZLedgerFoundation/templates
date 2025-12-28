@@ -1,8 +1,8 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useQuery } from '@tanstack/react-query'
 
 export function useClusterVersion() {
-  const { client, cluster } = useSolana()
+  const { client, cluster } = useTrezoa()
   return useQuery({
     retry: false,
     queryKey: ['version', { cluster }],

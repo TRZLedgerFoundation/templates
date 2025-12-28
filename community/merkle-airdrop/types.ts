@@ -1,4 +1,4 @@
-import { type Address } from '@solana/kit'
+import { type Address } from '@trezoa/kit'
 
 interface MerkleTreeNode {
   claimant: number[] // PublicKey as byte array

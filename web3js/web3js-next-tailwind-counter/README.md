@@ -3,8 +3,8 @@
 This is a Next.js app containing:
 
 - Tailwind CSS setup for styling
-- Useful wallet UI elements setup using [@solana/web3.js](https://www.npmjs.com/package/@solana/web3.js)
-- A basic Counter Solana program written in Anchor
+- Useful wallet UI elements setup using [@trezoa/web3.js](https://www.npmjs.com/package/@trezoa/web3.js)
+- A basic Counter Trezoa program written in Anchor
 - UI components for interacting with the Counter program
 
 ## Getting Started
@@ -14,7 +14,7 @@ This is a Next.js app containing:
 #### Download the template
 
 ```shell
-pnpm create solana-dapp@latest -t gh:solana-foundation/templates/web3js/web3js-next-tailwind-counter
+pnpm create trezoa-dapp@latest -t gh:trezoa-foundation/templates/web3js/web3js-next-tailwind-counter
 ```
 
 #### Install Dependencies
@@ -27,7 +27,7 @@ pnpm install
 
 ### anchor
 
-This is a Solana program written in Rust using the Anchor framework.
+This is a Trezoa program written in Rust using the Anchor framework.
 
 #### Commands
 
@@ -71,7 +71,7 @@ pnpm anchor deploy --provider.cluster devnet
 
 ### web
 
-This is a React app that uses the Anchor generated client to interact with the Solana program.
+This is a React app that uses the Anchor generated client to interact with the Trezoa program.
 
 #### Commands
 

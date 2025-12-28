@@ -1,10 +1,10 @@
-import { createSolanaClient, KeyPairSigner, SolanaClient } from 'gill'
+import { createTrezoaClient, KeyPairSigner, TrezoaClient } from 'gill'
 import { loadKeypairSignerFromFile } from 'gill/node'
 import { ApiConfig, getApiConfig } from './get-api-config.js'
 import { ApiLogger, log } from './api-logger.js'
 
 export interface ApiContext {
-  client: SolanaClient
+  client: TrezoaClient
   log: ApiLogger
   signer: KeyPairSigner
 }
@@ -17,8 +17,8 @@ export async function getApiContext(): Promise<ApiContext> {
   }
 
   const config: ApiConfig = getApiConfig()
-  const client = createSolanaClient({ urlOrMoniker: config.solanaRpcEndpoint })
-  const signer = await loadKeypairSignerFromFile(config.solanaSignerPath)
+  const client = createTrezoaClient({ urlOrMoniker: config.trezoaRpcEndpoint })
+  const signer = await loadKeypairSignerFromFile(config.trezoaSignerPath)
 
   context = { client, log, signer }
 

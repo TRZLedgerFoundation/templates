@@ -1,4 +1,4 @@
-import { clusterApiUrl } from '@solana/web3.js'
+import { clusterApiUrl } from '@trezoa/web3.js'
 import { Cluster } from '@/components/cluster/cluster'
 import { ClusterNetwork } from '@/components/cluster/cluster-network'
 
@@ -7,13 +7,13 @@ export class AppConfig {
   static uri = 'https://example.com'
   static clusters: Cluster[] = [
     {
-      id: 'solana:devnet',
+      id: 'trezoa:devnet',
       name: 'Devnet',
       endpoint: clusterApiUrl('devnet'),
       network: ClusterNetwork.Devnet,
     },
     {
-      id: 'solana:testnet',
+      id: 'trezoa:testnet',
       name: 'Testnet',
       endpoint: clusterApiUrl('testnet'),
       network: ClusterNetwork.Testnet,

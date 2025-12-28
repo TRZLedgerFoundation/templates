@@ -1,4 +1,4 @@
-import { Connection, Keypair } from '@solana/web3.js'
+import { Connection, Keypair } from '@trezoa/web3.js'
 import bs58 from 'bs58'
 
 // External wallet configuration
@@ -8,26 +8,26 @@ export const externalWallet = true
 
 // Token addresses
 export const TOKENS = {
-  SOL: 'So11111111111111111111111111111111111111112',
+  TRZ: 'So11111111111111111111111111111111111111112',
   USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
 } as const
 
 export const TOKEN_DECIMALS = {
-  SOL: 9,
+  TRZ: 9,
   USDC: 6,
   USDT: 6,
 } as const
 
 // Liquid Staking Tokens (LST)
-export const JUPSOL_MINT = 'jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v' // JupSOL mint
+export const JUPTRZ_MINT = 'jupSoLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v' // JupTRZ mint
 export const LST_DECIMALS = {
-  JUPSOL: 9,
+  JUPTRZ: 9,
 } as const
 
-// Initialize Solana connection
-export function getSolanaConnection(): Connection {
-  const rpcUrl = process.env.SOLANA_RPC_URL || 'https://api.mainnet-beta.solana.com'
+// Initialize Trezoa connection
+export function getTrezoaConnection(): Connection {
+  const rpcUrl = process.env.TRZANA_RPC_URL || 'https://api.mainnet-beta.trezoa.com'
   return new Connection(rpcUrl, 'confirmed')
 }
 
@@ -37,17 +37,17 @@ export function getWalletKeypair(): Keypair {
     throw new Error('getWalletKeypair should not be called when externalWallet is true')
   }
 
-  const privateKey = process.env.SOLANA_PRIVATE_KEY
+  const privateKey = process.env.TRZANA_PRIVATE_KEY
 
   if (!privateKey) {
-    throw new Error('SOLANA_PRIVATE_KEY not found in environment variables')
+    throw new Error('TRZANA_PRIVATE_KEY not found in environment variables')
   }
 
   try {
     const secretKey = bs58.decode(privateKey)
     return Keypair.fromSecretKey(secretKey)
   } catch (error) {
-    throw new Error('Invalid SOLANA_PRIVATE_KEY format. Must be base58 encoded.')
+    throw new Error('Invalid TRZANA_PRIVATE_KEY format. Must be base58 encoded.')
   }
 }
 

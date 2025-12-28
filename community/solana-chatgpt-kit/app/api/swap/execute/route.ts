@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { VersionedTransaction } from '@solana/web3.js'
-import { getSolanaConnection, getWalletKeypair, JUPITER_API, externalWallet } from '@/lib/solana-config'
+import { VersionedTransaction } from '@trezoa/web3.js'
+import { getTrezoaConnection, getWalletKeypair, JUPITER_API, externalWallet } from '@/lib/trezoa-config'
 import { resolveTokenParam } from '@/lib/token-resolver'
 
 export async function POST(request: Request) {
@@ -19,12 +19,12 @@ export async function POST(request: Request) {
     }
 
     // Get wallet and connection
-    const connection = getSolanaConnection()
+    const connection = getTrezoaConnection()
     const wallet = externalWallet ? null : getWalletKeypair()
     const publicKeyString = externalWallet ? userPublicKey : wallet!.publicKey.toString()
 
     // Resolve token params (accept ticker or mint)
-    const inputResolved = await resolveTokenParam(inputToken, 'SOL')
+    const inputResolved = await resolveTokenParam(inputToken, 'TRZ')
     const outputResolved = await resolveTokenParam(outputToken, 'USDC')
     const inputMint = inputResolved.mint
     const outputMint = outputResolved.mint
@@ -108,7 +108,7 @@ export async function POST(request: Request) {
     transaction.sign([wallet!])
 
     // Step 4: Send transaction
-    console.log('Sending transaction to Solana network...')
+    console.log('Sending transaction to Trezoa network...')
     const rawTransaction = transaction.serialize()
     const txid = await connection.sendRawTransaction(rawTransaction, {
       skipPreflight: true,

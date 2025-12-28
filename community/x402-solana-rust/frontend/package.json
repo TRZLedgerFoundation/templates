@@ -1,7 +1,7 @@
 {
   "name": "x402-rust-frontend",
   "version": "1.0.0",
-  "description": "Frontend for testing x402 Rust Server APIs with Solana payments",
+  "description": "Frontend for testing x402 Rust Server APIs with Trezoa payments",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,8 +10,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@solana/web3.js": "^1.95.8",
-    "@solana/spl-token": "^0.4.9",
+    "@trezoa/web3.js": "^1.95.8",
+    "@trezoa/spl-token": "^0.4.9",
     "bs58": "^6.0.0",
     "buffer": "^6.0.3"
   },

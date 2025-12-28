@@ -1,5 +1,5 @@
 'use client'
-import { toAddress } from '@solana/client'
+import { toAddress } from '@trezoa/client'
 import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import { AppHero } from '@/components/app-hero'

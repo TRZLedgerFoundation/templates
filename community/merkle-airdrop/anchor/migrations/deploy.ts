@@ -4,7 +4,7 @@
 import { runGillDeploymentSetup } from '../scripts/deploy-setup'
 
 /**
- * Gill-based migration that deploys the program using modern Solana tooling
+ * Gill-based migration that deploys the program using modern Trezoa tooling
  * This is called by `anchor deploy` and uses our Gill deployment pipeline
  */
 export default async function (_provider?: any) {

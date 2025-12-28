@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useWidgetProps } from '@/app/hooks/use-widget-props'
 import { useMaxHeight } from '@/app/hooks/use-max-height'
 import { useOpenAIGlobal } from '@/app/hooks/use-openai-global'
-import { externalWallet } from '@/lib/solana-config'
+import { externalWallet } from '@/lib/trezoa-config'
 import { ensureWalletConnected, getWalletPublicKey, signAndSendTransaction } from '@/lib/wallet-utils'
 
 type StakeWidgetProps = {
@@ -18,7 +18,7 @@ export default function StakePage() {
   const theme = useOpenAIGlobal('theme')
 
   const [amount, setAmount] = useState(toolOutput?.initialAmount || '0.5')
-  const [lst, setLst] = useState(toolOutput?.lst || 'JupSOL')
+  const [lst, setLst] = useState(toolOutput?.lst || 'JupTRZ')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState<{
@@ -63,7 +63,7 @@ export default function StakePage() {
         body: JSON.stringify({ amount, lst, userPublicKey }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data?.error || 'Failed to stake SOL')
+      if (!res.ok) throw new Error(data?.error || 'Failed to stake TRZ')
 
       // If external wallet mode, sign and send the transaction
       if (externalWallet && data.swapTransaction) {
@@ -87,7 +87,7 @@ export default function StakePage() {
         })
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to stake SOL')
+      setError(e instanceof Error ? e.message : 'Failed to stake TRZ')
     } finally {
       setIsSubmitting(false)
     }
@@ -105,11 +105,11 @@ export default function StakePage() {
         border: theme === 'dark' ? '1px solid #222' : '1px solid #eee',
       }}
     >
-      <h2 style={{ margin: 0, marginBottom: 12 }}>Stake SOL</h2>
+      <h2 style={{ margin: 0, marginBottom: 12 }}>Stake TRZ</h2>
 
       <div style={{ display: 'grid', gap: 12 }}>
         <label style={{ display: 'grid', gap: 6 }}>
-          <span>Amount (SOL)</span>
+          <span>Amount (TRZ)</span>
           <input
             type="number"
             step="0.000001"
@@ -132,7 +132,7 @@ export default function StakePage() {
           <input
             value={lst}
             onChange={(e) => setLst(e.target.value)}
-            placeholder="JupSOL"
+            placeholder="JupTRZ"
             style={{
               padding: 10,
               borderRadius: 8,

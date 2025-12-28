@@ -1,7 +1,7 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { PublicKey } from '@trezoa/web3.js'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { Button } from '@react-navigation/elements'
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
@@ -14,7 +14,7 @@ export function AccountFeatureAirdrop({ back }: { back: () => void }) {
 
   return (
     <AppView>
-      <AppText type="subtitle">Request a 1 SOL airdrop to the connected wallet.</AppText>
+      <AppText type="subtitle">Request a 1 TRZ airdrop to the connected wallet.</AppText>
       {requestAirdrop.isPending ? (
         <ActivityIndicator />
       ) : (
@@ -24,7 +24,7 @@ export function AccountFeatureAirdrop({ back }: { back: () => void }) {
             requestAirdrop
               .mutateAsync(amount)
               .then(() => {
-                console.log(`Requested airdrop of ${amount} SOL to ${account?.publicKey}`)
+                console.log(`Requested airdrop of ${amount} TRZ to ${account?.publicKey}`)
                 back()
               })
               .catch((err) => console.log(`Error requesting airdrop: ${err}`, err))

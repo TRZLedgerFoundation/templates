@@ -2,7 +2,7 @@
 
 import { WalletDropdown } from '@/components/wallet-dropdown'
 import { WalletDisconnect } from '@/components/wallet-disconnect'
-import { useWalletSession } from '@solana/react-hooks'
+import { useWalletSession } from '@trezoa/react-hooks'
 import { ellipsify } from '@/lib/utils'
 
 export function WalletInfo() {

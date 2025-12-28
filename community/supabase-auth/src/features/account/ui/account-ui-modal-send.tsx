@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { lamportsFromSol, toAddress } from '@solana/client'
-import { useSolTransfer } from '@solana/react-hooks'
+import { lamportsFromSol, toAddress } from '@trezoa/client'
+import { useSolTransfer } from '@trezoa/react-hooks'
 import { AppModal } from '@/components/app-modal'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'

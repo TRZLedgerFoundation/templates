@@ -1,7 +1,7 @@
 import { assertIsAddress, lamportsToSol } from 'gill'
 import { ApiContext } from './get-api-context.js'
 
-export async function getSolanaBalance({ client }: ApiContext, address: string) {
+export async function getTrezoaBalance({ client }: ApiContext, address: string) {
   assertIsAddress(address)
   const balance = await client.rpc
     .getBalance(address)
@@ -10,6 +10,6 @@ export async function getSolanaBalance({ client }: ApiContext, address: string) 
 
   return {
     address,
-    balance: `${lamportsToSol(balance)} SOL`,
+    balance: `${lamportsToSol(balance)} TRZ`,
   }
 }

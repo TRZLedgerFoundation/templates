@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { useWalletConnection, useWalletSession } from '@solana/react-hooks'
+import { useWalletConnection, useWalletSession } from '@trezoa/react-hooks'
 import { ellipsify } from '@/lib/utils'
 
 type WalletButtonProps = {
@@ -111,12 +111,12 @@ export function WalletButton({ size = 'md' }: WalletButtonProps) {
             ))
           ) : (
             <a
-              href="https://solana.com/solana-wallets"
+              href="https://trezoa.com/trezoa-wallets"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-100 rounded-b-lg text-blue-600"
             >
-              Get a Solana wallet
+              Get a Trezoa wallet
             </a>
           )}
         </div>

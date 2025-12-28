@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction, type Connection } from '@solana/web3.js'
-import { getSolanaConnection, getWalletKeypair, externalWallet } from '@/lib/solana-config'
+import { LAMPORTS_PER_TRZ, PublicKey, SystemProgram, Transaction, type Connection } from '@trezoa/web3.js'
+import { getTrezoaConnection, getWalletKeypair, externalWallet } from '@/lib/trezoa-config'
 import { resolveAddressOrDomain } from '@/lib/address-resolver'
 import { getX402Handler, X402_FEE_CONFIG } from '@/lib/x402-config'
 import { baseURL } from '@/baseUrl'
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       x402 = getX402Handler()
       paymentHeader = x402.extractPayment(Object.fromEntries(request.headers.entries()))
 
-      // Create payment requirements for 0.001 SOL fee
+      // Create payment requirements for 0.001 TRZ fee
       const resourceUrl = baseURL.startsWith('http') ? `${baseURL}/api/transfer` : `https://${baseURL}/api/transfer`
 
       paymentRequirements = await x402.createPaymentRequirements({
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'userPublicKey is required when using external wallet' }, { status: 400 })
     }
 
-    const connection = getSolanaConnection()
+    const connection = getTrezoaConnection()
     const wallet = externalWallet ? null : getWalletKeypair()
     const fromPublicKey = externalWallet ? new PublicKey(userPublicKey) : wallet!.publicKey
 
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
     }
 
     // Build transfer transaction
-    const lamports = Math.round(solAmount * LAMPORTS_PER_SOL)
+    const lamports = Math.round(solAmount * LAMPORTS_PER_TRZ)
 
     const transaction = new Transaction().add(
       SystemProgram.transfer({
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
         from: fromPublicKey.toString(),
         to: destination.toString(),
         amount: solAmount,
-        unit: 'SOL',
+        unit: 'TRZ',
         timestamp: new Date().toISOString(),
       })
     }
@@ -140,11 +140,11 @@ export async function POST(request: Request) {
       from: fromPublicKey.toString(),
       to: destination.toString(),
       amount: solAmount,
-      unit: 'SOL',
+      unit: 'TRZ',
       timestamp: new Date().toISOString(),
     })
   } catch (error) {
-    console.error('Error sending SOL:', error)
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to send SOL' }, { status: 500 })
+    console.error('Error sending TRZ:', error)
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to send TRZ' }, { status: 500 })
   }
 }

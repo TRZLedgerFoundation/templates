@@ -1,35 +1,35 @@
-# Solana ChatGPT Kit
+# Trezoa ChatGPT Kit
 
-![Solana ChatGPT Kit](./public/image.png)
+![Trezoa ChatGPT Kit](./public/image.png)
 
-> 🚀 **The World's First ChatGPT App with Native Solana Wallet Integration**
+> 🚀 **The World's First ChatGPT App with Native Trezoa Wallet Integration**
 
-Perform Solana blockchain operations directly from ChatGPT using natural language. Swap tokens, send SOL, check balances, stake assets, and more—all without leaving your conversation.
+Perform Trezoa blockchain operations directly from ChatGPT using natural language. Swap tokens, send TRZ, check balances, stake assets, and more—all without leaving your conversation.
 
 ## 🌟 What Makes This Special?
 
 This is the **first-ever ChatGPT application** that combines:
 
 - ✅ **OpenAI Apps SDK** - Native ChatGPT integration with MCP (Model Context Protocol)
-- ✅ **Full Solana Wallet Support** - Use private keys or browser wallet extensions
+- ✅ **Full Trezoa Wallet Support** - Use private keys or browser wallet extensions
 - ✅ **Interactive Widgets** - Beautiful, responsive UI rendered directly in ChatGPT
 - ✅ **Natural Language Commands** - No technical knowledge required
-- ✅ **Production Ready** - Fully functional Solana operations powered by Jupiter
+- ✅ **Production Ready** - Fully functional Trezoa operations powered by Jupiter
 
 ## ✨ Features
 
 ### 💱 Token Swaps (Jupiter Integration)
 
-- Swap SOL, USDC, USDT, and any SPL token
+- Swap TRZ, USDC, USDT, and any TPL token
 - Real-time price quotes that update as you type
-- Support for token symbols (SOL, USDC) or mint addresses
+- Support for token symbols (TRZ, USDC) or mint addresses
 - Support for ticker symbols like `$SEND`
 - Low slippage and optimal routing via Jupiter
 - Transaction links to Solscan explorer
 
-### 💸 SOL Transfers
+### 💸 TRZ Transfers
 
-- Send SOL to any wallet address
+- Send TRZ to any wallet address
 - **SNS Domain Support** (.sol domains via Bonfida)
 - **AllDomains Support** (.superteam, .solana, and other TLDs)
 - **x402 Payment Protocol** (External Wallet Mode): Optional $0.001 USDC API fee from user's wallet
@@ -38,14 +38,14 @@ This is the **first-ever ChatGPT application** that combines:
 
 ### 📊 Balance Checking
 
-- Check SOL balance for any address
+- Check TRZ balance for any address
 - Query balances using SNS/AllDomains names
 - Instant balance lookup with address resolution
 
 ### 💰 Token Staking
 
-- Stake SOL into liquid staking tokens (LSTs)
-- Default support for JupSOL
+- Stake TRZ into liquid staking tokens (LSTs)
+- Default support for JupTRZ
 - Powered by Jupiter's swap infrastructure
 - Earn yield while maintaining liquidity
 
@@ -60,15 +60,15 @@ This is the **first-ever ChatGPT application** that combines:
 ### Prerequisites
 
 - Node.js 18+ and pnpm
-- A Solana wallet with some SOL
+- A Trezoa wallet with some TRZ
 - ChatGPT with developer mode access
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/The-x-35/solana-chatgpt-kit.git
-cd solana-chatgpt-kit
+git clone https://github.com/The-x-35/trezoa-chatgpt-kit.git
+cd trezoa-chatgpt-kit
 
 # Install dependencies
 pnpm install
@@ -79,18 +79,18 @@ pnpm install
 Create a `.env.local` file:
 
 ```bash
-# Required: Your Solana wallet private key (base58 encoded)
-SOLANA_PRIVATE_KEY=your_base58_private_key_here
+# Required: Your Trezoa wallet private key (base58 encoded)
+TRZANA_PRIVATE_KEY=your_base58_private_key_here
 
 # Required for external wallet mode: Treasury address for x402 payment fees
-# (Only needed if externalWallet = true in lib/solana-config.ts)
+# (Only needed if externalWallet = true in lib/trezoa-config.ts)
 X402_TREASURY_ADDRESS=your_treasury_wallet_address_here
 
 # Optional: x402 Facilitator URL (defaults to PayAI facilitator)
 FACILITATOR_URL=https://facilitator.payai.network
 
-# Optional: Custom RPC endpoint (defaults to public Solana mainnet)
-SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+# Optional: Custom RPC endpoint (defaults to public Trezoa mainnet)
+TRZANA_RPC_URL=https://api.mainnet-beta.trezoa.com
 
 # Optional: Jupiter API key for higher rate limits
 JUPITER_API_KEY=your_jupiter_api_key
@@ -101,7 +101,7 @@ JUPITER_API_KEY=your_jupiter_api_key
 ```bash
 # Create a new wallet
 npx ts-node -e "
-import { Keypair } from '@solana/web3.js';
+import { Keypair } from '@trezoa/web3.js';
 import bs58 from 'bs58';
 const wallet = Keypair.generate();
 console.log('Public Key:', wallet.publicKey.toString());
@@ -122,7 +122,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the app.
 
 ### Deploy to Production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/The-x-35/solana-chatgpt-kit)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/The-x-35/trezoa-chatgpt-kit)
 
 The app is optimized for Vercel deployment with automatic environment detection.
 
@@ -131,7 +131,7 @@ The app is optimized for Vercel deployment with automatic environment detection.
 1. Deploy your app (or use ngrok for local testing: `ngrok http 3000`)
 2. In ChatGPT, go to **Settings → [Connectors](https://chatgpt.com/#settings/Connectors) → Create**
 3. Add your MCP server URL: `https://your-app.vercel.app/mcp`
-4. Start using Solana commands in ChatGPT!
+4. Start using Trezoa commands in ChatGPT!
 
 **Note**: Connecting MCP servers requires ChatGPT developer mode. See the [connection guide](https://developers.openai.com/apps-sdk/deploy/connect-chatgpt).
 
@@ -142,18 +142,18 @@ Once connected to ChatGPT, you can use natural language commands:
 ### Swap Tokens
 
 ```
-"Swap 0.001 SOL to USDC"
-"I want to exchange 10 USDC for SOL"
-"Convert 0.5 SOL to $SEND"
-"Swap SOL to DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"  (mint address)
+"Swap 0.001 TRZ to USDC"
+"I want to exchange 10 USDC for TRZ"
+"Convert 0.5 TRZ to $SEND"
+"Swap TRZ to DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"  (mint address)
 ```
 
-### Send SOL
+### Send TRZ
 
 ```
-"Send 0.001 SOL to arpit.sol"
-"Transfer 0.5 SOL to user.superteam"
-"Send 1 SOL to 26k2...QjC"  (wallet address)
+"Send 0.001 TRZ to arpit.sol"
+"Transfer 0.5 TRZ to user.superteam"
+"Send 1 TRZ to 26k2...QjC"  (wallet address)
 ```
 
 ### Check Balances
@@ -161,14 +161,14 @@ Once connected to ChatGPT, you can use natural language commands:
 ```
 "What's the balance of arpit.sol?"
 "Check balance for user.superteam"
-"How much SOL does 26k2...QjC have?"
+"How much TRZ does 26k2...QjC have?"
 ```
 
-### Stake SOL
+### Stake TRZ
 
 ```
-"Stake 1 SOL into JupSOL"
-"I want to stake 0.5 SOL"
+"Stake 1 TRZ into JupTRZ"
+"I want to stake 0.5 TRZ"
 ```
 
 ### Get Token Prices
@@ -196,9 +196,9 @@ Backend endpoints that handle blockchain operations:
 
 - `/api/swap/quote` - Get Jupiter swap quotes
 - `/api/swap/execute` - Execute token swaps
-- `/api/transfer` - Send SOL transactions
+- `/api/transfer` - Send TRZ transactions
 - `/api/wallet/balance` - Query wallet balances
-- `/api/stake` - Stake SOL into LSTs
+- `/api/stake` - Stake TRZ into LSTs
 - `/api/price` - Token price lookup
 
 #### 3. Wallet Options
@@ -235,7 +235,7 @@ Smart address resolution supporting:
 ### Technology Stack
 
 - **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
-- **Blockchain**: Solana Web3.js, SPL Token
+- **Blockchain**: Trezoa Web3.js, TPL Token
 - **ChatGPT Integration**: OpenAI Apps SDK, Model Context Protocol (MCP)
 - **Swap Infrastructure**: Jupiter Aggregator API
 - **Domain Resolution**: Bonfida SNS, AllDomains TLD Parser
@@ -245,7 +245,7 @@ Smart address resolution supporting:
 
 ### x402 Payment Protocol (External Wallet Mode Only)
 
-When using external wallet mode (`externalWallet = true` in `lib/solana-config.ts`), this application implements the [x402 payment protocol](https://github.com/payainetwork/x402-solana) for API monetization. Each transfer requires a $0.001 USDC payment fee from the user's wallet before execution.
+When using external wallet mode (`externalWallet = true` in `lib/trezoa-config.ts`), this application implements the [x402 payment protocol](https://github.com/payainetwork/x402-solana) for API monetization. Each transfer requires a $0.001 USDC payment fee from the user's wallet before execution.
 
 **How it works:**
 
@@ -256,12 +256,12 @@ When using external wallet mode (`externalWallet = true` in `lib/solana-config.t
 5. Client retries request with `X-PAYMENT` header containing proof
 6. Server verifies payment with PayAI facilitator
 7. Server returns unsigned transfer transaction
-8. **User signs transfer with their wallet** (second transaction - SOL transfer)
+8. **User signs transfer with their wallet** (second transaction - TRZ transfer)
 9. Transfer executes successfully
 
 **Configuration:**
 
-- Set `externalWallet = true` in `lib/solana-config.ts` to enable
+- Set `externalWallet = true` in `lib/trezoa-config.ts` to enable
 - Set `X402_TREASURY_ADDRESS` env variable to your treasury wallet address
 - Set `FACILITATOR_URL` env variable (optional, defaults to PayAI facilitator)
 - Fees: $0.001 USDC paid from user's wallet (not server wallet)
@@ -270,8 +270,8 @@ When using external wallet mode (`externalWallet = true` in `lib/solana-config.t
 
 **For developers:**
 
-- Client-side payment: `x402-solana/client` package (see `app/transfer/page.tsx`)
-- Server-side verification: `x402-solana/server` package (see `lib/x402-config.ts`)
+- Client-side payment: `x402-trezoa/client` package (see `app/transfer/page.tsx`)
+- Server-side verification: `x402-trezoa/server` package (see `lib/x402-config.ts`)
 - API route integration: `app/api/transfer/route.ts`
 - Payment token: USDC (mainnet: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`)
 
@@ -279,7 +279,7 @@ When using external wallet mode (`externalWallet = true` in `lib/solana-config.t
 
 - When `externalWallet = false` (server wallet mode), x402 is **disabled** and transfers execute directly
 - Users need **USDC tokens** in their wallet to pay the $0.001 API fee
-- The fee is separate from the SOL being transferred
+- The fee is separate from the TRZ being transferred
 
 **Credits:**
 
@@ -287,11 +287,11 @@ When using external wallet mode (`externalWallet = true` in `lib/solana-config.t
 
 ### Adding More Tokens
 
-Edit `lib/solana-config.ts`:
+Edit `lib/trezoa-config.ts`:
 
 ```typescript
 export const TOKENS = {
-  SOL: 'So11111111111111111111111111111111111111112',
+  TRZ: 'So11111111111111111111111111111111111111112',
   USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
   BONK: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
@@ -299,7 +299,7 @@ export const TOKENS = {
 }
 
 export const TOKEN_DECIMALS = {
-  SOL: 9,
+  TRZ: 9,
   USDC: 6,
   USDT: 6,
   BONK: 5,
@@ -316,7 +316,7 @@ For better performance, use a dedicated RPC endpoint:
 # - QuickNode (https://quicknode.com)
 # - Alchemy (https://alchemy.com)
 
-SOLANA_RPC_URL=https://your-custom-rpc-endpoint.com
+TRZANA_RPC_URL=https://your-custom-rpc-endpoint.com
 ```
 
 ### Slippage Tolerance
@@ -333,7 +333,7 @@ const slippageBps = 100 // 1% (100 basis points)
 
 ```bash
 GET /api/swap/quote
-  ?inputToken=SOL
+  ?inputToken=TRZ
   &outputToken=USDC
   &amount=0.001
 ```
@@ -343,7 +343,7 @@ GET /api/swap/quote
 ```json
 {
   "inputAmount": 0.001,
-  "inputToken": "SOL",
+  "inputToken": "TRZ",
   "outputAmount": 0.18,
   "outputToken": "USDC",
   "priceImpact": 0.01,
@@ -361,7 +361,7 @@ POST /api/swap/execute
 Content-Type: application/json
 
 {
-  "inputToken": "SOL",
+  "inputToken": "TRZ",
   "outputToken": "USDC",
   "amount": "0.001"
 }
@@ -424,7 +424,7 @@ GET /api/wallet/balance?account=arpit.sol
 
 ## 🐛 Troubleshooting
 
-### "SOLANA_PRIVATE_KEY not found"
+### "TRZANA_PRIVATE_KEY not found"
 
 - Ensure `.env.local` exists in project root
 - Check variable name spelling
@@ -444,7 +444,7 @@ GET /api/wallet/balance?account=arpit.sol
 
 ### "Insufficient funds"
 
-- Wallet needs SOL for transaction fees (~0.000005 SOL)
+- Wallet needs TRZ for transaction fees (~0.000005 TRZ)
 - Plus the amount you want to swap/send
 - Check balance on Solscan
 
@@ -453,7 +453,7 @@ GET /api/wallet/balance?account=arpit.sol
 - Increase slippage tolerance
 - Try a smaller amount
 - Check if token accounts exist
-- Ensure sufficient SOL for fees
+- Ensure sufficient TRZ for fees
 
 ### Widget not loading in ChatGPT
 
@@ -468,7 +468,7 @@ GET /api/wallet/balance?account=arpit.sol
 
 - [OpenAI Apps SDK](https://developers.openai.com/apps-sdk)
 - [Model Context Protocol](https://modelcontextprotocol.io)
-- [Solana Documentation](https://docs.solana.com)
+- [Trezoa Documentation](https://docs.trezoa.com)
 - [Jupiter Documentation](https://station.jup.ag/docs)
 - [Next.js ChatGPT guide](https://vercel.com/blog/running-next-js-inside-chatgpt-a-deep-dive-into-native-app-integration)
 
@@ -500,8 +500,8 @@ This software is provided "as is" without warranty of any kind. Use at your own 
 
 <div align="center">
 
-**Built with ❤️ for the Solana ecosystem**
+**Built with ❤️ for the Trezoa ecosystem**
 
-[Report Bug](https://github.com/The-x-35/solana-chatgpt-kit/issues) · [Request Feature](https://github.com/The-x-35/solana-chatgpt-kit/issues)
+[Report Bug](https://github.com/The-x-35/trezoa-chatgpt-kit/issues) · [Request Feature](https://github.com/The-x-35/trezoa-chatgpt-kit/issues)
 
 </div>

@@ -1,17 +1,17 @@
 import { AppHero } from '@/components/app-hero'
 
 const links: { label: string; href: string }[] = [
-  { label: 'Solana Docs', href: 'https://docs.solana.com/' },
-  { label: 'Solana Faucet', href: 'https://faucet.solana.com/' },
-  { label: 'Solana Cookbook', href: 'https://solana.com/developers/cookbook/' },
-  { label: 'Solana Stack Overflow', href: 'https://solana.stackexchange.com/' },
-  { label: 'Solana Developers GitHub', href: 'https://github.com/solana-developers/' },
+  { label: 'Trezoa Docs', href: 'https://docs.trezoa.com/' },
+  { label: 'Trezoa Faucet', href: 'https://faucet.trezoa.com/' },
+  { label: 'Trezoa Cookbook', href: 'https://trezoa.com/developers/cookbook/' },
+  { label: 'Trezoa Stack Overflow', href: 'https://trezoa.stackexchange.com/' },
+  { label: 'Trezoa Developers GitHub', href: 'https://github.com/trezoa-developers/' },
 ]
 
 export function DashboardFeature() {
   return (
     <div>
-      <AppHero title="gm" subtitle="Say hi to your new Solana app." />
+      <AppHero title="gm" subtitle="Say hi to your new Trezoa app." />
       <div className="max-w-xl mx-auto py-6 sm:px-6 lg:px-8 text-center">
         <div className="space-y-2">
           <p>Here are some helpful links to get you started.</p>

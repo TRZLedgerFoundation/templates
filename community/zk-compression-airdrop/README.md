@@ -1,30 +1,30 @@
 # ZK Compression Airdrop
 
-A Next.js application for distributing SPL tokens using [ZK Compression](https://www.zkcompression.com/) - making token airdrops **~5000x cheaper** than regular SPL tokens.
+A Next.js application for distributing TPL tokens using [ZK Compression](https://www.zkcompression.com/) - making token airdrops **~5000x cheaper** than regular TPL tokens.
 
 ## Features
 
 - **ZK Compressed Tokens**: Rent-free token accounts stored in Merkle trees
-- **Cost Efficient**: ~5000x cheaper than standard SPL tokens
+- **Cost Efficient**: ~5000x cheaper than standard TPL tokens
 - **Direct Minting**: Simple authority-based distribution (no merkle proofs needed)
 - **Batch Processing**: Configurable batch sizes for optimal transaction handling
-- **Wallet Integration**: Connect with Phantom, Solflare, and other Solana wallets
+- **Wallet Integration**: Connect with Phantom, Solflare, and other Trezoa wallets
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with App Router
 - **Styling**: Tailwind CSS + Shadcn UI
-- **Solana SDK**: [Gill](https://gill.site/) + Wallet UI components
+- **Trezoa SDK**: [Gill](https://gill.site/) + Wallet UI components
 - **ZK Compression**: @lightprotocol/compressed-token + stateless.js
 
 ## Prerequisites
 
 1. **Node.js** (v22 or higher)
 2. **npm** (recommended) or npm
-3. **Solana Wallet** with devnet SOL
+3. **Trezoa Wallet** with devnet TRZ
 4. **Helius RPC API Key** (free tier works) - [Get one here](https://dev.helius.xyz/)
 
-> **Why Helius?** ZK Compression requires special [Photon indexer nodes](https://www.zkcompression.com/references/terminology) to query compressed accounts and generate validity proofs. Helius runs these indexers for free on devnet. Regular Solana RPC nodes can't parse compressed account data stored in Merkle trees.
+> **Why Helius?** ZK Compression requires special [Photon indexer nodes](https://www.zkcompression.com/references/terminology) to query compressed accounts and generate validity proofs. Helius runs these indexers for free on devnet. Regular Trezoa RPC nodes can't parse compressed account data stored in Merkle trees.
 
 ## Quick Start
 
@@ -53,15 +53,15 @@ DEV_WALLET=your_base58_private_key_here
 > - `DEV_WALLET` works for both scripts and frontend (via next.config.ts)
 > - **Never commit your `.env.local` file!**
 
-### 3. Get Devnet SOL
+### 3. Get Devnet TRZ
 
-Make sure your wallet has some devnet SOL:
+Make sure your wallet has some devnet TRZ:
 
 ```bash
-solana airdrop 2 YOUR_WALLET_ADDRESS --url devnet
+trezoa airdrop 2 YOUR_WALLET_ADDRESS --url devnet
 ```
 
-Or use the [Solana Faucet](https://faucet.solana.com/).
+Or use the [Trezoa Faucet](https://faucet.trezoa.com/).
 
 ### 4. Run Complete Airdrop Setup
 
@@ -102,11 +102,11 @@ npm airdrop:recipients
 
 ### 1. **Compressed Token Mint**
 
-Creates an SPL token registered with Light Protocol's compression program. The token pool enables rent-free compressed accounts.
+Creates an TPL token registered with Light Protocol's compression program. The token pool enables rent-free compressed accounts.
 
 ### 2. **Test Wallets**
 
-Generates Solana keypairs that will receive the airdrop tokens. In production, you'd load real recipient addresses.
+Generates Trezoa keypairs that will receive the airdrop tokens. In production, you'd load real recipient addresses.
 
 ### 3. **Airdrop Execution**
 
@@ -144,24 +144,24 @@ Splits recipients across multiple transactions to stay within transaction size l
 
 ### What's Different?
 
-**Standard SPL Tokens:**
+**Standard TPL Tokens:**
 
-- Each token account costs ~0.002 SOL rent
-- 1000 recipients = ~2 SOL in rent fees
+- Each token account costs ~0.002 TRZ rent
+- 1000 recipients = ~2 TRZ in rent fees
 - Visible on standard explorers
 
 **ZK Compressed Tokens:**
 
 - Token accounts stored in Merkle trees
 - About 5000x cheaper (no rent!)
-- 1000 recipients = ~0.0004 SOL
+- 1000 recipients = ~0.0004 TRZ
 - Requires ZK Compression indexer to query
 
 ### Why Transactions Don't Appear on Solscan
 
 Compressed token accounts are stored in on-chain Merkle trees, not as individual accounts. Standard explorers can't decode this data structure. To query compressed accounts:
 
-1. **Mint address** on Solana Explorer (shows the mint, not individual accounts)
+1. **Mint address** on Trezoa Explorer (shows the mint, not individual accounts)
 2. **Photon RPC** with [special methods](https://www.zkcompression.com/resources/json-rpc-methods) like `getCompressedTokenAccountsByOwner`
 3. **RPC providers** that run Photon indexers (Helius or [run your own](https://www.zkcompression.com/learn/node-operators))
 
@@ -230,7 +230,7 @@ The connected wallet must match the mint authority. Connect the wallet whose pri
 
 ### "Transaction not found on Solscan"
 
-This is expected! Compressed tokens use Merkle trees. Check the mint address on Solana Explorer instead.
+This is expected! Compressed tokens use Merkle trees. Check the mint address on Trezoa Explorer instead.
 
 ## Production Deployment
 
@@ -248,8 +248,8 @@ This is expected! Compressed tokens use Merkle trees. Check the mint address on 
 - [Run Your Own Indexer](https://www.zkcompression.com/learn/node-operators)
 - [Light Protocol GitHub](https://github.com/Lightprotocol)
 - [Gill SDK](https://gill.site/)
-- [Solana Wallet UI](https://registry.wallet-ui.dev)
+- [Trezoa Wallet UI](https://registry.wallet-ui.dev)
 
 ## License
 
-This project is based on the gill-next-tailwind template from the Solana Foundation.
+This project is based on the gill-next-tailwind template from the TRZ Ledger Foundation.

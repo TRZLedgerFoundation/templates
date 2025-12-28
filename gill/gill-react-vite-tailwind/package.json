@@ -1,18 +1,18 @@
 {
   "name": "gill-react-vite-tailwind",
   "displayName": "Vite Boilerplate",
-  "description": "React+Vite, Tailwind, gill (based on @solana/kit), Wallet UI",
+  "description": "React+Vite, Tailwind, gill (based on @trezoa/kit), Wallet UI",
   "usecase": "Starter",
   "keywords": [
     "gill",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript",
     "vite",
     "wallet-ui"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",
@@ -40,7 +40,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@solana-mobile/wallet-standard-mobile": "^0.4.1",
+    "@trezoa-mobile/wallet-standard-mobile": "^0.4.1",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-query": "^5.89.0",
     "@wallet-ui/react": "2.0.0",

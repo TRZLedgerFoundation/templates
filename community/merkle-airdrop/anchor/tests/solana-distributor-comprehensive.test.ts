@@ -1,7 +1,7 @@
 /// <reference types="vitest/globals" />
 
 import {
-  createSolanaClient,
+  createTrezoaClient,
   createKeyPairSignerFromBytes,
   generateKeyPairSigner,
   address,
@@ -16,13 +16,13 @@ import { getInitializeAirdropInstruction } from '../generated/clients/ts/instruc
 import { getClaimAirdropInstruction } from '../generated/clients/ts/instructions/claimAirdrop'
 import { fetchAirdropState } from '../generated/clients/ts/accounts/airdropState'
 import { fetchClaimStatus } from '../generated/clients/ts/accounts/claimStatus'
-import { SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS } from '../generated/clients/ts/programs'
+import { TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS } from '../generated/clients/ts/programs'
 import { generateGillMerkleTree, generateGillProof, type GillMerkleTree } from '../lib/merkle-tree-manager'
 import type { GillRecipient } from '../lib/types'
 
-describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
+describe('Trezoa Distributor (Comprehensive Gill + Codama)', () => {
   const NETWORK = 'devnet'
-  let client: ReturnType<typeof createSolanaClient>
+  let client: ReturnType<typeof createTrezoaClient>
   let rpc: any
   let sendAndConfirmTransaction: any
 
@@ -31,15 +31,15 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
   let recipient2: TransactionSigner
   let airdropStatePda: Address
 
-  const recipient1Amount = 100000000 // 0.1 SOL
-  const recipient2Amount = 200000000 // 0.2 SOL
-  const totalAmount = recipient1Amount + recipient2Amount // 0.3 SOL
+  const recipient1Amount = 100000000 // 0.1 TRZ
+  const recipient2Amount = 200000000 // 0.2 TRZ
+  const totalAmount = recipient1Amount + recipient2Amount // 0.3 TRZ
 
   let merkleTreeResult: { merkleRoot: string; merkleTree: GillMerkleTree }
   let recipients: GillRecipient[]
 
   beforeAll(async () => {
-    client = createSolanaClient({ urlOrMoniker: NETWORK })
+    client = createTrezoaClient({ urlOrMoniker: NETWORK })
     ;({ rpc, sendAndConfirmTransaction } = client)
 
     const walletData = fs.readFileSync('./deploy-wallet.json', 'utf8')
@@ -56,8 +56,8 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     console.log(`   Recipient 2: ${recipient2.address}`)
 
     try {
-      await rpc.requestAirdrop(recipient1.address, lamports(10000000n)).send() // 0.01 SOL
-      await rpc.requestAirdrop(recipient2.address, lamports(10000000n)).send() // 0.01 SOL
+      await rpc.requestAirdrop(recipient1.address, lamports(10000000n)).send() // 0.01 TRZ
+      await rpc.requestAirdrop(recipient2.address, lamports(10000000n)).send() // 0.01 TRZ
 
       await new Promise((resolve) => setTimeout(resolve, 2000))
     } catch (error) {
@@ -75,7 +75,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     console.log(`🌳 Merkle Root: ${merkleTreeResult.merkleRoot}`)
 
     const [derivedPda] = await getProgramDerivedAddress({
-      programAddress: SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS,
+      programAddress: TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS,
       seeds: ['merkle_tree'],
     })
     airdropStatePda = address(derivedPda)
@@ -125,18 +125,18 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     expect(Number(airdropState!.data.amountClaimed)).toBe(0)
 
     const vaultBalance = await rpc.getBalance(airdropStatePda).send()
-    console.log(`💰 Vault balance: ${Number(vaultBalance.value) / 1e9} SOL`)
+    console.log(`💰 Vault balance: ${Number(vaultBalance.value) / 1e9} TRZ`)
     expect(Number(vaultBalance.value)).toBeGreaterThan(0)
   })
 
-  test('Claim SOL - Recipient 1 (Gill + Codama)', async () => {
+  test('Claim TRZ - Recipient 1 (Gill + Codama)', async () => {
     console.log('\n🎯 Testing claim for Recipient 1...')
 
     const proofResult = generateGillProof(merkleTreeResult.merkleTree, 0)
     console.log(`🔐 Proof length: ${proofResult.proof.length}`)
 
     const [claimStatusPda] = await getProgramDerivedAddress({
-      programAddress: SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS,
+      programAddress: TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS,
       seeds: ['claim', airdropStatePda, recipient1.address],
     })
 
@@ -151,7 +151,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     }
 
     const balanceBefore = await rpc.getBalance(recipient1.address).send()
-    console.log(`💰 Recipient 1 balance before: ${Number(balanceBefore.value) / 1e9} SOL`)
+    console.log(`💰 Recipient 1 balance before: ${Number(balanceBefore.value) / 1e9} TRZ`)
 
     const claimInstruction = getClaimAirdropInstruction({
       airdropState: airdropStatePda,
@@ -174,7 +174,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     console.log(`📋 Claim signature: ${signature}`)
 
     const balanceAfter = await rpc.getBalance(recipient1.address).send()
-    console.log(`💰 Recipient 1 balance after: ${Number(balanceAfter.value) / 1e9} SOL`)
+    console.log(`💰 Recipient 1 balance after: ${Number(balanceAfter.value) / 1e9} TRZ`)
 
     const balanceIncrease = Number(balanceAfter.value) - Number(balanceBefore.value)
     expect(balanceIncrease).toBeCloseTo(recipient1Amount, -5) // Allow for transaction fees
@@ -183,14 +183,14 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     expect(claimStatus).toBeTruthy() // Account exists = claimed
   })
 
-  test('Claim SOL - Recipient 2 (Gill + Codama)', async () => {
+  test('Claim TRZ - Recipient 2 (Gill + Codama)', async () => {
     console.log('\n🎯 Testing claim for Recipient 2...')
 
     const proofResult = generateGillProof(merkleTreeResult.merkleTree, 1)
     console.log(`🔐 Proof length: ${proofResult.proof.length}`)
 
     const [claimStatusPda] = await getProgramDerivedAddress({
-      programAddress: SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS,
+      programAddress: TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS,
       seeds: ['claim', airdropStatePda, recipient2.address],
     })
 
@@ -205,7 +205,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     }
 
     const balanceBefore = await rpc.getBalance(recipient2.address).send()
-    console.log(`💰 Recipient 2 balance before: ${Number(balanceBefore.value) / 1e9} SOL`)
+    console.log(`💰 Recipient 2 balance before: ${Number(balanceBefore.value) / 1e9} TRZ`)
 
     const claimInstruction = getClaimAirdropInstruction({
       airdropState: airdropStatePda,
@@ -228,7 +228,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     console.log(`📋 Claim signature: ${signature}`)
 
     const balanceAfter = await rpc.getBalance(recipient2.address).send()
-    console.log(`💰 Recipient 2 balance after: ${Number(balanceAfter.value) / 1e9} SOL`)
+    console.log(`💰 Recipient 2 balance after: ${Number(balanceAfter.value) / 1e9} TRZ`)
 
     const balanceIncrease = Number(balanceAfter.value) - Number(balanceBefore.value)
     expect(balanceIncrease).toBeCloseTo(recipient2Amount, -5) // Allow for transaction fees
@@ -243,7 +243,7 @@ describe('Solana Distributor (Comprehensive Gill + Codama)', () => {
     const proofResult = generateGillProof(merkleTreeResult.merkleTree, 0)
 
     const [claimStatusPda] = await getProgramDerivedAddress({
-      programAddress: SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS,
+      programAddress: TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS,
       seeds: ['claim', airdropStatePda, recipient1.address],
     })
 

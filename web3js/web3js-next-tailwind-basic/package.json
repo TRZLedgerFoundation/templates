@@ -2,12 +2,12 @@
   "name": "web3js-next-tailwind-basic",
   "displayName": "Web3js Basic",
   "usecase": "Legacy",
-  "description": "Next.js, Tailwind, @solana/web3.js, Wallet Adapter, basic Anchor program",
+  "description": "Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter, basic Anchor program",
   "keywords": [
     "anchor-basic",
     "nextjs",
     "react",
-    "solana-web3js",
+    "trezoa-web3js",
     "tailwind",
     "typescript",
     "wallet-adapter"
@@ -15,10 +15,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "anchor": "cd anchor && anchor",
-    "anchor-build": "cd anchor && anchor build",
-    "anchor-localnet": "cd anchor && anchor localnet",
-    "anchor-test": "cd anchor && anchor test",
+    "trezoaanchor": "cd trezoaanchor && anchor",
+    "anchor-build": "cd trezoaanchor && trezoaanchor build",
+    "anchor-localnet": "cd trezoaanchor && trezoaanchor localnet",
+    "anchor-test": "cd trezoaanchor && trezoaanchor test",
     "build": "next build",
     "ci": "npm run build && npm run lint && npm run format:check",
     "dev": "next dev --turbopack",
@@ -28,16 +28,16 @@
     "start": "next start"
   },
   "dependencies": {
-    "@coral-xyz/anchor": "^0.31.1",
+    "@trezoa-xyz/anchor": "^0.31.1",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@solana/spl-token": "0.4.14",
-    "@solana/wallet-adapter-base": "0.9.27",
-    "@solana/wallet-adapter-react": "0.15.39",
-    "@solana/wallet-adapter-react-ui": "0.9.39",
-    "@solana/web3.js": "^1.98.4",
+    "@trezoa/spl-token": "0.4.14",
+    "@trezoa/wallet-adapter-base": "0.9.27",
+    "@trezoa/wallet-adapter-react": "0.15.39",
+    "@trezoa/wallet-adapter-react-ui": "0.9.39",
+    "@trezoa/web3.js": "^1.98.4",
     "@tanstack/react-query": "^5.89.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -67,7 +67,7 @@
     "ts-jest": "^29.4.3",
     "typescript": "^5.9.2"
   },
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",

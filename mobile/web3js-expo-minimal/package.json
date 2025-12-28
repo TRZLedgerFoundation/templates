@@ -1,15 +1,15 @@
 {
   "name": "web3js-expo-minimal",
   "displayName": "Minimal Mobile Expo example",
-  "description": "A minimal template for building a Solana mobile app with Expo and React Native.",
+  "description": "A minimal template for building a Trezoa mobile app with Expo and React Native.",
   "usecase": "Mobile",
   "keywords": [
     "expo",
     "mobile-wallet-adapter",
     "react-native",
-    "solana-web3js"
+    "trezoa-web3js"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "To buld the Android app locally, run this:",
       "+{pm} run android"
@@ -43,8 +43,8 @@
     "@react-navigation/elements": "^2.6.3",
     "@react-navigation/native": "^7.1.8",
     "@rn-primitives/dropdown-menu": "^1.2.0",
-    "@solana/spl-memo": "^0.2.5",
-    "@solana/web3.js": "^1.98.4",
+    "@trezoa/spl-memo": "^0.2.5",
+    "@trezoa/web3.js": "^1.98.4",
     "@tanstack/react-query": "^5.90.7",
     "@wallet-standard/core": "^1.1.1",
     "@wallet-ui/react-native-web3js": "^2.2.0-canary-20251120223258",

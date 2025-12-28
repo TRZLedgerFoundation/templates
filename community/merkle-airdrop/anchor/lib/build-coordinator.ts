@@ -24,8 +24,8 @@ export function getGillSourceHash(config: GillBuildConfig = {}): string {
   const { workingDir = '.' } = config
 
   try {
-    const libPath = `${workingDir}/programs/solana-distributor/src/lib.rs`
-    const cargoPath = `${workingDir}/programs/solana-distributor/Cargo.toml`
+    const libPath = `${workingDir}/programs/trezoa-distributor/src/lib.rs`
+    const cargoPath = `${workingDir}/programs/trezoa-distributor/Cargo.toml`
     const anchorPath = `${workingDir}/Anchor.toml`
 
     const sources = [
@@ -59,7 +59,7 @@ export function getGillDeclaredProgramId(config: GillBuildConfig = {}): string |
   const { workingDir = '.' } = config
 
   try {
-    const libContent = fs.readFileSync(`${workingDir}/programs/solana-distributor/src/lib.rs`, 'utf8')
+    const libContent = fs.readFileSync(`${workingDir}/programs/trezoa-distributor/src/lib.rs`, 'utf8')
     const match = libContent.match(/declare_id!\("([^"]+)"\);/)
     return match ? match[1] : null
   } catch {
@@ -71,7 +71,7 @@ export function getGillDeployedProgramId(config: GillBuildConfig = {}): string |
   const { workingDir = '.' } = config
 
   try {
-    const output = execSync(`solana address -k ${workingDir}/target/deploy/solana_distributor-keypair.json`, {
+    const output = execSync(`solana address -k ${workingDir}/target/deploy/trezoa_distributor-keypair.json`, {
       encoding: 'utf8',
     })
     return output.trim()
@@ -85,7 +85,7 @@ export function getGillAnchorProgramId(config: GillBuildConfig = {}): string | n
 
   try {
     const anchorContent = fs.readFileSync(`${workingDir}/Anchor.toml`, 'utf8')
-    const match = anchorContent.match(/solana_distributor = "([^"]+)"/)
+    const match = anchorContent.match(/trezoa_distributor = "([^"]+)"/)
     return match ? match[1] : null
   } catch {
     return null
@@ -146,7 +146,7 @@ export async function deployGillProgram(
     if (programKeypairPath) {
       console.log('📋 Setting up program keypair... (Gill)')
       execSync(`mkdir -p ${workingDir}/target/deploy`)
-      execSync(`cp ${programKeypairPath} ${workingDir}/target/deploy/solana_distributor-keypair.json`)
+      execSync(`cp ${programKeypairPath} ${workingDir}/target/deploy/trezoa_distributor-keypair.json`)
       console.log('✅ Program keypair configured (Gill)')
     }
 
@@ -210,7 +210,7 @@ export async function ensureGillProgramIdConsistency(
   console.log('🔧 Updating program ID references... (Gill)')
 
   try {
-    const libPath = `${workingDir}/programs/solana-distributor/src/lib.rs`
+    const libPath = `${workingDir}/programs/trezoa-distributor/src/lib.rs`
     let libContent = fs.readFileSync(libPath, 'utf8')
     libContent = libContent.replace(/declare_id!\(".*"\);/, `declare_id!("${newProgramId}");`)
     fs.writeFileSync(libPath, libContent)
@@ -223,7 +223,7 @@ export async function ensureGillProgramIdConsistency(
   try {
     const anchorPath = `${workingDir}/Anchor.toml`
     let anchorContent = fs.readFileSync(anchorPath, 'utf8')
-    anchorContent = anchorContent.replace(/solana_distributor = ".*"/, `solana_distributor = "${newProgramId}"`)
+    anchorContent = anchorContent.replace(/trezoa_distributor = ".*"/, `trezoa_distributor = "${newProgramId}"`)
     fs.writeFileSync(anchorPath, anchorContent)
     console.log('   ✅ Updated Anchor.toml')
   } catch (error) {
@@ -270,8 +270,8 @@ export function getGillProgramStatus(config: GillBuildConfig = {}): {
   const { workingDir = '.' } = config
 
   const consistency = checkGillProgramIdConsistency(config)
-  const targetExists = fs.existsSync(`${workingDir}/target/deploy/solana_distributor-keypair.json`)
-  const idlExists = fs.existsSync(`${workingDir}/target/idl/solana_distributor.json`)
+  const targetExists = fs.existsSync(`${workingDir}/target/deploy/trezoa_distributor-keypair.json`)
+  const idlExists = fs.existsSync(`${workingDir}/target/idl/trezoa_distributor.json`)
 
   return {
     built: targetExists && idlExists,

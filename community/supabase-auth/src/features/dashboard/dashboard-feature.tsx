@@ -11,15 +11,15 @@ const primary: {
   icon: React.ReactNode
 }[] = [
   {
-    label: 'Solana Docs',
-    href: 'https://solana.com/docs',
-    description: 'The official documentation. Your first stop for understanding the Solana ecosystem.',
+    label: 'Trezoa Docs',
+    href: 'https://trezoa.com/docs',
+    description: 'The official documentation. Your first stop for understanding the Trezoa ecosystem.',
     icon: <BookOpen className="w-8 h-8 text-purple-400" />,
   },
   {
-    label: 'Solana Cookbook',
-    href: 'https://solana.com/developers/cookbook/',
-    description: 'Practical examples and code snippets for common tasks when building on Solana.',
+    label: 'Trezoa Cookbook',
+    href: 'https://trezoa.com/developers/cookbook/',
+    description: 'Practical examples and code snippets for common tasks when building on Trezoa.',
     icon: <CookingPot className="w-8 h-8 text-green-400" />,
   },
 ]
@@ -30,18 +30,18 @@ const secondary: {
   icon: React.ReactNode
 }[] = [
   {
-    label: 'Solana Faucet',
-    href: 'https://faucet.solana.com/',
+    label: 'Trezoa Faucet',
+    href: 'https://faucet.trezoa.com/',
     icon: <Droplets className="w-5 h-5 text-green-400" />,
   },
   {
-    label: 'Solana Stack Overflow',
-    href: 'https://solana.stackexchange.com/',
+    label: 'Trezoa Stack Overflow',
+    href: 'https://trezoa.stackexchange.com/',
     icon: <MessageCircleQuestion className="w-5 h-5 text-orange-400" />,
   },
   {
-    label: 'Solana Client Hooks',
-    href: 'https://www.npmjs.com/package/@solana/react-hooks',
+    label: 'Trezoa Client Hooks',
+    href: 'https://www.npmjs.com/package/@trezoa/react-hooks',
     icon: <LucideWallet className="w-5 h-5 text-blue-400" />,
   },
 ]
@@ -49,7 +49,7 @@ const secondary: {
 export default function DashboardFeature() {
   return (
     <div>
-      <AppHero title="gm" subtitle="Say hi to your new Solana app." />
+      <AppHero title="gm" subtitle="Say hi to your new Trezoa app." />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Authentication Section */}
         <div className="mb-12">

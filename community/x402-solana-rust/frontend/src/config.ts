@@ -12,11 +12,11 @@ export interface AllNetworkConfig {
 
 export const getNetworkConfig = (): AllNetworkConfig => ({
   devnet: {
-    rpcUrl: import.meta.env.VITE_DEVNET_RPC_URL || 'https://api.devnet.solana.com',
+    rpcUrl: import.meta.env.VITE_DEVNET_RPC_URL || 'https://api.devnet.trezoa.com',
     usdcMint: '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
   },
   mainnet: {
-    rpcUrl: import.meta.env.VITE_MAINNET_RPC_URL || 'https://api.mainnet-beta.solana.com',
+    rpcUrl: import.meta.env.VITE_MAINNET_RPC_URL || 'https://api.mainnet-beta.trezoa.com',
     usdcMint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   },
 })

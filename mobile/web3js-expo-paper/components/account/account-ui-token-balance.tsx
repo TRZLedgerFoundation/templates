@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { ActivityIndicator } from 'react-native'
 import { AppText } from '@/components/app-text'
 import { useGetTokenAccountBalance } from '@/components/account/use-get-token-account-balance'

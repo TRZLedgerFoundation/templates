@@ -49,7 +49,7 @@ async function testNoPayment() {
       if (data.accepts && data.accepts.length > 0) {
         const paymentInfo = data.accepts[0];
         console.log(
-          `   Amount: ${paymentInfo.maxAmountRequired} lamports (${Number(paymentInfo.maxAmountRequired) / 1_000_000_000} SOL)`
+          `   Amount: ${paymentInfo.maxAmountRequired} lamports (${Number(paymentInfo.maxAmountRequired) / 1_000_000_000} TRZ)`
         );
         console.log(`   Asset: ${paymentInfo.asset}`);
         console.log(`   Pay To: ${paymentInfo.payTo}`);

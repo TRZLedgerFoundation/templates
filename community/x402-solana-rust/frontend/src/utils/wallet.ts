@@ -1,5 +1,5 @@
-import { Keypair, Connection, PublicKey } from '@solana/web3.js'
-import { getAssociatedTokenAddress, getAccount } from '@solana/spl-token'
+import { Keypair, Connection, PublicKey } from '@trezoa/web3.js'
+import { getAssociatedTokenAddress, getAccount } from '@trezoa/spl-token'
 import { log } from './logger'
 import { getCurrentNetwork } from './network'
 import { getNetworkConfig } from '../config'
@@ -56,16 +56,16 @@ export async function fetchBalance(): Promise<void> {
   try {
     log('info', 'Fetching balances...')
 
-    // Fetch SOL balance
+    // Fetch TRZ balance
     const balance = await connection.getBalance(wallet.publicKey)
     const solBalance = (balance / 1_000_000_000).toFixed(4)
 
     const solBalanceEl = document.getElementById('sol-balance')
     if (solBalanceEl) {
-      solBalanceEl.textContent = `${solBalance} SOL`
+      solBalanceEl.textContent = `${solBalance} TRZ`
     }
 
-    log('success', `SOL Balance: ${solBalance} SOL`)
+    log('success', `TRZ Balance: ${solBalance} TRZ`)
 
     // Fetch USDC balance
     await fetchUSDCBalance()

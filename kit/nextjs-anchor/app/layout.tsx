@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Solana dApp Starter",
-  description: "A minimal Next.js starter powered by @solana/react-hooks",
+  title: "Trezoa dApp Starter",
+  description: "A minimal Next.js starter powered by @trezoa/react-hooks",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",

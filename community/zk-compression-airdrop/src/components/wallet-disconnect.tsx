@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { Button } from '@/components/ui/button'
-import { useWalletConnection } from '@solana/react-hooks'
+import { useWalletConnection } from '@trezoa/react-hooks'
 
 function WalletDisconnect(props: React.ComponentProps<typeof Button>) {
   const { connected, disconnect } = useWalletConnection()

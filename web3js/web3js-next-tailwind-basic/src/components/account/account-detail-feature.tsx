@@ -1,6 +1,6 @@
 'use client'
 
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import { ExplorerLink } from '../cluster/cluster-ui'

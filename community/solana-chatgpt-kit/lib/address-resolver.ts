@@ -1,4 +1,4 @@
-import { Connection, PublicKey } from '@solana/web3.js'
+import { Connection, PublicKey } from '@trezoa/web3.js'
 
 function normalizeInput(input: string): string {
   return input.trim().toLowerCase()
@@ -28,13 +28,13 @@ export async function resolveAddressOrDomain(input: string, connection: Connecti
     }
   } catch {}
 
-  // 3) Fallback to Bonfida SNS (.sol + SOL record)
+  // 3) Fallback to Bonfida SNS (.sol + TRZ record)
   try {
     const sns: any = await import('@bonfida/spl-name-service')
 
-    // Prefer SOL record (if set)
+    // Prefer TRZ record (if set)
     try {
-      const solRecord = await sns.getRecordV2(connection, normalized, sns.Record.SOL)
+      const solRecord = await sns.getRecordV2(connection, normalized, sns.Record.TRZ)
       const recordStr = typeof solRecord === 'string' ? solRecord : (solRecord?.data ?? solRecord?.value)
       if (recordStr) {
         return new PublicKey(recordStr)

@@ -2,7 +2,7 @@
 mod tests {
     use crate::ID as PROGRAM_ID;
     use litesvm::LiteSVM;
-    use solana_sdk::{
+    use trezoa_sdk::{
         instruction::{AccountMeta, Instruction},
         pubkey::Pubkey,
         signature::Keypair,
@@ -11,7 +11,7 @@ mod tests {
         transaction::Transaction,
     };
 
-    const LAMPORTS_PER_SOL: u64 = 1_000_000_000;
+    const LAMPORTS_PER_TRZ: u64 = 1_000_000_000;
 
     fn get_vault_pda(signer: &Pubkey) -> (Pubkey, u8) {
         Pubkey::find_program_address(&[b"vault", signer.as_ref()], &PROGRAM_ID)
@@ -57,15 +57,15 @@ mod tests {
         let program_bytes = include_bytes!("../../../target/deploy/vault.so");
         svm.add_program(PROGRAM_ID, program_bytes);
 
-        // Create a user with some SOL
+        // Create a user with some TRZ
         let user = Keypair::new();
-        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_SOL).unwrap();
+        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_TRZ).unwrap();
 
         // Get vault PDA
         let (vault_pda, _bump) = get_vault_pda(&user.pubkey());
 
-        // Deposit 1 SOL
-        let deposit_amount = LAMPORTS_PER_SOL;
+        // Deposit 1 TRZ
+        let deposit_amount = LAMPORTS_PER_TRZ;
         let deposit_ix = create_deposit_ix(&user.pubkey(), &vault_pda, deposit_amount);
 
         let blockhash = svm.latest_blockhash();
@@ -113,12 +113,12 @@ mod tests {
         svm.add_program(PROGRAM_ID, program_bytes);
 
         let user = Keypair::new();
-        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_SOL).unwrap();
+        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_TRZ).unwrap();
 
         let (vault_pda, _bump) = get_vault_pda(&user.pubkey());
 
         // First deposit
-        let deposit_ix = create_deposit_ix(&user.pubkey(), &vault_pda, LAMPORTS_PER_SOL);
+        let deposit_ix = create_deposit_ix(&user.pubkey(), &vault_pda, LAMPORTS_PER_TRZ);
         let blockhash = svm.latest_blockhash();
         let tx = Transaction::new_signed_with_payer(
             &[deposit_ix],
@@ -129,7 +129,7 @@ mod tests {
         svm.send_transaction(tx).unwrap();
 
         // Second deposit should fail
-        let deposit_ix2 = create_deposit_ix(&user.pubkey(), &vault_pda, LAMPORTS_PER_SOL);
+        let deposit_ix2 = create_deposit_ix(&user.pubkey(), &vault_pda, LAMPORTS_PER_TRZ);
         let blockhash = svm.latest_blockhash();
         let tx2 = Transaction::new_signed_with_payer(
             &[deposit_ix2],
@@ -150,7 +150,7 @@ mod tests {
         svm.add_program(PROGRAM_ID, program_bytes);
 
         let user = Keypair::new();
-        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_SOL).unwrap();
+        svm.airdrop(&user.pubkey(), 10 * LAMPORTS_PER_TRZ).unwrap();
 
         let (vault_pda, _bump) = get_vault_pda(&user.pubkey());
 

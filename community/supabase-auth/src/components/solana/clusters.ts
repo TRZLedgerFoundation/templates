@@ -9,20 +9,20 @@ export const CLUSTERS: ClusterOption[] = [
   {
     id: 'devnet',
     label: 'Devnet',
-    endpoint: 'https://api.devnet.solana.com',
-    websocket: 'wss://api.devnet.solana.com',
+    endpoint: 'https://api.devnet.trezoa.com',
+    websocket: 'wss://api.devnet.trezoa.com',
   },
   {
     id: 'testnet',
     label: 'Testnet',
-    endpoint: 'https://api.testnet.solana.com',
-    websocket: 'wss://api.testnet.solana.com',
+    endpoint: 'https://api.testnet.trezoa.com',
+    websocket: 'wss://api.testnet.trezoa.com',
   },
   {
     id: 'mainnet-beta',
     label: 'Mainnet Beta',
-    endpoint: 'https://api.mainnet-beta.solana.com',
-    websocket: 'wss://api.mainnet-beta.solana.com',
+    endpoint: 'https://api.mainnet-beta.trezoa.com',
+    websocket: 'wss://api.mainnet-beta.trezoa.com',
   },
 ]
 

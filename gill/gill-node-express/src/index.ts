@@ -4,9 +4,9 @@ import cors from 'cors'
 import { errorResponse, successResponse } from './lib/api-response-helpers.js'
 import { getApiConfig } from './lib/get-api-config.js'
 import { getApiContext } from './lib/get-api-context.js'
-import { getSolanaBalance } from './lib/get-solana-balance.js'
-import { getSolanaCachedBlockhash } from './lib/get-solana-cached-blockhash.js'
-import { getSolanaCluster } from './lib/get-solana-cluster.js'
+import { getTrezoaBalance } from './lib/get-trezoa-balance.js'
+import { getTrezoaCachedBlockhash } from './lib/get-trezoa-cached-blockhash.js'
+import { getTrezoaCluster } from './lib/get-trezoa-cluster.js'
 
 const app = express()
 const { port, ...config } = getApiConfig()
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.get('/balance/:address', async (req, res) => {
   try {
-    const balance = await getSolanaBalance(context, req.params.address)
+    const balance = await getTrezoaBalance(context, req.params.address)
     if (!balance) {
       context.log.error(`Failed to retrieve balance for address: ${req.params.address}`)
       res.status(500).json(errorResponse('Balance not retrieved', 'BALANCE_RETRIEVAL_FAILED'))
@@ -44,7 +44,7 @@ app.get('/balance/:address', async (req, res) => {
 
 app.get('/balance-signer', async (req, res) => {
   try {
-    const balance = await getSolanaBalance(context, context.signer.address)
+    const balance = await getTrezoaBalance(context, context.signer.address)
     if (!balance) {
       context.log.error(`Failed to retrieve balance for signer: ${context.signer.address}`)
       res.status(500).json(errorResponse('Balance not retrieved', 'BALANCE_RETRIEVAL_FAILED'))
@@ -59,7 +59,7 @@ app.get('/balance-signer', async (req, res) => {
 
 app.get('/cluster', async (req, res) => {
   try {
-    const result = await getSolanaCluster(context)
+    const result = await getTrezoaCluster(context)
     if (!result) {
       context.log.error(`Failed to retrieve cluster`)
       res.status(500).json(errorResponse('Cluster not retrieved', 'CLUSTER_RETRIEVAL_FAILED'))
@@ -75,7 +75,7 @@ app.get('/cluster', async (req, res) => {
 app.get('/latest-blockhash', async (req, res) => {
   try {
     const start = Date.now()
-    const blockhash = await getSolanaCachedBlockhash(context)
+    const blockhash = await getTrezoaCachedBlockhash(context)
 
     if (!blockhash) {
       context.log.error(`Failed to retrieve blockhash`)
@@ -109,7 +109,7 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
 
 app.listen(port, () => {
   context.log.info(`🐠 Listening on http://localhost:${port}`)
-  context.log.info(`🐠 Endpoint: ${config.solanaRpcEndpoint.split('?')[0]}`)
+  context.log.info(`🐠 Endpoint: ${config.trezoaRpcEndpoint.split('?')[0]}`)
   context.log.info(`🐠 Signer  : ${context.signer.address}`)
 })
 

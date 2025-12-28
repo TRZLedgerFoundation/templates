@@ -1,8 +1,8 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
 import { DemoFeatureSignMessage } from './demo-feature-sign-message'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
-import { PublicKey } from '@solana/web3.js'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
+import { PublicKey } from '@trezoa/web3.js'
 import * as React from 'react'
 
 export function DemoFeature() {

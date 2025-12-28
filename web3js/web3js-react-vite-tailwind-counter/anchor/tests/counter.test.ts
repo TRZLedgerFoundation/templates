@@ -1,6 +1,6 @@
-import * as anchor from '@coral-xyz/anchor'
-import { Program } from '@coral-xyz/anchor'
-import { Keypair } from '@solana/web3.js'
+import * as anchor from '@trezoa-xyz/anchor'
+import { Program } from '@trezoa-xyz/anchor'
+import { Keypair } from '@trezoa/web3.js'
 import { Counter } from '../target/types/counter'
 
 describe('counter', () => {

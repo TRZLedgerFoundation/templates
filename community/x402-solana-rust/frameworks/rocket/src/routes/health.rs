@@ -10,7 +10,7 @@ pub fn health_check(config: &State<Arc<Config>>) -> Json<Value> {
         "status": "healthy",
         "service": "x402-rust-server",
         "framework": "rocket",
-        "network": config.solana_network,
+        "network": config.trezoa_network,
         "receiver": config.receiver_address,
     }))
 }

@@ -9,13 +9,13 @@
 
 export const AIRDROP_CONFIG = {
   // Network settings
-  NETWORK: (process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet') as 'devnet' | 'mainnet' | 'testnet',
+  NETWORK: (process.env.NEXT_PUBLIC_TRZANA_NETWORK || 'devnet') as 'devnet' | 'mainnet' | 'testnet',
 
   // Program addresses (mock ID will be updated by deploy-setup script)
   AIRDROP_PROGRAM_ID: process.env.NEXT_PUBLIC_PROGRAM_ID,
 
   // Transaction settings
-  MIN_SOL_BALANCE: 0.005, // Minimum SOL needed for transaction fees
+  MIN_TRZ_BALANCE: 0.005, // Minimum TRZ needed for transaction fees
 
   // UI settings
   ENABLE_DEBUG_LOGS: process.env.NODE_ENV === 'development',
@@ -45,7 +45,7 @@ export function logConfig(): void {
     console.log('🔧 Airdrop Configuration:', {
       network: AIRDROP_CONFIG.NETWORK,
       programId: AIRDROP_CONFIG.AIRDROP_PROGRAM_ID,
-      minBalance: AIRDROP_CONFIG.MIN_SOL_BALANCE,
+      minBalance: AIRDROP_CONFIG.MIN_TRZ_BALANCE,
       hasPrivateKey: !!AIRDROP_CONFIG.PRIVATE_KEY,
     })
   }

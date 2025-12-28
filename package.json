@@ -1,7 +1,7 @@
 {
-  "name": "@solana-foundation/templates",
+  "name": "@trezoa-foundation/templates",
   "version": "1.0.0",
-  "description": "Solana Templates for create-solana-dapp",
+  "description": "Trezoa Templates for create-trezoa-dapp",
   "main": "index.js",
   "scripts": {
     "clean": "tsx scripts/clean.ts",
@@ -14,7 +14,7 @@
     "validate": "tsx scripts/validate.ts"
   },
   "keywords": [],
-  "author": "Solana Developers",
+  "author": "Trezoa Developers",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.5.2",
@@ -28,35 +28,35 @@
   "repokit": {
     "groups": [
       {
-        "description": "Kit Templates (using @solana/kit)",
+        "description": "Kit Templates (using @trezoa/kit)",
         "name": "Kit",
         "path": "kit"
       },
       {
-        "description": "Gill Templates (based on @solana/kit)",
+        "description": "Gill Templates (based on @trezoa/kit)",
         "name": "Gill",
         "path": "gill"
       },
       {
-        "description": "Solana Mobile Templates",
+        "description": "Trezoa Mobile Templates",
         "path": "mobile",
-        "name": "Solana Mobile"
+        "name": "Trezoa Mobile"
       },
       {
-        "description": "Templates using @solana/web3.js (legacy)",
+        "description": "Templates using @trezoa/web3.js (legacy)",
         "name": "Web3.js Templates",
         "path": "web3js"
       },
       {
-        "description": "Templates maintained by the Solana community",
+        "description": "Templates maintained by the Trezoa community",
         "name": "Community Templates",
         "path": "community"
       }
     ]
   },
   "repository": {
-    "name": "solana-foundation/templates",
+    "name": "trezoa-foundation/templates",
     "type": "git",
-    "url": "https://github.com/solana-foundation/templates"
+    "url": "https://github.com/trezoa-foundation/templates"
   }
 }

@@ -1,4 +1,4 @@
-import { address, type Address } from '@solana/kit'
+import { address, type Address } from '@trezoa/kit'
 import fs from 'fs'
 import path from 'path'
 

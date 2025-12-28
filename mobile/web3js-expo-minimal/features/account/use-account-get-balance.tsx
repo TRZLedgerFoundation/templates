@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { useMobileWalletAdapter } from '@wallet-ui/react-native-web3js'
 
 export function useAccountGetBalance({ publicKey }: { publicKey: PublicKey }) {

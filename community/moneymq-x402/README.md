@@ -1,15 +1,15 @@
 # MoneyMQ x402 Payment Protocol Demo
 
-A complete demonstration of the [x402 payment protocol](https://x402.org/) integrated with [MoneyMQ](https://github.com/txtx/moneymq), enabling micropayment-protected APIs on Solana. This template shows how to build APIs that charge cryptocurrency payments per request, with payments verified on Solana and settled automatically.
+A complete demonstration of the [x402 payment protocol](https://x402.org/) integrated with [MoneyMQ](https://github.com/txtx/moneymq), enabling micropayment-protected APIs on Trezoa. This template shows how to build APIs that charge cryptocurrency payments per request, with payments verified on Trezoa and settled automatically.
 
-**Everything runs locally on your machine** - no external services required, no mainnet, no real money. The demo includes a local Solana blockchain, payment facilitator, API server, and client, all with pre-seeded test accounts ready to use.
+**Everything runs locally on your machine** - no external services required, no mainnet, no real money. The demo includes a local Trezoa blockchain, payment facilitator, API server, and client, all with pre-seeded test accounts ready to use.
 
 ## What You'll Build
 
 By the end of this guide, you'll have:
 
 - **A payment-protected API** that charges $0.0001 per request using the x402 protocol
-- **A MoneyMQ facilitator** that verifies and settles payments on local Solana
+- **A MoneyMQ facilitator** that verifies and settles payments on local Trezoa
 - **A demo client** showing the complete payment flow from request to access
 
 When you run the demo, you'll see:
@@ -32,7 +32,7 @@ X402 + MONEYMQ PAYMENT FLOW DEMONSTRATION
 [3/4] Accessing protected endpoint with x402 payment
   → Using x402 fetch wrapper
   → Payment will be processed via MoneyMQ facilitator
-  → Transaction submitted to local Solana
+  → Transaction submitted to local Trezoa
   ✅ Status code: 200
 
 [4/4] Processing response data
@@ -47,7 +47,7 @@ SUCCESS: Payment completed and API accessed
 
 - **x402 Payment Protocol** - HTTP 402 "Payment Required" standard for API monetization
 - **MoneyMQ Integration** - Built-in facilitator for payment verification and settlement
-- **Local Solana Blockchain** - Embedded validator for development and testing
+- **Local Trezoa Blockchain** - Embedded validator for development and testing
 - **Pre-seeded Test Accounts** - Ready-to-use wallets with USDC balance
 - **Zero Configuration** - Everything works out of the box
 - **TypeScript** - Fully typed client and server code
@@ -60,7 +60,7 @@ SUCCESS: Payment completed and API accessed
 
 - **Direct Payments** - Accept cryptocurrency without third-party payment processors
 - **No User Accounts** - No registration or authentication required
-- **Blockchain-Verified** - Payments verified directly on Solana
+- **Blockchain-Verified** - Payments verified directly on Trezoa
 - **AI Agent Compatible** - Enable AI agents to autonomously pay for API services
 - **Standard HTTP** - Works with existing web infrastructure
 
@@ -69,15 +69,15 @@ SUCCESS: Payment completed and API accessed
 1. Client requests protected content → Server responds with 402 Payment Required
 2. Client creates payment transaction with x402 fetch wrapper
 3. Client sends payment to facilitator for verification
-4. Facilitator validates and settles transaction on Solana
+4. Facilitator validates and settles transaction on Trezoa
 5. Server verifies payment and returns protected content
 
 ## What is MoneyMQ?
 
 [MoneyMQ](https://github.com/txtx/moneymq) is a standalone CLI that provides:
 
-- **Built-in Facilitator** - x402 payment verification and settlement (powered by [Kora](https://github.com/solana-foundation/kora))
-- **Local Blockchain** - Embedded Solana validator for development (powered by [Surfpool](https://github.com/txtx/surfpool))
+- **Built-in Facilitator** - x402 payment verification and settlement (powered by [Kora](https://github.com/trezoa-foundation/kora))
+- **Local Blockchain** - Embedded Trezoa validator for development (powered by [Surfpool](https://github.com/txtx/surfpool))
 - **Pre-seeded Accounts** - Test accounts with USDC ready to use
 - **Fee Management** - Automatic handling of transaction fees
 - **Studio Web UI (Local)** - View account balances and keys at `http://localhost:8488/integrate`
@@ -91,7 +91,7 @@ Before you start, make sure you have:
 1. **Rust** (latest stable) - [Install Rust](https://www.rust-lang.org/tools/install)
 2. **Node.js 18+** - [Download Node.js](https://nodejs.org/)
 3. **pnpm** - Install with `npm install -g pnpm`
-4. Basic understanding of [Solana transactions](https://solana.com/docs/core/transactions)
+4. Basic understanding of [Trezoa transactions](https://trezoa.com/docs/core/transactions)
 
 ## Setup Steps
 
@@ -114,7 +114,7 @@ moneymq --version
 ### 2. Clone this template
 
 ```bash
-git clone https://github.com/solana-foundation/templates.git
+git clone https://github.com/trezoa-foundation/templates.git
 cd templates/community/moneymq-x402
 ```
 
@@ -200,7 +200,7 @@ Navigate to the [Integrate page](http://localhost:8488/integrate) to see all tes
 The sandbox provides:
 
 - **x402 Facilitator** at `http://localhost:7781` - Verifies and settles payments
-- **Local Solana RPC** at `http://localhost:8899` - Local blockchain for testing
+- **Local Trezoa RPC** at `http://localhost:8899` - Local blockchain for testing
 - **Pre-seeded Accounts** - Multiple test wallets with 2000 USDC each
 
 ### Terminal 2: Start Protected API
@@ -245,9 +245,9 @@ After the demo runs successfully, you can view the payment transaction in MoneyM
 The API server (`api/src/api.ts`) uses the `x402-express` middleware to protect endpoints:
 
 ```typescript
-import { Network, paymentMiddleware, SolanaAddress } from 'x402-express'
+import { Network, paymentMiddleware, TrezoaAddress } from 'x402-express'
 
-const PAYOUT_RECIPIENT_ADDRESS = process.env.PAYOUT_RECIPIENT_ADDRESS as SolanaAddress
+const PAYOUT_RECIPIENT_ADDRESS = process.env.PAYOUT_RECIPIENT_ADDRESS as TrezoaAddress
 const FACILITATOR_URL = process.env.FACILITATOR_URL
 
 app.use(
@@ -375,7 +375,7 @@ This shows:
 | MoneyMQ not found                      | Make sure you ran `cargo moneymq-install` and the binary is in your PATH                                                                                              |
 | 402 errors not resolving               | Verify MoneyMQ sandbox is running and accessible at `http://localhost:7781`                                                                                           |
 | USDC balance too low                   | Visit `http://localhost:8488/integrate` to view account balances. Sandbox accounts start with 2000 USDC                                                               |
-| RPC connection errors                  | Ensure local Solana validator is healthy: `curl http://localhost:8899 -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}'` |
+| RPC connection errors                  | Ensure local Trezoa validator is healthy: `curl http://localhost:8899 -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1,"method":"getHealth"}'` |
 | Payment verification fails             | Check that `FACILITATOR_URL` in `.env` matches MoneyMQ sandbox URL (`http://localhost:7781`)                                                                          |
 | Module not found errors                | Run `pnpm install` in both `api/` and `client/` directories                                                                                                           |
 
@@ -433,21 +433,21 @@ This architecture enables:
 
 ### Kora (Powers MoneyMQ's Facilitator)
 
-- [Kora GitHub](https://github.com/solana-foundation/kora)
-- [Kora x402 Demo](https://github.com/solana-foundation/kora/tree/main/docs/x402/demo) - Original implementation this demo is based on
-- [Kora Configuration Guide](https://github.com/solana-foundation/kora/blob/main/docs/operators/CONFIGURATION.md)
+- [Kora GitHub](https://github.com/trezoa-foundation/kora)
+- [Kora x402 Demo](https://github.com/trezoa-foundation/kora/tree/main/docs/x402/demo) - Original implementation this demo is based on
+- [Kora Configuration Guide](https://github.com/trezoa-foundation/kora/blob/main/docs/operators/CONFIGURATION.md)
 
-### Solana
+### Trezoa
 
-- [Solana Documentation](https://solana.com/docs)
-- [Solana Explorer](https://explorer.solana.com/)
-- [SPL Token Program](https://spl.solana.com/token)
+- [Trezoa Documentation](https://trezoa.com/docs)
+- [Trezoa Explorer](https://explorer.trezoa.com/)
+- [TPL Token Program](https://spl.trezoa.com/token)
 
 ## Acknowledgments
 
-This template demonstrates the x402 payment protocol integration with MoneyMQ. The facilitator implementation is powered by [Kora](https://github.com/solana-foundation/kora), the Solana Foundation's gasless transaction signing infrastructure.
+This template demonstrates the x402 payment protocol integration with MoneyMQ. The facilitator implementation is powered by [Kora](https://github.com/trezoa-foundation/kora), the TRZ Ledger Foundation's gasless transaction signing infrastructure.
 
-**Credits:** This example is heavily inspired by the [original Kora x402 demo](https://github.com/solana-foundation/kora/tree/main/docs/x402/demo). We're grateful to the Kora team for pioneering this integration pattern.
+**Credits:** This example is heavily inspired by the [original Kora x402 demo](https://github.com/trezoa-foundation/kora/tree/main/docs/x402/demo). We're grateful to the Kora team for pioneering this integration pattern.
 
 ## License
 

@@ -1,12 +1,12 @@
 import { getBasicProgram, getBasicProgramId } from '@project/anchor'
-import { useConnection } from '@solana/wallet-adapter-react'
-import { Cluster } from '@solana/web3.js'
+import { useConnection } from '@trezoa/wallet-adapter-react'
+import { Cluster } from '@trezoa/web3.js'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { useCluster } from '@/components/cluster/cluster-data-access'
 import { useTransactionToast } from '@/components/use-transaction-toast'
 import { toast } from 'sonner'
-import { useAnchorProvider } from '@/components/solana/use-anchor-provider.tsx'
+import { useAnchorProvider } from '@/components/trezoa/use-anchor-provider.tsx'
 
 export function useBasicProgram() {
   const { connection } = useConnection()

@@ -1,6 +1,6 @@
 import { Button, View } from 'react-native'
 import React from 'react'
-import { SolanaCluster } from '@wallet-ui/react-native-web3js'
+import { TrezoaCluster } from '@wallet-ui/react-native-web3js'
 import { appStyles } from '@/constants/app-styles'
 
 export function NetworkUiSelect({
@@ -8,9 +8,9 @@ export function NetworkUiSelect({
   selectedNetwork,
   setSelectedNetwork,
 }: {
-  networks: SolanaCluster[]
-  selectedNetwork: SolanaCluster
-  setSelectedNetwork: (network: SolanaCluster) => void
+  networks: TrezoaCluster[]
+  selectedNetwork: TrezoaCluster
+  setSelectedNetwork: (network: TrezoaCluster) => void
 }) {
   return (
     <View style={appStyles.stack}>

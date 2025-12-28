@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { PublicKey } from '@solana/web3.js'
-import { getMint } from '@solana/spl-token'
-import { getSolanaConnection } from '@/lib/solana-config'
+import { PublicKey } from '@trezoa/web3.js'
+import { getMint } from '@trezoa/spl-token'
+import { getTrezoaConnection } from '@/lib/trezoa-config'
 
 const MINT_REGEX = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/
 
@@ -47,7 +47,7 @@ export async function GET(request: Request) {
     }
 
     // Market cap via mint supply
-    const connection = getSolanaConnection()
+    const connection = getTrezoaConnection()
     const mintInfo = await getMint(connection, new PublicKey(tokenId))
     const supply = Number(mintInfo.supply) / Math.pow(10, mintInfo.decimals)
     const marketCap = supply * parseFloat(usdPrice)

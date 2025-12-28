@@ -118,9 +118,9 @@ export class X402Middleware {
             accepts: [
               {
                 scheme: 'exact',
-                network: network || 'solana-mainnet',
+                network: network || 'trezoa-mainnet',
                 maxAmountRequired: amount || '1000000',
-                asset: asset || 'USDC_SPL_MINT_ADDRESS',
+                asset: asset || 'USDC_TPL_MINT_ADDRESS',
                 payTo: payTo || 'MERCHANT_WALLET_ADDRESS',
                 resource: req.path,
               },

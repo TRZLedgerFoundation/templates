@@ -1,4 +1,4 @@
 # gill-node-script
 
-Simple node script that comes with [gill](https://github.com/solana-foundation/gill)
-based on [@solana/kit](https://github.com/anza-xyz/kit).
+Simple node script that comes with [gill](https://github.com/trezoa-foundation/gill)
+based on [@trezoa/kit](https://github.com/anza-xyz/kit).

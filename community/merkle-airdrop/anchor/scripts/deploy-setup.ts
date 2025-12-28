@@ -86,11 +86,11 @@ export async function runGillDeploymentSetup(config: GillDeploymentSetupConfig =
   })
 
   try {
-    console.log('🎉 Welcome to Solana Distributor Deployment Setup (Gill + Codama Edition)!\n')
+    console.log('🎉 Welcome to Trezoa Distributor Deployment Setup (Gill + Codama Edition)!\n')
     console.log('This script will help you:')
     console.log('1. Set up your deployment wallet')
     console.log('2. Create test wallets for examples')
-    console.log('3. Deploy the Solana program')
+    console.log('3. Deploy the Trezoa program')
     console.log('4. Generate configuration files')
     console.log('\n' + '='.repeat(50) + '\n')
 
@@ -120,7 +120,7 @@ export async function runGillDeploymentSetup(config: GillDeploymentSetupConfig =
         keypairFile: deployWallet.keypairFile,
         privateKey: deployWallet.privateKey,
         secretKey: deployWallet.secretKey,
-        balance: deployWallet.balance || '0 SOL',
+        balance: deployWallet.balance || '0 TRZ',
         funded: deployWallet.funded || false,
         isDeployWallet: true,
         signer: deployWallet.signer,
@@ -131,11 +131,11 @@ export async function runGillDeploymentSetup(config: GillDeploymentSetupConfig =
         keypairFile: w.keypairFile,
         privateKey: w.privateKey,
         secretKey: w.secretKey,
-        balance: w.balance || '0 SOL',
+        balance: w.balance || '0 TRZ',
         funded: w.funded || false,
         signer: w.signer,
       })),
-      airdropAmountLamports: 75000000, // 0.075 SOL default
+      airdropAmountLamports: 75000000, // 0.075 TRZ default
     })
 
     if (!result.success) {

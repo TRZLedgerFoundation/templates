@@ -12,7 +12,7 @@ import crypto from 'crypto';
 import nacl from 'tweetnacl';
 import bs58 from 'bs58';
 import { config } from 'dotenv';
-import { Connection, PublicKey, SystemProgram, Transaction, Keypair } from '@solana/web3.js';
+import { Connection, PublicKey, SystemProgram, Transaction, Keypair } from '@trezoa/web3.js';
 
 // Load environment variables
 config();
@@ -21,8 +21,8 @@ config();
 const SERVER_URL = process.env.SERVER_URL || 'http://localhost:3000';
 const RESOURCE_URL = '/api/premium-data';
 const FACILITATOR_PUBLIC_KEY = process.env.FACILITATOR_PUBLIC_KEY || '';
-const MERCHANT_ADDRESS = process.env.MERCHANT_SOLANA_ADDRESS || '';
-const RPC_URL = process.env.SOLANA_RPC_URL || 'https://api.devnet.solana.com';
+const MERCHANT_ADDRESS = process.env.MERCHANT_TRZANA_ADDRESS || '';
+const RPC_URL = process.env.TRZANA_RPC_URL || 'https://api.devnet.trezoa.com';
 
 // Load client keypair
 const keypairData = JSON.parse(fs.readFileSync('./test-client-keypair.json', 'utf-8'));
@@ -84,7 +84,7 @@ async function createPaymentRequest(nonce) {
   const messageBytes = Buffer.from(messageToSign, 'utf-8');
   const authSignature = nacl.sign.detached(messageBytes, clientKeypair.secretKey);
 
-  // Create Solana transaction
+  // Create Trezoa transaction
   const connection = new Connection(RPC_URL, 'confirmed');
   const { blockhash } = await connection.getLatestBlockhash('confirmed');
 

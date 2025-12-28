@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label'
 import { ArrowDownUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useDisplayMode, useMaxHeight, useWidgetProps } from '../hooks'
-import { externalWallet } from '@/lib/solana-config'
+import { externalWallet } from '@/lib/trezoa-config'
 import { ensureWalletConnected, getWalletPublicKey, signAndSendTransaction } from '@/lib/wallet-utils'
 
 interface SwapWidgetProps extends Record<string, unknown> {
@@ -22,7 +22,7 @@ export default function SwapPage() {
   const maxHeight = useMaxHeight() ?? undefined
   const displayMode = useDisplayMode()
 
-  const [inputToken, setInputToken] = useState(toolOutput?.inputToken || 'SOL')
+  const [inputToken, setInputToken] = useState(toolOutput?.inputToken || 'TRZ')
   const [outputToken, setOutputToken] = useState(toolOutput?.outputToken || 'USDC')
   const [inputAmount, setInputAmount] = useState(toolOutput?.initialAmount || '0.001')
   const [outputAmount, setOutputAmount] = useState('0')

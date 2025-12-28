@@ -3,9 +3,9 @@
 This is a Next.js app containing:
 
 - Tailwind and Shadcn UI for styling
-- [Gill](https://gill.site/) Solana SDK
+- [Gill](https://gill.site/) Trezoa SDK
 - Shadcn [Wallet UI](https://registry.wallet-ui.dev) components
-- A basic Counter Solana program written in Anchor
+- A basic Counter Trezoa program written in Anchor
 - [codama](https://github.com/codama-idl/codama) to generate a JS sdk for the program
 - UI components for interacting with the program
 
@@ -16,7 +16,7 @@ This is a Next.js app containing:
 #### Download the template
 
 ```shell
-npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind-counter
+npx create-trezoa-dapp@latest -t gh:trezoa-foundation/templates/gill/gill-next-tailwind-counter
 ```
 
 #### Install Dependencies
@@ -29,7 +29,7 @@ npm install
 
 ### anchor
 
-This is a Solana program written in Rust using the Anchor framework.
+This is a Trezoa program written in Rust using the Anchor framework.
 
 #### Commands
 
@@ -72,7 +72,7 @@ npm run anchor deploy --provider.cluster devnet
 
 ### web
 
-This is a React app that uses the Anchor generated client to interact with the Solana program.
+This is a React app that uses the Anchor generated client to interact with the Trezoa program.
 
 #### Commands
 

@@ -3,7 +3,7 @@
   "displayName": "MoneyMQ x402 Demo",
   "usecase": "Payments",
   "version": "0.0.0",
-  "description": "Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Solana",
+  "description": "Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Trezoa",
   "keywords": [
     "x402",
     "moneymq",
@@ -15,7 +15,7 @@
     "facilitator",
     "typescript"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "Install MoneyMQ CLI:",
       "1. Clone MoneyMQ: git clone https://github.com/txtx/moneymq.git",

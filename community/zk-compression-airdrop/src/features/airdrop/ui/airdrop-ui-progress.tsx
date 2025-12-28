@@ -38,9 +38,9 @@ export function AirdropProgressDisplay({ progress, mintAddress, clusterParam = '
         {progress.successfulMints > 0 && (
           <div className="pt-4 border-t space-y-3">
             <div>
-              <p className="text-sm font-medium mb-2">View on Solana Explorer</p>
+              <p className="text-sm font-medium mb-2">View on Trezoa Explorer</p>
               <a
-                href={`https://explorer.solana.com/address/${mintAddress}?cluster=${clusterParam}`}
+                href={`https://explorer.trezoa.com/address/${mintAddress}?cluster=${clusterParam}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-xs font-mono text-blue-600 hover:underline break-all"
@@ -52,7 +52,7 @@ export function AirdropProgressDisplay({ progress, mintAddress, clusterParam = '
             <Alert>
               <AlertDescription className="text-xs">
                 <strong>About ZK Compression:</strong> Compressed token accounts are stored in Merkle trees on the
-                ledger, making them around 5000 times cheaper than regular SPL tokens. Individual transaction signatures
+                ledger, making them around 5000 times cheaper than regular TPL tokens. Individual transaction signatures
                 won&apos;t show token accounts on standard explorers, use the mint address above to see activity, or
                 query balances via the ZK Compression RPC indexer.
               </AlertDescription>

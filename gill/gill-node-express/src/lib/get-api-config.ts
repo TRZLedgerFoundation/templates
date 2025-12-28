@@ -4,8 +4,8 @@ import { z } from 'zod'
 const ApiConfigSchema = z.object({
   corsOrigins: z.array(z.string()),
   port: z.coerce.number().int().positive(),
-  solanaRpcEndpoint: z.string(),
-  solanaSignerPath: z.string(),
+  trezoaRpcEndpoint: z.string(),
+  trezoaSignerPath: z.string(),
 })
 
 export type ApiConfig = z.infer<typeof ApiConfigSchema>
@@ -18,8 +18,8 @@ export function getApiConfig(): ApiConfig {
   }
   config = ApiConfigSchema.parse({
     corsOrigins: process.env.CORS_ORIGINS?.split(',') ?? [],
-    solanaRpcEndpoint: process.env.SOLANA_RPC_ENDPOINT ?? 'devnet',
-    solanaSignerPath: process.env.SOLANA_SIGNER_PATH ?? '~/.config/solana/id.json',
+    trezoaRpcEndpoint: process.env.TRZANA_RPC_ENDPOINT ?? 'devnet',
+    trezoaSignerPath: process.env.TRZANA_SIGNER_PATH ?? '~/.config/trezoa/id.json',
     port: process.env.PORT ?? 3000,
   })
   return config

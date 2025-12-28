@@ -2,7 +2,7 @@
  * Core type definitions for template generation
  *
  * These types represent the domain model for templates and must match
- * the output format consumed by create-solana-dapp and templates-site.
+ * the output format consumed by create-trezoa-dapp and templates-site.
  */
 
 /**
@@ -47,7 +47,7 @@ export type TemplateMetadata = {
 
 /**
  * Template as it appears in templates.json output
- * MUST match format consumed by create-solana-dapp
+ * MUST match format consumed by create-trezoa-dapp
  */
 export type TemplateJson = {
   readonly description: string
@@ -62,7 +62,7 @@ export type TemplateJson = {
 
 /**
  * A group of templates as it appears in templates.json
- * MUST match format consumed by create-solana-dapp
+ * MUST match format consumed by create-trezoa-dapp
  */
 export type TemplateGroup = {
   readonly description: string

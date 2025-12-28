@@ -1,12 +1,12 @@
 # x402 Setup Guide
 
-Complete setup instructions for the x402 Solana protocol implementation.
+Complete setup instructions for the x402 Trezoa protocol implementation.
 
 ## Prerequisites
 
 - Node.js 18+ (for native fetch support)
 - npm or yarn
-- Solana CLI (optional, for devnet testing)
+- Trezoa CLI (optional, for devnet testing)
 
 ## Installation
 
@@ -19,19 +19,19 @@ npm install
 
 ### 2. Generate Facilitator Keypair
 
-The facilitator needs a Solana keypair to sign and pay for transactions.
+The facilitator needs a Trezoa keypair to sign and pay for transactions.
 
-**Option A: Using Solana CLI**
+**Option A: Using Trezoa CLI**
 
 ```bash
-solana-keygen new --outfile facilitator-keypair.json
-solana-keygen pubkey facilitator-keypair.json
+trezoa-keygen new --outfile facilitator-keypair.json
+trezoa-keygen pubkey facilitator-keypair.json
 ```
 
 **Option B: Using Node.js**
 
 ```javascript
-import { Keypair } from '@solana/web3.js';
+import { Keypair } from '@trezoa/web3.js';
 import bs58 from 'bs58';
 
 const keypair = Keypair.generate();
@@ -55,15 +55,15 @@ FACILITATOR_PORT=3001
 FACILITATOR_PRIVATE_KEY=<your_facilitator_private_key_base58>
 FACILITATOR_PUBLIC_KEY=<your_facilitator_public_key>
 
-# Solana Configuration
-SOLANA_RPC_URL=https://api.devnet.solana.com
-SOLANA_WS_URL=wss://api.devnet.solana.com
-SOLANA_NETWORK=devnet
+# Trezoa Configuration
+TRZANA_RPC_URL=https://api.devnet.trezoa.com
+TRZANA_WS_URL=wss://api.devnet.trezoa.com
+TRZANA_NETWORK=devnet
 
 # Server Configuration
 SERVER_PORT=3000
 FACILITATOR_URL=http://localhost:3001
-MERCHANT_SOLANA_ADDRESS=<merchant_wallet_address>
+MERCHANT_TRZANA_ADDRESS=<merchant_wallet_address>
 
 # Payment Configuration
 MAX_PAYMENT_AMOUNT=1000000000
@@ -76,10 +76,10 @@ NONCE_EXPIRY_HOURS=24
 
 ### 4. Fund Facilitator Wallet (Devnet)
 
-The facilitator needs SOL to pay gas fees:
+The facilitator needs TRZ to pay gas fees:
 
 ```bash
-solana airdrop 2 <FACILITATOR_PUBLIC_KEY> --url devnet
+trezoa airdrop 2 <FACILITATOR_PUBLIC_KEY> --url devnet
 ```
 
 Verify balance:
@@ -142,12 +142,12 @@ npm run dev:server
 npm run generate:client
 ```
 
-This creates `test-client-keypair.json` with a new Solana wallet.
+This creates `test-client-keypair.json` with a new Trezoa wallet.
 
 ### Fund Test Client (Devnet)
 
 ```bash
-solana airdrop 1 <CLIENT_PUBLIC_KEY> --url devnet
+trezoa airdrop 1 <CLIENT_PUBLIC_KEY> --url devnet
 ```
 
 Get the public key from `test-client-keypair.json` or from the script output.
@@ -165,7 +165,7 @@ This test:
 - Creates a payment request with signed transaction
 - Sends to server's protected endpoint
 - Facilitator verifies and settles payment
-- Client's SOL moves to merchant on-chain
+- Client's TRZ moves to merchant on-chain
 - Returns premium content
 
 **Test HTTP 402 response (no payment):**
@@ -263,7 +263,7 @@ This should return HTTP 402 with payment requirements:
   "accepts": [
     {
       "maxAmountRequired": "10000000",
-      "asset": "SOL",
+      "asset": "TRZ",
       "payTo": "merchant_address",
       "network": "devnet",
       "resource": "/api/premium-data"
@@ -368,11 +368,11 @@ npm stop
 lsof -ti:3001 | xargs kill -9
 ```
 
-### Issue: Tests fail with "insufficient SOL"
+### Issue: Tests fail with "insufficient TRZ"
 
 **Solution:**
 
-- Fund test client wallet: `solana airdrop 1 <address> --url devnet`
+- Fund test client wallet: `trezoa airdrop 1 <address> --url devnet`
 - Check client balance: `solana balance <address> --url devnet`
 - Ensure `SIMULATE_TRANSACTIONS=false` in `.env`
 
@@ -389,10 +389,10 @@ lsof -ti:3001 | xargs kill -9
 
 **Solution:**
 
-- Ensure facilitator has SOL for gas: `solana balance <facilitator> --url devnet`
-- Check Solana devnet status: https://status.solana.com/
-- Verify RPC endpoint is accessible: `curl https://api.devnet.solana.com`
-- Check transaction on explorer: https://explorer.solana.com/?cluster=devnet
+- Ensure facilitator has TRZ for gas: `solana balance <facilitator> --url devnet`
+- Check Trezoa devnet status: https://status.trezoa.com/
+- Verify RPC endpoint is accessible: `curl https://api.devnet.trezoa.com`
+- Check transaction on explorer: https://explorer.trezoa.com/?cluster=devnet
 
 ### Issue: Nonce database errors
 
@@ -437,8 +437,8 @@ npm start
 
 ```env
 # Production settings
-SOLANA_NETWORK=mainnet-beta
-SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+TRZANA_NETWORK=mainnet-beta
+TRZANA_RPC_URL=https://api.mainnet-beta.trezoa.com
 SIMULATE_TRANSACTIONS=false
 MAX_PAYMENT_AMOUNT=1000000000
 NONCE_EXPIRY_HOURS=24
@@ -475,7 +475,7 @@ curl http://localhost:3000/health
 
 ## Additional Resources
 
-- [Solana Documentation](https://docs.solana.com/)
+- [Trezoa Documentation](https://docs.trezoa.com/)
 - [Gill SDK Documentation](https://www.gillsdk.com/)
 - [PM2 Documentation](https://pm2.keymetrics.io/docs/)
 - [x402 Protocol Specification](https://github.com/yourusername/x402-spec)

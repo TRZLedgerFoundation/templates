@@ -1,17 +1,17 @@
-import { clusterApiUrl } from '@solana/web3.js'
-import { SolanaCluster } from '@wallet-ui/react-native-web3js'
+import { clusterApiUrl } from '@trezoa/web3.js'
+import { TrezoaCluster } from '@wallet-ui/react-native-web3js'
 
 export class AppConfig {
   static name = 'web3js-expo-minimal'
   static uri = 'https://example.com'
-  static networks: SolanaCluster[] = [
+  static networks: TrezoaCluster[] = [
     {
-      id: 'solana:devnet',
+      id: 'trezoa:devnet',
       label: 'Devnet',
       url: clusterApiUrl('devnet'),
     },
     {
-      id: 'solana:testnet',
+      id: 'trezoa:testnet',
       label: 'Testnet',
       url: clusterApiUrl('testnet'),
     },

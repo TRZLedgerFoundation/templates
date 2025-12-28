@@ -1,10 +1,10 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useQuery } from '@tanstack/react-query'
 import { getCounterProgramAccounts } from '@project/anchor'
 import { useCounterAccountsQueryKey } from './use-counter-accounts-query-key'
 
 export function useCounterAccountsQuery() {
-  const { client } = useSolana()
+  const { client } = useTrezoa()
 
   return useQuery({
     queryKey: useCounterAccountsQueryKey(),

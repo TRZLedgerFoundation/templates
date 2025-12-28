@@ -1,16 +1,16 @@
 {
   "name": "web3js-expo-paper",
   "displayName": "Paper Boilerplate",
-  "description": "A template for building a Solana mobile app with Expo and React Native Paper.",
+  "description": "A template for building a Trezoa mobile app with Expo and React Native Paper.",
   "usecase": "Mobile",
   "keywords": [
     "expo",
     "mobile-wallet-adapter",
     "react-native",
     "react-native-paper",
-    "solana-web3js"
+    "trezoa-web3js"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "To buld the Android app locally, run this:",
       "+{pm} run android"
@@ -54,10 +54,10 @@
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
-    "@solana-mobile/mobile-wallet-adapter-protocol": "^2.2.5",
-    "@solana-mobile/mobile-wallet-adapter-protocol-web3js": "^2.2.5",
-    "@solana/spl-token": "^0.4.13",
-    "@solana/web3.js": "^1.98.4",
+    "@trezoa-mobile/mobile-wallet-adapter-protocol": "^2.2.5",
+    "@trezoa-mobile/mobile-wallet-adapter-protocol-web3js": "^2.2.5",
+    "@trezoa/spl-token": "^0.4.13",
+    "@trezoa/web3.js": "^1.98.4",
     "@tanstack/react-query": "^5.85.5",
     "@wallet-standard/core": "^1.1.1",
     "buffer": "^6.0.3",

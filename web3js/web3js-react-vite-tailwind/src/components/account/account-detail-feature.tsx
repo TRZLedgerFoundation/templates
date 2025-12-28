@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { useMemo } from 'react'
 import { ExplorerLink } from '../cluster/cluster-ui'
 import { AccountBalance, AccountButtons, AccountTokens, AccountTransactions } from './account-ui'

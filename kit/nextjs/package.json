@@ -1,15 +1,15 @@
 {
   "name": "nextjs",
-  "description": "Next.js, Tailwind, @solana/react-hooks",
+  "description": "Next.js, Tailwind, @trezoa/react-hooks",
   "keywords": [
     "kit",
     "nextjs",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",
@@ -31,8 +31,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@solana/client": "^1.2.0",
-    "@solana/react-hooks": "^1.1.5",
+    "@trezoa/client": "^1.2.0",
+    "@trezoa/react-hooks": "^1.1.5",
     "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",

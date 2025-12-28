@@ -6,6 +6,6 @@ export function useNetworkGetVersion() {
   return useQuery({
     queryKey: ['getVersion', clusterId],
     queryFn: () =>
-      connection.getVersion().then((version) => ({ core: version['solana-core'], features: version['feature-set'] })),
+      connection.getVersion().then((version) => ({ core: version['trezoa-core'], features: version['feature-set'] })),
   })
 }

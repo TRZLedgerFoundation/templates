@@ -1,16 +1,16 @@
 {
   "name": "nextjs-anchor",
-  "description": "Next.js, Tailwind, @solana/react-hooks, Anchor vault program",
+  "description": "Next.js, Tailwind, @trezoa/react-hooks, Anchor vault program",
   "keywords": [
-    "anchor",
+    "trezoaanchor",
     "kit",
     "nextjs",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",
@@ -23,8 +23,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "anchor-build": "cd anchor && anchor build",
-    "anchor-test": "cd anchor && anchor test --skip-deploy",
+    "anchor-build": "cd trezoaanchor && trezoaanchor build",
+    "anchor-test": "cd trezoaanchor && trezoaanchor test --skip-deploy",
     "build": "next build",
     "ci": "npm run build && npm run lint && npm run format:check",
     "codama:js": "codama run js",
@@ -36,9 +36,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@solana/client": "^1.2.0",
-    "@solana/kit": "^5.1.0",
-    "@solana/react-hooks": "^1.1.5",
+    "@trezoa/client": "^1.2.0",
+    "@trezoa/kit": "^5.1.0",
+    "@trezoa/react-hooks": "^1.1.5",
     "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",

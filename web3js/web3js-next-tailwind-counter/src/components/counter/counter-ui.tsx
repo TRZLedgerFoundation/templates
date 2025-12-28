@@ -1,6 +1,6 @@
 'use client'
 
-import { Keypair, PublicKey } from '@solana/web3.js'
+import { Keypair, PublicKey } from '@trezoa/web3.js'
 import { useMemo } from 'react'
 import { ExplorerLink } from '../cluster/cluster-ui'
 import { useCounterProgram, useCounterProgramAccount } from './counter-data-access'

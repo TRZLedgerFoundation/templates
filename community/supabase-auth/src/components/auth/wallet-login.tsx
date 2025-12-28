@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { useWalletConnection, useWalletSession } from '@solana/react-hooks'
+import { useWalletConnection, useWalletSession } from '@trezoa/react-hooks'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from './auth-provider'
 import { useCombinedSignOut } from '@/hooks/use-combined-signout'
@@ -21,7 +21,7 @@ export default function WalletLogin() {
     setMessage('')
 
     if (!connectors.length) {
-      setMessage('No wallet connectors available. Please install a Solana wallet.')
+      setMessage('No wallet connectors available. Please install a Trezoa wallet.')
       return
     }
 
@@ -60,7 +60,7 @@ export default function WalletLogin() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Welcome Back!</CardTitle>
-          <CardDescription>You are signed in with your Solana wallet</CardDescription>
+          <CardDescription>You are signed in with your Trezoa wallet</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -82,8 +82,8 @@ export default function WalletLogin() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle>Sign in with Solana</CardTitle>
-        <CardDescription>Connect and authenticate with your Solana wallet</CardDescription>
+        <CardTitle>Sign in with Trezoa</CardTitle>
+        <CardDescription>Connect and authenticate with your Trezoa wallet</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -102,7 +102,7 @@ export default function WalletLogin() {
                 Wallet Connected: {session.account.address.toString().slice(0, 8)}...
               </p>
               <Button onClick={handleWalletAuth} className="w-full">
-                Sign in with Solana
+                Sign in with Trezoa
               </Button>
             </div>
           )}

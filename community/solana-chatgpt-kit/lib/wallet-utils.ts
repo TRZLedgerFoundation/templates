@@ -2,7 +2,7 @@
  * Wallet utility functions for external wallet integration (Phantom, etc.)
  */
 
-export interface SolanaProvider {
+export interface TrezoaProvider {
   isPhantom?: boolean
   isConnected: boolean
   publicKey?: { toString: () => string }
@@ -12,20 +12,20 @@ export interface SolanaProvider {
 }
 
 /**
- * Get Solana wallet provider from window, parent, or top
+ * Get Trezoa wallet provider from window, parent, or top
  */
-export function getProvider(): SolanaProvider | null {
+export function getProvider(): TrezoaProvider | null {
   if (typeof window === 'undefined') return null
 
   // Try window.solana (prefer Phantom)
-  const w = window as unknown as { solana?: SolanaProvider }
+  const w = window as unknown as { solana?: TrezoaProvider }
   if (w?.solana?.isPhantom) return w.solana
   if (w?.solana) return w.solana
 
   // Try parent window if in iframe (same-origin only)
   try {
     if (window.parent && window.parent !== window) {
-      const p = window.parent as unknown as { solana?: SolanaProvider }
+      const p = window.parent as unknown as { solana?: TrezoaProvider }
       if (p?.solana?.isPhantom) return p.solana
       if (p?.solana) return p.solana
     }
@@ -36,7 +36,7 @@ export function getProvider(): SolanaProvider | null {
   // Try top window if in nested iframe (same-origin only)
   try {
     if (window.top && window.top !== window) {
-      const t = window.top as unknown as { solana?: SolanaProvider }
+      const t = window.top as unknown as { solana?: TrezoaProvider }
       if (t?.solana?.isPhantom) return t.solana
       if (t?.solana) return t.solana
     }
@@ -50,10 +50,10 @@ export function getProvider(): SolanaProvider | null {
 /**
  * Ensure wallet is connected and return the provider
  */
-export async function ensureWalletConnected(): Promise<SolanaProvider> {
+export async function ensureWalletConnected(): Promise<TrezoaProvider> {
   const provider = getProvider()
   if (!provider) {
-    throw new Error('No Solana wallet found. Please install Phantom or another Solana wallet.')
+    throw new Error('No Trezoa wallet found. Please install Phantom or another Trezoa wallet.')
   }
 
   try {
@@ -69,7 +69,7 @@ export async function ensureWalletConnected(): Promise<SolanaProvider> {
 /**
  * Get the connected wallet's public key
  */
-export function getWalletPublicKey(provider: SolanaProvider): string | null {
+export function getWalletPublicKey(provider: TrezoaProvider): string | null {
   return provider.publicKey?.toString() ?? null
 }
 
@@ -95,13 +95,13 @@ export function base64ToUint8Array(b64: string): Uint8Array {
  * 4. provider.request API with base64
  * 5. provider.request API with base58
  */
-export async function signAndSendTransaction(provider: SolanaProvider, transactionBase64: string): Promise<string> {
+export async function signAndSendTransaction(provider: TrezoaProvider, transactionBase64: string): Promise<string> {
   let signature: string | undefined
 
   // Method 1: VersionedTransaction object (most reliable)
   if (!signature && typeof provider.signAndSendTransaction === 'function') {
     try {
-      const { VersionedTransaction } = await import('@solana/web3.js')
+      const { VersionedTransaction } = await import('@trezoa/web3.js')
       const tx = VersionedTransaction.deserialize(base64ToUint8Array(transactionBase64))
       const res = await provider.signAndSendTransaction(tx)
       signature = typeof res === 'string' ? res : res?.signature

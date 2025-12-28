@@ -5,20 +5,20 @@ import {
   useWalletConnection,
   useSendTransaction,
   useBalance,
-} from "@solana/react-hooks";
+} from "@trezoa/react-hooks";
 import {
   getProgramDerivedAddress,
   getAddressEncoder,
   getBytesEncoder,
   type Address,
-} from "@solana/kit";
+} from "@trezoa/kit";
 import {
   getDepositInstructionDataEncoder,
   getWithdrawInstructionDataEncoder,
   VAULT_PROGRAM_ADDRESS,
 } from "../generated/vault";
 
-const LAMPORTS_PER_SOL = 1_000_000_000n;
+const LAMPORTS_PER_TRZ = 1_000_000_000n;
 const SYSTEM_PROGRAM_ADDRESS = "11111111111111111111111111111111" as Address;
 
 export function VaultCard() {
@@ -56,7 +56,7 @@ export function VaultCard() {
   // Get vault balance
   const vaultBalance = useBalance(vaultAddress ?? undefined);
   const vaultLamports = vaultBalance?.lamports ?? 0n;
-  const vaultSol = Number(vaultLamports) / Number(LAMPORTS_PER_SOL);
+  const vaultSol = Number(vaultLamports) / Number(LAMPORTS_PER_TRZ);
 
   const handleDeposit = useCallback(async () => {
     if (!walletAddress || !vaultAddress || !amount) return;
@@ -65,7 +65,7 @@ export function VaultCard() {
       setTxStatus("Building transaction...");
 
       const depositAmount = BigInt(
-        Math.floor(parseFloat(amount) * Number(LAMPORTS_PER_SOL))
+        Math.floor(parseFloat(amount) * Number(LAMPORTS_PER_TRZ))
       );
 
       // Manually construct the instruction
@@ -133,7 +133,7 @@ export function VaultCard() {
     return (
       <section className="w-full max-w-3xl space-y-4 rounded-2xl border border-border-low bg-card p-6 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.35)]">
         <div className="space-y-1">
-          <p className="text-lg font-semibold">SOL Vault</p>
+          <p className="text-lg font-semibold">TRZ Vault</p>
           <p className="text-sm text-muted">
             Connect your wallet to interact with the vault program.
           </p>
@@ -149,9 +149,9 @@ export function VaultCard() {
     <section className="w-full max-w-3xl space-y-4 rounded-2xl border border-border-low bg-card p-6 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.35)]">
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-1">
-          <p className="text-lg font-semibold">SOL Vault</p>
+          <p className="text-lg font-semibold">TRZ Vault</p>
           <p className="text-sm text-muted">
-            Deposit SOL into your personal vault PDA and withdraw anytime.
+            Deposit TRZ into your personal vault PDA and withdraw anytime.
           </p>
         </div>
         <span className="rounded-full bg-cream px-3 py-1 text-xs font-semibold uppercase tracking-wide text-foreground/80">
@@ -166,7 +166,7 @@ export function VaultCard() {
         </p>
         <p className="mt-1 text-3xl font-bold tabular-nums">
           {vaultSol.toFixed(4)}{" "}
-          <span className="text-lg font-normal text-muted">SOL</span>
+          <span className="text-lg font-normal text-muted">TRZ</span>
         </p>
         {vaultAddress && (
           <p className="mt-2 truncate font-mono text-xs text-muted">
@@ -182,7 +182,7 @@ export function VaultCard() {
             type="number"
             min="0"
             step="0.01"
-            placeholder="Amount in SOL"
+            placeholder="Amount in TRZ"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             disabled={isSending}
@@ -248,7 +248,7 @@ export function VaultCard() {
             Anchor Quickstart
           </a>
           <a
-            href="https://solana.com/docs/programs/deploying"
+            href="https://trezoa.com/docs/programs/deploying"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-1 rounded-md bg-cream px-2 py-1 font-medium transition hover:bg-cream/70"

@@ -1,15 +1,15 @@
-# Supabase Auth + Solana Template
+# Supabase Auth + Trezoa Template
 
-A [Next.js](https://nextjs.org) starter template that demonstrates Solana wallet authentication using Supabase's Web3 authentication. This template helps you build a full-stack Solana application with user sessions, protected routes, and wallet-based login, all without managing your own authentication server.
+A [Next.js](https://nextjs.org) starter template that demonstrates Trezoa wallet authentication using Supabase's Web3 authentication. This template helps you build a full-stack Trezoa application with user sessions, protected routes, and wallet-based login, all without managing your own authentication server.
 
 The template uses Supabase's managed PostgreSQL database, so there's no local database setup required. Everything runs through Supabase's hosted services.
 
 ## Features
 
-- **Supabase Authentication** with Solana wallet integration via Web3 auth
+- **Supabase Authentication** with Trezoa wallet integration via Web3 auth
 - **[Zod](https://zod.dev)** for environment variable validation (T3 Stack style)
 - **[Tailwind CSS](https://tailwindcss.com)** and **[Shadcn UI](https://ui.shadcn.com)** for styling
-- **[@solana/client](https://github.com/solana-foundation/framework-kit/tree/main/packages/client)** and **[@solana/react-hooks](https://github.com/solana-foundation/framework-kit/tree/main/packages/react-hooks)** for Solana wallet and RPC functionality
+- **[@trezoa/client](https://github.com/trezoa-foundation/framework-kit/tree/main/packages/client)** and **[@trezoa/react-hooks](https://github.com/trezoa-foundation/framework-kit/tree/main/packages/react-hooks)** for Trezoa wallet and RPC functionality
 - **Protected Routes** with authentication middleware
 - **[TypeScript](https://www.typescriptlang.org)** throughout for type safety
 
@@ -19,7 +19,7 @@ Before you start, make sure you have:
 
 1. **Node.js 18+** installed - required to run [Next.js](https://nextjs.org)
 2. **A Supabase account** - create one at [supabase.com](https://supabase.com) (free tier works)
-3. **A Solana wallet** - Phantom, Solflare, or Backpack installed in your browser
+3. **A Trezoa wallet** - Phantom, Solflare, or Backpack installed in your browser
 4. **Git** - to clone or fork this repository
 
 You'll also need your Supabase project URL and anon key, which you can find in your project's API settings.
@@ -29,7 +29,7 @@ You'll also need your Supabase project URL and anon key, which you can find in y
 ### 1. Clone or fork this repository
 
 ```bash
-git clone https://github.com/solana-foundation/templates.git
+git clone https://github.com/trezoa-foundation/templates.git
 cd templates/community/supabase-auth
 ```
 
@@ -118,7 +118,7 @@ These are prefixed with `NEXT_PUBLIC_` because they're used in client-side code.
 
 ## Wallet Connection
 
-The template uses @solana/react-hooks to manage wallet connections. Here's how it works:
+The template uses @trezoa/react-hooks to manage wallet connections. Here's how it works:
 
 1. **Select a wallet**: Click the wallet dropdown in the header (shows "Connect Wallet" if nothing is connected)
 2. **Choose your wallet**: Select Phantom, Solflare, or another supported wallet
@@ -129,7 +129,7 @@ The wallet connection is separate from Supabase authentication. Connecting your 
 
 ### Requesting Airdrop (Devnet)
 
-The template connects to Solana Devnet by default, which is a test network with free tokens for development.
+The template connects to Trezoa Devnet by default, which is a test network with free tokens for development.
 
 If you see a yellow banner saying "You are connected to Devnet but your account is not found on this cluster," you can request an airdrop:
 
@@ -138,15 +138,15 @@ If you see a yellow banner saying "You are connected to Devnet but your account 
 
 **Important**: Devnet has rate limits. If you see a 429 error (Too Many Requests), you've hit the rate limit. Wait a few minutes and try again, or use a different Devnet RPC endpoint.
 
-The airdrop gives you test SOL that you can use to test transactions without spending real money. This step is optional and only needed if you want to test transactions.
+The airdrop gives you test TRZ that you can use to test transactions without spending real money. This step is optional and only needed if you want to test transactions.
 
-## Signing In with Solana
+## Signing In with Trezoa
 
 Once your wallet is connected, you can authenticate with Supabase:
 
-1. Scroll to the "Sign in with Solana" card
+1. Scroll to the "Sign in with Trezoa" card
 2. You should see "Wallet Connected: [your address]" in green text
-3. Click the **Sign in with Solana** button
+3. Click the **Sign in with Trezoa** button
 4. Your wallet will prompt you to sign a message. This is the authentication challenge
 5. Approve the signature in your wallet
 
@@ -168,9 +168,9 @@ A 422 error usually means:
 - Your Supabase project doesn't support Web3 auth (check if you're on a supported plan)
 - The `window.solana` provider isn't properly connected
 
-#### "Solana wallet not detected"
+#### "Trezoa wallet not detected"
 
-Make sure you have a Solana wallet extension installed (Phantom, Solflare, etc.) and that it's enabled in your browser.
+Make sure you have a Trezoa wallet extension installed (Phantom, Solflare, etc.) and that it's enabled in your browser.
 
 ## Protected Routes
 
@@ -185,7 +185,7 @@ The `/account` route is protected and requires authentication. Unauthenticated u
 | "Invalid environment variables" error | Check that `.env.local` exists and contains both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
 | 422 error when signing in             | Enable Web3 authentication in Supabase dashboard (Authentication → Providers → Web3)                            |
 | "Web3 provider is disabled"           | Same as above. Web3 auth must be enabled in Supabase                                                            |
-| Wallet not connecting                 | Make sure a Solana wallet extension is installed and enabled in your browser                                    |
+| Wallet not connecting                 | Make sure a Trezoa wallet extension is installed and enabled in your browser                                    |
 | 429 errors on airdrop                 | You've hit Devnet rate limits. Wait a few minutes or use a different RPC endpoint                               |
 | Port 3000 already in use              | Change the port: `npm run dev -- -p 3001` or kill the process using port 3000                                   |
 | Build fails with type errors          | Run `npm install` again to ensure all dependencies are installed correctly                                      |
@@ -203,7 +203,7 @@ supabase-auth/
 │   │   └── page.tsx                  # Home page
 │   ├── components/
 │   │   ├── auth/                     # Authentication components
-│   │   ├── solana/                   # Solana wallet integration
+│   │   ├── trezoa/                   # Trezoa wallet integration
 │   │   └── ui/                       # Shadcn UI primitives
 │   ├── features/                     # Feature-based organization
 │   │   ├── account/                  # Account feature
@@ -242,7 +242,7 @@ This template uses:
 
 - [Supabase](https://supabase.com) for authentication and database
 - [Next.js](https://nextjs.org) as the React framework
-- [@solana/client](https://github.com/solana-foundation/framework-kit/tree/main/packages/client) and [@solana/react-hooks](https://github.com/solana-foundation/framework-kit/tree/main/packages/react-hooks) for Solana wallet and RPC functionality
+- [@trezoa/client](https://github.com/trezoa-foundation/framework-kit/tree/main/packages/client) and [@trezoa/react-hooks](https://github.com/trezoa-foundation/framework-kit/tree/main/packages/react-hooks) for Trezoa wallet and RPC functionality
 - [Shadcn UI](https://ui.shadcn.com) for component primitives
 
 ## License

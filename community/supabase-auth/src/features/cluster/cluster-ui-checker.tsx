@@ -3,8 +3,8 @@
 import { ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { AppAlert } from '@/components/app-alert'
-import { useClusterState, useClusterStatus, useWalletActions } from '@solana/react-hooks'
-import { resolveCluster } from '@/components/solana/clusters'
+import { useClusterState, useClusterStatus, useWalletActions } from '@trezoa/react-hooks'
+import { resolveCluster } from '@/components/trezoa/clusters'
 
 export function ClusterUiChecker({ children }: { children: ReactNode }) {
   const clusterState = useClusterState()

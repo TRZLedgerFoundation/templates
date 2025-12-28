@@ -36,7 +36,7 @@ pub fn create_payment_requirements(
 ) -> PaymentRequirements {
     PaymentRequirements {
         scheme: "exact".to_string(),
-        network: config.solana_network.clone(),
+        network: config.trezoa_network.clone(),
         pay_to: config.receiver_address.clone(),
         max_amount_required: price.unwrap_or(config.default_price).to_string(),
         asset: config.usdc_mint.clone(),
@@ -111,7 +111,7 @@ pub async fn verify_payment(
     };
 
     // Use local facilitator
-    let facilitator = LocalFacilitator::new(&config.solana_rpc_url);
+    let facilitator = LocalFacilitator::new(&config.trezoa_rpc_url);
 
     match process_payment(&facilitator, payment_payload, requirements).await {
         Ok(signature) => PaymentResult::Success(signature),

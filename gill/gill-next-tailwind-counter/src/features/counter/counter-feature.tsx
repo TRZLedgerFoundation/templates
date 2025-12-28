@@ -1,4 +1,4 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { WalletDropdown } from '@/components/wallet-dropdown'
 import { AppHero } from '@/components/app-hero'
 import { CounterUiButtonInitialize } from './ui/counter-ui-button-initialize'
@@ -7,7 +7,7 @@ import { CounterUiProgramExplorerLink } from './ui/counter-ui-program-explorer-l
 import { CounterUiProgramGuard } from './ui/counter-ui-program-guard'
 
 export default function CounterFeature() {
-  const { account } = useSolana()
+  const { account } = useTrezoa()
 
   return (
     <CounterUiProgramGuard>

@@ -11,7 +11,7 @@
  * - Current timestamps and metadata
  *
  * The mock data below allows the frontend to work during development
- * before you've set up your actual Solana program deployment.
+ * before you've set up your actual Trezoa program deployment.
  */
 
 interface RecipientFromJson {
@@ -38,7 +38,7 @@ interface RecipientsFile {
 }
 
 export const RECIPIENTS_DATA: RecipientsFile = {
-  airdropId: 'solana-distributor-airdrop-mock',
+  airdropId: 'trezoa-distributor-airdrop-mock',
   description: 'Mock airdrop data for development - will be updated by deploy-setup script',
   merkleRoot: '0x0000000000000000000000000000000000000000000000000000000000000000',
   totalAmount: '300000000',

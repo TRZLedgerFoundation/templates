@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 import { useWidgetProps } from '@/app/hooks/use-widget-props'
 import { useMaxHeight } from '@/app/hooks/use-max-height'
 import { useOpenAIGlobal } from '@/app/hooks/use-openai-global'
-import { externalWallet } from '@/lib/solana-config'
+import { externalWallet } from '@/lib/trezoa-config'
 import { ensureWalletConnected, getWalletPublicKey, signAndSendTransaction } from '@/lib/wallet-utils'
-import { createX402Client } from 'x402-solana/client'
+import { createX402Client } from 'x402-trezoa/client'
 
 type TransferWidgetProps = {
   toAddress?: string
@@ -60,7 +60,7 @@ export default function TransferPage() {
         const x402Client = createX402Client({
           wallet: provider as any, // Provider matches WalletAdapter interface
           network: 'solana', // mainnet
-          rpcUrl: 'https://api.mainnet-beta.solana.com',
+          rpcUrl: 'https://api.mainnet-beta.trezoa.com',
         })
 
         // Use x402 client fetch - automatically handles 402 payment
@@ -70,7 +70,7 @@ export default function TransferPage() {
           body: JSON.stringify({ toAddress, amount, userPublicKey }),
         })
         const data = await res.json()
-        if (!res.ok) throw new Error(data?.error || 'Failed to send SOL')
+        if (!res.ok) throw new Error(data?.error || 'Failed to send TRZ')
 
         // If external wallet mode, sign and send the transaction
         if (data.transferTransaction) {
@@ -88,12 +88,12 @@ export default function TransferPage() {
           body: JSON.stringify({ toAddress, amount }),
         })
         const data = await res.json()
-        if (!res.ok) throw new Error(data?.error || 'Failed to send SOL')
+        if (!res.ok) throw new Error(data?.error || 'Failed to send TRZ')
 
         setResult({ signature: data.signature, explorerUrl: data.explorerUrl })
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to send SOL')
+      setError(e instanceof Error ? e.message : 'Failed to send TRZ')
     } finally {
       setIsSending(false)
     }
@@ -111,7 +111,7 @@ export default function TransferPage() {
         border: theme === 'dark' ? '1px solid #222' : '1px solid #eee',
       }}
     >
-      <h2 style={{ margin: 0, marginBottom: 12 }}>Send SOL</h2>
+      <h2 style={{ margin: 0, marginBottom: 12 }}>Send TRZ</h2>
 
       <div style={{ display: 'grid', gap: 12 }}>
         <label style={{ display: 'grid', gap: 6 }}>
@@ -131,7 +131,7 @@ export default function TransferPage() {
         </label>
 
         <label style={{ display: 'grid', gap: 6 }}>
-          <span>Amount (SOL)</span>
+          <span>Amount (TRZ)</span>
           <input
             type="number"
             step="0.000001"

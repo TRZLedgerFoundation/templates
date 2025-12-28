@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
-import { getSolanaConnection } from '@/lib/solana-config'
+import { getTrezoaConnection } from '@/lib/trezoa-config'
 import { resolveAddressOrDomain } from '@/lib/address-resolver'
-import { LAMPORTS_PER_SOL } from '@solana/web3.js'
+import { LAMPORTS_PER_TRZ } from '@trezoa/web3.js'
 
 export async function GET(request: Request) {
   try {
@@ -12,11 +12,11 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'account is required' }, { status: 400 })
     }
 
-    const connection = getSolanaConnection()
+    const connection = getTrezoaConnection()
     const pubkey = await resolveAddressOrDomain(account, connection)
 
     const lamports = await connection.getBalance(pubkey, { commitment: 'confirmed' })
-    const sol = lamports / LAMPORTS_PER_SOL
+    const sol = lamports / LAMPORTS_PER_TRZ
 
     return NextResponse.json({
       account: account,

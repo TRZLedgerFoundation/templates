@@ -1,6 +1,6 @@
 import {
   Blockhash,
-  createSolanaClient,
+  createTrezoaClient,
   createTransaction,
   Instruction,
   KeyPairSigner,
@@ -10,7 +10,7 @@ import { getGreetInstruction } from '../src'
 // @ts-ignore error TS2307 suggest setting `moduleResolution` but this is already configured
 import { loadKeypairSignerFromFile } from 'gill/node'
 
-const { rpc, sendAndConfirmTransaction } = createSolanaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
+const { rpc, sendAndConfirmTransaction } = createTrezoaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
 describe('basic', () => {
   let payer: KeyPairSigner
 

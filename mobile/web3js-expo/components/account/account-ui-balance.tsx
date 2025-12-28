@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { useGetBalance } from '@/components/account/use-get-balance'
 import { ActivityIndicator, View } from 'react-native'
 import { AppText } from '@/components/app-text'
@@ -10,7 +10,7 @@ export function AccountUiBalance({ address }: { address: PublicKey }) {
   return (
     <View>
       <AppText type="title">
-        {query.isLoading ? <ActivityIndicator /> : query.data ? lamportsToSol(query.data) : '0'} SOL
+        {query.isLoading ? <ActivityIndicator /> : query.data ? lamportsToSol(query.data) : '0'} TRZ
       </AppText>
     </View>
   )

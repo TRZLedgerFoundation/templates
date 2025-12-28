@@ -1,15 +1,15 @@
-# x402 Solana Payment Server
+# x402 Trezoa Payment Server
 
-A production-ready Rust template for building HTTP APIs with x402 payment integration on Solana. Accept USDC payments for API access using the x402 protocol.
+A production-ready Rust template for building HTTP APIs with x402 payment integration on Trezoa. Accept USDC payments for API access using the x402 protocol.
 
 ## Overview
 
-This template provides a complete server implementation supporting the [x402 payment protocol](https://x402.org) for Solana. It enables you to create paid API endpoints where users pay with USDC to access protected content.
+This template provides a complete server implementation supporting the [x402 payment protocol](https://x402.org) for Trezoa. It enables you to create paid API endpoints where users pay with USDC to access protected content.
 
 **Key Features:**
 
 - **Pure Rust** - Type-safe, high-performance, memory-safe
-- **x402 Protocol** - Standard HTTP 402 payment protocol for Solana
+- **x402 Protocol** - Standard HTTP 402 payment protocol for Trezoa
 - **Multi-Framework** - Choose Axum, Actix, or Rocket
 - **Production Ready** - CORS, logging, error handling included
 - **Zero Config** - Works out of the box with sensible defaults
@@ -22,7 +22,7 @@ sequenceDiagram
     participant Client
     participant Server
     participant Facilitator
-    participant Solana
+    participant Trezoa
 
     Client->>Server: GET /api/paid
     Server->>Client: 402 Payment Required<br/>{paymentRequirements}
@@ -34,8 +34,8 @@ sequenceDiagram
     Note over Facilitator: Validates transaction
     Facilitator->>Server: Valid
     Server->>Facilitator: settle_payment()
-    Facilitator->>Solana: Submit transaction
-    Solana->>Facilitator: Confirmation
+    Facilitator->>Trezoa: Submit transaction
+    Trezoa->>Facilitator: Confirmation
     Facilitator->>Server: Settled
     Server->>Client: 200 OK<br/>{protected content}
 ```
@@ -47,14 +47,14 @@ sequenceDiagram
 Create a new project with one command:
 
 ```bash
-npx github:crypto-priest/x402-solana-rust my-project
+npx github:crypto-priest/x402-trezoa-rust my-project
 ```
 
 ### OR
 
 ```bash
 # Create from template
-npx create-solana-dapp my-project --template x402-solana-rust
+npx create-trezoa-dapp my-project --template x402-trezoa-rust
 ```
 
 ```bash
@@ -64,7 +64,7 @@ cd my-project
 
 ### Configuration
 
-Copy environment template and add your Solana wallet:
+Copy environment template and add your Trezoa wallet:
 
 ```bash
 cp .env.example .env
@@ -103,12 +103,12 @@ npm run dev
 
 ### Required
 
-- `RECEIVER_WALLET_ADDRESS` - Your Solana wallet to receive payments
+- `RECEIVER_WALLET_ADDRESS` - Your Trezoa wallet to receive payments
 
 ### Optional
 
-- `SOLANA_NETWORK` - `solana-devnet` or `solana-mainnet` (default: devnet)
-- `SOLANA_RPC_URL` - RPC endpoint (default: devnet public RPC)
+- `TRZANA_NETWORK` - `trezoa-devnet` or `trezoa-mainnet` (default: devnet)
+- `TRZANA_RPC_URL` - RPC endpoint (default: devnet public RPC)
 - `USDC_MINT_ADDRESS` - USDC token address (default: devnet USDC)
 - `DEFAULT_PRICE` - Price in micro-USDC (default: 10000 = $0.01)
 - `HOST` - Server bind address (default: localhost)
@@ -160,7 +160,7 @@ See the inline code comments in `src/main.rs` for production configuration examp
 
 - [x402 Protocol Specification](https://x402.org)
 - [Frontend Documentation](frontend/README.md)
-- [Solana Documentation](https://docs.solana.com)
+- [Trezoa Documentation](https://docs.trezoa.com)
 
 ## License
 

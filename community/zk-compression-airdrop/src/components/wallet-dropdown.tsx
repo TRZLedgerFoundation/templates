@@ -11,7 +11,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { cn, ellipsify } from '@/lib/utils'
-import { useWalletConnection, useWalletSession } from '@solana/react-hooks'
+import { useWalletConnection, useWalletSession } from '@trezoa/react-hooks'
 import { toast } from 'sonner'
 
 function WalletAvatar({ className, icon, label }: { className?: string; icon?: string; label?: string }) {
@@ -108,8 +108,8 @@ function WalletDropdown() {
           ))
         ) : (
           <DropdownMenuItem className="cursor-pointer" asChild>
-            <a href="https://solana.com/solana-wallets" target="_blank" rel="noopener noreferrer">
-              Get a Solana wallet to connect.
+            <a href="https://trezoa.com/trezoa-wallets" target="_blank" rel="noopener noreferrer">
+              Get a Trezoa wallet to connect.
             </a>
           </DropdownMenuItem>
         )}

@@ -1,4 +1,4 @@
-import { lamportsToSolString } from '@solana/client'
+import { lamportsToSolString } from '@trezoa/client'
 
 export function AccountUiBalanceSol({ balance }: { balance: bigint | null }) {
   if (balance == null) {

@@ -1,8 +1,8 @@
-import type { SolanaClient } from '@solana/client'
-import { toAddress } from '@solana/client'
+import type { TrezoaClient } from '@trezoa/client'
+import { toAddress } from '@trezoa/client'
 
 export async function getTokenAccountsByOwner(
-  client: SolanaClient,
+  client: TrezoaClient,
   { address, programId }: { address: string; programId: string },
 ) {
   return await client.runtime.rpc

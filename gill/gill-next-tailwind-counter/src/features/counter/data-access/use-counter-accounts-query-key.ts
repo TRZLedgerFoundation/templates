@@ -1,7 +1,7 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 
 export function useCounterAccountsQueryKey() {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
 
   return ['counter', 'accounts', { cluster }]
 }

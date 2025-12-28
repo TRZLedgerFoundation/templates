@@ -2,10 +2,10 @@ import type { Address } from 'gill'
 import { TOKEN_2022_PROGRAM_ADDRESS, TOKEN_PROGRAM_ADDRESS } from 'gill/programs/token'
 import { useQuery } from '@tanstack/react-query'
 import { getTokenAccountsByOwner } from './get-token-accounts-by-owner'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 
 export function useGetTokenAccountsQuery({ address }: { address: Address }) {
-  const { client, cluster } = useSolana()
+  const { client, cluster } = useTrezoa()
 
   return useQuery({
     queryKey: ['get-token-accounts', { cluster, address }],

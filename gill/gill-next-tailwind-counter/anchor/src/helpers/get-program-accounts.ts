@@ -1,11 +1,11 @@
-import { type Address, Base58EncodedBytes, SolanaClient } from 'gill'
+import { type Address, Base58EncodedBytes, TrezoaClient } from 'gill'
 
 export interface GetProgramAccountsConfig {
   filter: string
   programAddress: Address
 }
 
-export async function getProgramAccounts(rpc: SolanaClient['rpc'], config: GetProgramAccountsConfig) {
+export async function getProgramAccounts(rpc: TrezoaClient['rpc'], config: GetProgramAccountsConfig) {
   return await rpc
     .getProgramAccounts(config.programAddress, {
       encoding: 'jsonParsed',

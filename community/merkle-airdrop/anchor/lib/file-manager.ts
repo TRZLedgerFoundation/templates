@@ -26,7 +26,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-solana_distributor = "${programIdStr}"
+trezoa_distributor = "${programIdStr}"
 
 [registry]
 url = "https://api.apr.dev"
@@ -47,7 +47,7 @@ test = "pnpm run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 export function generateGillRecipientsJson(
   testWallets: GillWalletInfo[],
   programId: string | Address,
-  airdropAmountLamports: number = 75000000, // Default: 0.075 SOL
+  airdropAmountLamports: number = 75000000, // Default: 0.075 TRZ
   config: GillFileConfig = {},
 ): void {
   const { workingDir = 'anchor' } = config
@@ -59,7 +59,7 @@ export function generateGillRecipientsJson(
     publicKey: wallet.address, // Gill addresses are already strings
     amount: airdropAmountLamports.toString(),
     index,
-    description: `${wallet.name} - ${wallet.funded ? 'Funded' : 'Unfunded'} - ${airdropAmountLamports / 1e9} SOL`,
+    description: `${wallet.name} - ${wallet.funded ? 'Funded' : 'Unfunded'} - ${airdropAmountLamports / 1e9} TRZ`,
   }))
 
   const totalAmount = (recipients.length * airdropAmountLamports).toString()
@@ -84,7 +84,7 @@ export function generateGillRecipientsJson(
 
   if (shouldUpdate) {
     const recipientsData: RecipientsFile = {
-      airdropId: 'solana-distributor-airdrop-' + new Date().getFullYear(),
+      airdropId: 'trezoa-distributor-airdrop-' + new Date().getFullYear(),
       description: 'Deployment setup airdrop for testing purposes',
       merkleRoot: '0x0000000000000000000000000000000000000000000000000000000000000000', // Will be updated after tree generation
       totalAmount,
@@ -152,7 +152,7 @@ export function updateGillEnvironmentFile(
 
     let envContent = ''
     const programIdVar = `NEXT_PUBLIC_PROGRAM_ID=${programIdStr}`
-    const networkVar = `NEXT_PUBLIC_SOLANA_NETWORK=devnet`
+    const networkVar = `NEXT_PUBLIC_TRZANA_NETWORK=devnet`
 
     // Get the first test wallet's private key for the environment
     let privateKeyVar = ''
@@ -171,8 +171,8 @@ export function updateGillEnvironmentFile(
         envContent = envContent.trim() + `\n${programIdVar}\n`
       }
 
-      if (envContent.includes('NEXT_PUBLIC_SOLANA_NETWORK=')) {
-        envContent = envContent.replace(/NEXT_PUBLIC_SOLANA_NETWORK=.*/, networkVar)
+      if (envContent.includes('NEXT_PUBLIC_TRZANA_NETWORK=')) {
+        envContent = envContent.replace(/NEXT_PUBLIC_TRZANA_NETWORK=.*/, networkVar)
       } else {
         envContent = envContent.trim() + `\n${networkVar}\n`
       }
@@ -188,7 +188,7 @@ export function updateGillEnvironmentFile(
       console.log(`   ✅ Updated existing ${path.basename(envFile)} (Gill)`)
     } else {
       const comments = [
-        '# Solana Airdrop Configuration',
+        '# Trezoa Airdrop Configuration',
         '# Generated automatically by deploy-setup script using Gill',
         '',
       ]
@@ -361,12 +361,12 @@ export function getGillCurrentProgramId(config: GillFileConfig = {}): string {
 
   try {
     const anchorContent = fs.readFileSync(`${workingDir}/Anchor.toml`, 'utf8')
-    const match = anchorContent.match(/solana_distributor = "([^"]+)"/)
+    const match = anchorContent.match(/trezoa_distributor = "([^"]+)"/)
     if (match) {
       return match[1]
     }
 
-    const libContent = fs.readFileSync(`${workingDir}/programs/solana-distributor/src/lib.rs`, 'utf8')
+    const libContent = fs.readFileSync(`${workingDir}/programs/trezoa-distributor/src/lib.rs`, 'utf8')
     const libMatch = libContent.match(/declare_id!\("([^"]+)"\);/)
     if (libMatch) {
       return libMatch[1]
@@ -390,7 +390,7 @@ export function getGillCodamaProgramId(config: GillFileConfig = {}): string | nu
     }
 
     const codamaContent = fs.readFileSync(codamaClientPath, 'utf8')
-    const match = codamaContent.match(/SOLANA_DISTRIBUTOR_PROGRAM_ADDRESS\s*=\s*'([^']+)'/)
+    const match = codamaContent.match(/TRZANA_DISTRIBUTOR_PROGRAM_ADDRESS\s*=\s*'([^']+)'/)
 
     if (match) {
       return match[1]

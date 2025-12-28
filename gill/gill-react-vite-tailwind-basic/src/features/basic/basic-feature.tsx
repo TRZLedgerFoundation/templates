@@ -1,4 +1,4 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { WalletDropdown } from '@/components/wallet-dropdown'
 import { AppHero } from '@/components/app-hero'
 import { BasicUiProgramExplorerLink } from './ui/basic-ui-program-explorer-link'
@@ -6,7 +6,7 @@ import { BasicUiCreate } from './ui/basic-ui-create'
 import { BasicUiProgram } from '@/features/basic/ui/basic-ui-program'
 
 export default function BasicFeature() {
-  const { account } = useSolana()
+  const { account } = useTrezoa()
 
   if (!account) {
     return (

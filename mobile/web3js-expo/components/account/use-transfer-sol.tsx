@@ -1,7 +1,7 @@
-import { PublicKey, TransactionSignature } from '@solana/web3.js'
-import { useConnection } from '@/components/solana/solana-provider'
+import { PublicKey, TransactionSignature } from '@trezoa/web3.js'
+import { useConnection } from '@/components/trezoa/trezoa-provider'
 import { useMutation } from '@tanstack/react-query'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { createTransaction } from '@/components/account/create-transaction'
 import { useGetBalanceInvalidate } from './use-get-balance'
 

@@ -1,10 +1,10 @@
 import { getCounterProgram, getCounterProgramId } from '@project/anchor'
-import { useConnection } from '@solana/wallet-adapter-react'
-import { Cluster, Keypair, PublicKey } from '@solana/web3.js'
+import { useConnection } from '@trezoa/wallet-adapter-react'
+import { Cluster, Keypair, PublicKey } from '@trezoa/web3.js'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { useCluster } from '@/components/cluster/cluster-data-access'
-import { useAnchorProvider } from '@/components/solana/use-anchor-provider'
+import { useAnchorProvider } from '@/components/trezoa/use-anchor-provider'
 import { useTransactionToast } from '@/components/use-transaction-toast'
 import { toast } from 'sonner'
 

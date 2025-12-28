@@ -1,18 +1,18 @@
 [
   {
-    "description": "Kit Templates (using @solana/kit)",
+    "description": "Kit Templates (using @trezoa/kit)",
     "name": "Kit",
     "path": "kit",
     "templates": [
       {
-        "description": "Next.js, Tailwind, @solana/react-hooks",
-        "id": "gh:solana-foundation/templates/kit/nextjs",
+        "description": "Next.js, Tailwind, @trezoa/react-hooks",
+        "id": "gh:trezoa-foundation/templates/kit/nextjs",
         "image": "kit/nextjs/og-image.png",
         "keywords": [
           "kit",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript"
         ],
@@ -20,15 +20,15 @@
         "path": "kit/nextjs"
       },
       {
-        "description": "Next.js, Tailwind, @solana/react-hooks, Anchor vault program",
-        "id": "gh:solana-foundation/templates/kit/nextjs-anchor",
+        "description": "Next.js, Tailwind, @trezoa/react-hooks, Anchor vault program",
+        "id": "gh:trezoa-foundation/templates/kit/nextjs-anchor",
         "image": "kit/nextjs-anchor/og-image.png",
         "keywords": [
-          "anchor",
+          "trezoaanchor",
           "kit",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript"
         ],
@@ -36,13 +36,13 @@
         "path": "kit/nextjs-anchor"
       },
       {
-        "description": "React + Vite, Tailwind, @solana/react-hooks",
-        "id": "gh:solana-foundation/templates/kit/react-vite",
+        "description": "React + Vite, Tailwind, @trezoa/react-hooks",
+        "id": "gh:trezoa-foundation/templates/kit/react-vite",
         "image": "kit/react-vite/og-image.png",
         "keywords": [
           "kit",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite"
@@ -51,14 +51,14 @@
         "path": "kit/react-vite"
       },
       {
-        "description": "React + Vite, Tailwind, @solana/react-hooks, Anchor vault program",
-        "id": "gh:solana-foundation/templates/kit/react-vite-anchor",
+        "description": "React + Vite, Tailwind, @trezoa/react-hooks, Anchor vault program",
+        "id": "gh:trezoa-foundation/templates/kit/react-vite-anchor",
         "image": "kit/react-vite-anchor/og-image.png",
         "keywords": [
-          "anchor",
+          "trezoaanchor",
           "kit",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite"
@@ -69,19 +69,19 @@
     ]
   },
   {
-    "description": "Gill Templates (based on @solana/kit)",
+    "description": "Gill Templates (based on @trezoa/kit)",
     "name": "Gill",
     "path": "gill",
     "templates": [
       {
-        "description": "Next.js, Tailwind, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-next-tailwind",
+        "description": "Next.js, Tailwind, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-next-tailwind",
         "image": "gill/gill-next-tailwind/og-image.png",
         "keywords": [
           "gill",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "wallet-ui"
@@ -92,15 +92,15 @@
         "usecase": "Starter"
       },
       {
-        "description": "Next.js, Tailwind, basic Anchor example, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-next-tailwind-basic",
+        "description": "Next.js, Tailwind, basic Anchor example, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-next-tailwind-basic",
         "image": "gill/gill-next-tailwind-basic/og-image.png",
         "keywords": [
           "anchor-basic",
           "gill",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "wallet-ui"
@@ -111,15 +111,15 @@
         "usecase": "Starter"
       },
       {
-        "description": "Next.js, Tailwind, Anchor Counter example, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-next-tailwind-counter",
+        "description": "Next.js, Tailwind, Anchor Counter example, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-next-tailwind-counter",
         "image": "gill/gill-next-tailwind-counter/og-image.png",
         "keywords": [
-          "anchor-counter",
+          "trezoaanchor-counter",
           "gill",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "wallet-ui"
@@ -130,15 +130,15 @@
         "usecase": "Starter"
       },
       {
-        "description": "Minimal Next.js, Tailwind, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-next-tailwind-minimal",
+        "description": "Minimal Next.js, Tailwind, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-next-tailwind-minimal",
         "image": "gill/gill-next-tailwind-minimal/og-image.png",
         "keywords": [
           "gill",
           "minimal",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "wallet-ui"
@@ -149,14 +149,14 @@
         "usecase": "Starter"
       },
       {
-        "description": "Node.js Express API with gill (based on @solana/kit)",
-        "id": "gh:solana-foundation/templates/gill/gill-node-express",
+        "description": "Node.js Express API with gill (based on @trezoa/kit)",
+        "id": "gh:trezoa-foundation/templates/gill/gill-node-express",
         "image": "gill/gill-node-express/og-image.png",
         "keywords": [
           "express",
           "gill",
           "node",
-          "solana-kit"
+          "trezoa-kit"
         ],
         "name": "gill-node-express",
         "path": "gill/gill-node-express",
@@ -164,13 +164,13 @@
         "usecase": "Backend"
       },
       {
-        "description": "Node.js script with gill (based on @solana/kit)",
-        "id": "gh:solana-foundation/templates/gill/gill-node-script",
+        "description": "Node.js script with gill (based on @trezoa/kit)",
+        "id": "gh:trezoa-foundation/templates/gill/gill-node-script",
         "image": "gill/gill-node-script/og-image.png",
         "keywords": [
           "gill",
           "node",
-          "solana-kit"
+          "trezoa-kit"
         ],
         "name": "gill-node-script",
         "path": "gill/gill-node-script",
@@ -178,13 +178,13 @@
         "usecase": "Backend"
       },
       {
-        "description": "React+Vite, Tailwind, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-react-vite-tailwind",
+        "description": "React+Vite, Tailwind, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind",
         "image": "gill/gill-react-vite-tailwind/og-image.png",
         "keywords": [
           "gill",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite",
@@ -196,14 +196,14 @@
         "usecase": "Starter"
       },
       {
-        "description": "React+Vite, Tailwind, gill (based on @solana/kit), basic Anchor example, Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-react-vite-tailwind-basic",
+        "description": "React+Vite, Tailwind, gill (based on @trezoa/kit), basic Anchor example, Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-basic",
         "image": "gill/gill-react-vite-tailwind-basic/og-image.png",
         "keywords": [
           "anchor-basic",
           "gill",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite",
@@ -215,14 +215,14 @@
         "usecase": "Starter"
       },
       {
-        "description": "React+Vite, Tailwind, gill (based on @solana/kit), Anchor Counter example, Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-react-vite-tailwind-counter",
+        "description": "React+Vite, Tailwind, gill (based on @trezoa/kit), Anchor Counter example, Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-counter",
         "image": "gill/gill-react-vite-tailwind-counter/og-image.png",
         "keywords": [
-          "anchor-counter",
+          "trezoaanchor-counter",
           "gill",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite",
@@ -234,14 +234,14 @@
         "usecase": "Starter"
       },
       {
-        "description": "Minimal React+Vite, Tailwind, gill (based on @solana/kit), Wallet UI",
-        "id": "gh:solana-foundation/templates/gill/gill-react-vite-tailwind-minimal",
+        "description": "Minimal React+Vite, Tailwind, gill (based on @trezoa/kit), Wallet UI",
+        "id": "gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-minimal",
         "image": "gill/gill-react-vite-tailwind-minimal/og-image.png",
         "keywords": [
           "gill",
           "minimal",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "vite",
@@ -255,19 +255,19 @@
     ]
   },
   {
-    "description": "Solana Mobile Templates",
-    "name": "Solana Mobile",
+    "description": "Trezoa Mobile Templates",
+    "name": "Trezoa Mobile",
     "path": "mobile",
     "templates": [
       {
-        "description": "A template for building a Solana mobile app with Expo and React Native.",
-        "id": "gh:solana-foundation/templates/mobile/web3js-expo",
+        "description": "A template for building a Trezoa mobile app with Expo and React Native.",
+        "id": "gh:trezoa-foundation/templates/mobile/web3js-expo",
         "image": "mobile/web3js-expo/og-image.png",
         "keywords": [
           "expo",
           "mobile-wallet-adapter",
           "react-native",
-          "solana-web3js"
+          "trezoa-web3js"
         ],
         "name": "web3js-expo",
         "path": "mobile/web3js-expo",
@@ -275,14 +275,14 @@
         "usecase": "Mobile"
       },
       {
-        "description": "A minimal template for building a Solana mobile app with Expo and React Native.",
-        "id": "gh:solana-foundation/templates/mobile/web3js-expo-minimal",
+        "description": "A minimal template for building a Trezoa mobile app with Expo and React Native.",
+        "id": "gh:trezoa-foundation/templates/mobile/web3js-expo-minimal",
         "image": "mobile/web3js-expo-minimal/og-image.png",
         "keywords": [
           "expo",
           "mobile-wallet-adapter",
           "react-native",
-          "solana-web3js"
+          "trezoa-web3js"
         ],
         "name": "web3js-expo-minimal",
         "path": "mobile/web3js-expo-minimal",
@@ -290,15 +290,15 @@
         "usecase": "Mobile"
       },
       {
-        "description": "A template for building a Solana mobile app with Expo and React Native Paper.",
-        "id": "gh:solana-foundation/templates/mobile/web3js-expo-paper",
+        "description": "A template for building a Trezoa mobile app with Expo and React Native Paper.",
+        "id": "gh:trezoa-foundation/templates/mobile/web3js-expo-paper",
         "image": "mobile/web3js-expo-paper/og-image.png",
         "keywords": [
           "expo",
           "mobile-wallet-adapter",
           "react-native",
           "react-native-paper",
-          "solana-web3js"
+          "trezoa-web3js"
         ],
         "name": "web3js-expo-paper",
         "path": "mobile/web3js-expo-paper",
@@ -308,18 +308,18 @@
     ]
   },
   {
-    "description": "Templates using @solana/web3.js (legacy)",
+    "description": "Templates using @trezoa/web3.js (legacy)",
     "name": "Web3.js Templates",
     "path": "web3js",
     "templates": [
       {
-        "description": "Next.js, Tailwind, @solana/web3.js, Wallet Adapter",
-        "id": "gh:solana-foundation/templates/web3js/web3js-next-tailwind",
+        "description": "Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-next-tailwind",
         "image": "web3js/web3js-next-tailwind/og-image.png",
         "keywords": [
           "nextjs",
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "wallet-adapter"
@@ -330,14 +330,14 @@
         "usecase": "Legacy"
       },
       {
-        "description": "Next.js, Tailwind, @solana/web3.js, Wallet Adapter, basic Anchor program",
-        "id": "gh:solana-foundation/templates/web3js/web3js-next-tailwind-basic",
+        "description": "Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter, basic Anchor program",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-next-tailwind-basic",
         "image": "web3js/web3js-next-tailwind-basic/og-image.png",
         "keywords": [
           "anchor-basic",
           "nextjs",
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "wallet-adapter"
@@ -348,14 +348,14 @@
         "usecase": "Legacy"
       },
       {
-        "description": "Next.js, Tailwind, @solana/web3.js, Wallet Adapter, Anchor Counter program",
-        "id": "gh:solana-foundation/templates/web3js/web3js-next-tailwind-counter",
+        "description": "Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter, Anchor Counter program",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-next-tailwind-counter",
         "image": "web3js/web3js-next-tailwind-counter/og-image.png",
         "keywords": [
-          "anchor-counter",
+          "trezoaanchor-counter",
           "nextjs",
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "wallet-adapter"
@@ -366,12 +366,12 @@
         "usecase": "Legacy"
       },
       {
-        "description": "React + Vite, Tailwind, @solana/web3.js, Wallet Adapter",
-        "id": "gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind",
+        "description": "React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind",
         "image": "web3js/web3js-react-vite-tailwind/og-image.png",
         "keywords": [
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "vite",
@@ -383,13 +383,13 @@
         "usecase": "Legacy"
       },
       {
-        "description": "React + Vite, Tailwind, @solana/web3.js, Wallet Adapter, basic Anchor program",
-        "id": "gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind-basic",
+        "description": "React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter, basic Anchor program",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind-basic",
         "image": "web3js/web3js-react-vite-tailwind-basic/og-image.png",
         "keywords": [
           "anchor-basic",
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "vite",
@@ -401,14 +401,14 @@
         "usecase": "Legacy"
       },
       {
-        "description": "React + Vite, Tailwind, @solana/web3.js, Wallet Adapter, Anchor Counter program",
-        "id": "gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind-counter",
+        "description": "React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter, Anchor Counter program",
+        "id": "gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind-counter",
         "image": "web3js/web3js-react-vite-tailwind-counter/og-image.png",
         "keywords": [
-          "anchor-counter",
+          "trezoaanchor-counter",
           "web3js",
           "react",
-          "solana-web3js",
+          "trezoa-web3js",
           "tailwind",
           "typescript",
           "vite",
@@ -422,14 +422,14 @@
     ]
   },
   {
-    "description": "Templates maintained by the Solana community",
+    "description": "Templates maintained by the Trezoa community",
     "name": "Community Templates",
     "path": "community",
     "templates": [
       {
-        "description": "x402 protocol implementation for Solana with Facilitator and Server apps using TypeScript and Gill SDK",
-        "id": "gh:solana-foundation/templates/community/gill-node-solanax402",
-        "image": "community/gill-node-solanax402/og-image.png",
+        "description": "x402 protocol implementation for Trezoa with Facilitator and Server apps using TypeScript and Gill SDK",
+        "id": "gh:trezoa-foundation/templates/community/gill-node-trezoa-x402",
+        "image": "community/gill-node-trezoa-x402/og-image.png",
         "keywords": [
           "solana",
           "x402",
@@ -439,14 +439,14 @@
           "typescript",
           "gill"
         ],
-        "name": "gill-node-solanax402",
-        "path": "community/gill-node-solanax402",
+        "name": "gill-node-trezoa-x402",
+        "path": "community/gill-node-trezoa-x402",
         "displayName": "x402 Express Server",
         "usecase": "Payments"
       },
       {
-        "description": "A modern, script-driven Solana airdrop template that distributes SOL to many recipients efficiently using a Merkle tree",
-        "id": "gh:solana-foundation/templates/community/merkle-airdrop",
+        "description": "A modern, script-driven Trezoa airdrop template that distributes TRZ to many recipients efficiently using a Merkle tree",
+        "id": "gh:trezoa-foundation/templates/community/merkle-airdrop",
         "image": "community/merkle-airdrop/og-image.png",
         "keywords": [
           "nextjs",
@@ -461,8 +461,8 @@
         "usecase": "Airdrop"
       },
       {
-        "description": "Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Solana",
-        "id": "gh:solana-foundation/templates/community/moneymq-x402",
+        "description": "Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Trezoa",
+        "id": "gh:trezoa-foundation/templates/community/moneymq-x402",
         "image": "community/moneymq-x402/og-image.png",
         "keywords": [
           "x402",
@@ -481,9 +481,9 @@
         "usecase": "Payments"
       },
       {
-        "description": "ChatGPT app with Solana features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode",
-        "id": "gh:solana-foundation/templates/community/solana-chatgpt-kit",
-        "image": "community/solana-chatgpt-kit/og-image.png",
+        "description": "ChatGPT app with Trezoa features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode",
+        "id": "gh:trezoa-foundation/templates/community/trezoa-chatgpt-kit",
+        "image": "community/trezoa-chatgpt-kit/og-image.png",
         "keywords": [
           "solana",
           "chatgpt",
@@ -501,14 +501,14 @@
           "spl-token",
           "sns"
         ],
-        "name": "solana-chatgpt-kit",
-        "path": "community/solana-chatgpt-kit",
-        "displayName": "Solana ChatGPT Kit",
+        "name": "trezoa-chatgpt-kit",
+        "path": "community/trezoa-chatgpt-kit",
+        "displayName": "Trezoa ChatGPT Kit",
         "usecase": "Starter"
       },
       {
-        "description": "Authenticate Solana wallets with Supabase",
-        "id": "gh:solana-foundation/templates/community/supabase-auth",
+        "description": "Authenticate Trezoa wallets with Supabase",
+        "id": "gh:trezoa-foundation/templates/community/supabase-auth",
         "image": "community/supabase-auth/og-image.png",
         "keywords": [
           "supabase",
@@ -522,9 +522,9 @@
         "usecase": "Auth"
       },
       {
-        "description": "x402 payment server template for Solana with Rust",
-        "id": "gh:solana-foundation/templates/community/x402-solana-rust",
-        "image": "community/x402-solana-rust/og-image.png",
+        "description": "x402 payment server template for Trezoa with Rust",
+        "id": "gh:trezoa-foundation/templates/community/x402-trezoa-rust",
+        "image": "community/x402-trezoa-rust/og-image.png",
         "keywords": [
           "solana",
           "x402",
@@ -535,14 +535,14 @@
           "actix",
           "rocket"
         ],
-        "name": "x402-solana-rust",
-        "path": "community/x402-solana-rust",
-        "displayName": "x402 Solana Rust",
+        "name": "x402-trezoa-rust",
+        "path": "community/x402-trezoa-rust",
+        "displayName": "x402 Trezoa Rust",
         "usecase": "Payments"
       },
       {
-        "description": "Next.js Solana starter with X402 payment protocol integration",
-        "id": "gh:solana-foundation/templates/community/x402-template",
+        "description": "Next.js Trezoa starter with X402 payment protocol integration",
+        "id": "gh:trezoa-foundation/templates/community/x402-template",
         "image": "community/x402-template/og-image.png",
         "keywords": [
           "solana",
@@ -557,14 +557,14 @@
         "usecase": "Payments"
       },
       {
-        "description": "ZK-Compression based airdrop app built with Next.js, Tailwind, and @solana/react-hooks",
-        "id": "gh:solana-foundation/templates/community/zk-compression-airdrop",
+        "description": "ZK-Compression based airdrop app built with Next.js, Tailwind, and @trezoa/react-hooks",
+        "id": "gh:trezoa-foundation/templates/community/zk-compression-airdrop",
         "image": "community/zk-compression-airdrop/og-image.png",
         "keywords": [
           "minimal",
           "nextjs",
           "react",
-          "solana-kit",
+          "trezoa-kit",
           "tailwind",
           "typescript",
           "zk-compression",

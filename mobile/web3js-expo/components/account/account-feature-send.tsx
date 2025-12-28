@@ -1,6 +1,6 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { ActivityIndicator, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { Button } from '@react-navigation/elements'
@@ -16,12 +16,12 @@ export function AccountFeatureSend({ address }: { address: PublicKey }) {
 
   return (
     <AppView>
-      <AppText type="subtitle">Send SOL from the connected wallet.</AppText>
+      <AppText type="subtitle">Send TRZ from the connected wallet.</AppText>
       {transferSol.isPending ? (
         <ActivityIndicator />
       ) : (
         <View style={{ gap: 16 }}>
-          <AppText>Amount (SOL)</AppText>
+          <AppText>Amount (TRZ)</AppText>
           <TextInput
             style={{
               backgroundColor,
@@ -53,13 +53,13 @@ export function AccountFeatureSend({ address }: { address: PublicKey }) {
               transferSol
                 .mutateAsync({ amount: parseFloat(amount), destination: new PublicKey(destinationAddress) })
                 .then(() => {
-                  console.log(`Sent ${amount} SOL to ${destinationAddress}`)
+                  console.log(`Sent ${amount} TRZ to ${destinationAddress}`)
                 })
-                .catch((err) => console.log(`Error sending SOL: ${err}`, err))
+                .catch((err) => console.log(`Error sending TRZ: ${err}`, err))
             }}
             variant="filled"
           >
-            Send SOL
+            Send TRZ
           </Button>
         </View>
       )}

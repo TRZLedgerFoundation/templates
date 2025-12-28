@@ -107,12 +107,12 @@ export class AuthorizationPayload {
   }
 
   /**
-   * Create EIP-712 equivalent structured data for Solana signing
+   * Create EIP-712 equivalent structured data for Trezoa signing
    */
   createStructuredData(): StructuredData {
     return {
       domain: {
-        name: 'x402-solana-protocol',
+        name: 'x402-trezoa-protocol',
         version: '1',
         chainId: 'devnet',
         verifyingContract: 'x402-sol',
@@ -229,7 +229,7 @@ export interface PaymentRequestData {
   payload: AuthorizationPayload;
   signature: string;
   clientPublicKey: string;
-  signedTransaction?: string; // Base64-encoded serialized Solana transaction (for true x402 atomic settlement)
+  signedTransaction?: string; // Base64-encoded serialized Trezoa transaction (for true x402 atomic settlement)
 }
 
 /**
@@ -237,7 +237,7 @@ export interface PaymentRequestData {
  * This represents a complete payment request with signature
  *
  * For TRUE x402 atomic settlement:
- * - Client creates Solana transaction (transfer SOL from client to merchant)
+ * - Client creates Trezoa transaction (transfer TRZ from client to merchant)
  * - Client signs the transaction
  * - Client sends serialized transaction in `signedTransaction` field
  * - Facilitator adds their signature as fee payer and submits
@@ -246,7 +246,7 @@ export class PaymentRequest {
   payload: AuthorizationPayload;
   signature: string;
   clientPublicKey: string;
-  signedTransaction?: string; // Base64-encoded serialized Solana transaction
+  signedTransaction?: string; // Base64-encoded serialized Trezoa transaction
 
   constructor(data: PaymentRequestData) {
     this.payload = data.payload;

@@ -11,7 +11,7 @@ export interface ClaimAirdropArgs {
 
 /**
  * Serializes claim airdrop instruction data
- * This handles the complex binary serialization required by the Solana program
+ * This handles the complex binary serialization required by the Trezoa program
  */
 export function serializeClaimInstructionData(args: ClaimAirdropArgs): Uint8Array {
   const { amount, proof, leafIndex } = args
@@ -42,7 +42,7 @@ export function serializeClaimInstructionData(args: ClaimAirdropArgs): Uint8Arra
 }
 
 /**
- * Account roles for Solana instructions
+ * Account roles for Trezoa instructions
  */
 export const ACCOUNT_ROLES = {
   WRITABLE_SIGNER: 3,

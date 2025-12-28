@@ -20,7 +20,7 @@ export function ClusterProvider({ children }: { children: ReactNode }) {
       selectedCluster,
       clusters: [...AppConfig.clusters].sort((a, b) => (a.name > b.name ? 1 : -1)),
       setSelectedCluster: (cluster: Cluster) => setSelectedCluster(cluster),
-      getExplorerUrl: (path: string) => `https://explorer.solana.com/${path}${getClusterUrlParam(selectedCluster)}`,
+      getExplorerUrl: (path: string) => `https://explorer.trezoa.com/${path}${getClusterUrlParam(selectedCluster)}`,
     }),
     [selectedCluster, setSelectedCluster],
   )

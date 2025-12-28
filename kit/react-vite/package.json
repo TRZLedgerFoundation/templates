@@ -1,15 +1,15 @@
 {
   "name": "react-vite",
-  "description": "React + Vite, Tailwind, @solana/react-hooks",
+  "description": "React + Vite, Tailwind, @trezoa/react-hooks",
   "keywords": [
     "kit",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript",
     "vite"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",
@@ -32,8 +32,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@solana/client": "^1.0.0-rc.2",
-    "@solana/react-hooks": "^1.0.0-rc.3",
+    "@trezoa/client": "^1.0.0-rc.2",
+    "@trezoa/react-hooks": "^1.0.0-rc.3",
     "@tailwindcss/vite": "^4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

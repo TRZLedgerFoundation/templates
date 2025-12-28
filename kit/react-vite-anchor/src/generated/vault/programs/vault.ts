@@ -12,7 +12,7 @@ import {
   getBytesEncoder,
   type Address,
   type ReadonlyUint8Array,
-} from "@solana/kit";
+} from "@trezoa/kit";
 import {
   type ParsedDepositInstruction,
   type ParsedWithdrawInstruction,

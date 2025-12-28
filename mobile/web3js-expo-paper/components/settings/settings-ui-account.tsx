@@ -1,8 +1,8 @@
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { ellipsify } from '@/utils/ellipsify'
 import { AppText } from '@/components/app-text'
 import { AppView } from '@/components/app-view'
-import { WalletUiConnectButton, WalletUiDisconnectButton } from '@/components/solana/wallet-ui-dropdown'
+import { WalletUiConnectButton, WalletUiDisconnectButton } from '@/components/trezoa/wallet-ui-dropdown'
 
 export function SettingsUiAccount() {
   const { account } = useWalletUi()

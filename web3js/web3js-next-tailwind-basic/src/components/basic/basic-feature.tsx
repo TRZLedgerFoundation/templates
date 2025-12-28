@@ -1,8 +1,8 @@
 'use client'
 
-import { useWallet } from '@solana/wallet-adapter-react'
+import { useWallet } from '@trezoa/wallet-adapter-react'
 import { ExplorerLink } from '../cluster/cluster-ui'
-import { WalletButton } from '../solana/solana-provider'
+import { WalletButton } from '../trezoa/trezoa-provider'
 import { useBasicProgram } from './basic-data-access'
 import { BasicCreate, BasicProgram } from './basic-ui'
 import { AppHero } from '../app-hero'

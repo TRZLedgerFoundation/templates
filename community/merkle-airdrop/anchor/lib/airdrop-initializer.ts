@@ -3,7 +3,7 @@ import { getInitializeAirdropInstruction } from '../generated/clients/ts/instruc
 import * as fs from 'fs'
 import type { RecipientsFile, GillInitializationResult } from './types'
 import {
-  createSolanaClient,
+  createTrezoaClient,
   createKeyPairSignerFromBytes,
   address,
   getProgramDerivedAddress,
@@ -41,7 +41,7 @@ export async function checkGillPreRequisites(
     needsBuild = true
   }
 
-  const idlPath = `${workingDir}/target/idl/solana_distributor.json`
+  const idlPath = `${workingDir}/target/idl/trezoa_distributor.json`
   if (!fs.existsSync(idlPath)) {
     issues.push('IDL file missing')
     needsBuild = true
@@ -124,12 +124,12 @@ export async function initializeGillAirdrop(
     }
 
     console.log(`📋 Loaded ${recipientsData.recipients.length} recipients (Gill)`)
-    console.log(`💰 Total amount: ${parseInt(recipientsData.totalAmount) / 1e9} SOL (Gill)`)
+    console.log(`💰 Total amount: ${parseInt(recipientsData.totalAmount) / 1e9} TRZ (Gill)`)
     console.log(`🌳 Merkle root: ${recipientsData.merkleRoot} (Gill)`)
 
     console.log('📡 Setting up Gill client...')
-    const client = createSolanaClient({
-      urlOrMoniker: network === 'devnet' ? 'devnet' : `https://api.${network}.solana.com`,
+    const client = createTrezoaClient({
+      urlOrMoniker: network === 'devnet' ? 'devnet' : `https://api.${network}.trezoa.com`,
     })
     const { rpc, sendAndConfirmTransaction } = client
 
@@ -230,7 +230,7 @@ export async function initializeGillAirdrop(
 
       console.log('✅ Transaction sent successfully! (Codama + Gill)')
       console.log(`📋 Transaction signature: ${signature}`)
-      console.log(`🔍 View on explorer: https://explorer.solana.com/tx/${signature}?cluster=${network}`)
+      console.log(`🔍 View on explorer: https://explorer.trezoa.com/tx/${signature}?cluster=${network}`)
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error)
       if (errorMessage.includes('DeclaredProgramIdMismatch')) {

@@ -3,7 +3,7 @@
 This is a Next.js app containing:
 
 - Tailwind and Shadcn UI for styling
-- [Gill](https://gill.site/) Solana SDK
+- [Gill](https://gill.site/) Trezoa SDK
 - Shadcn [Wallet UI](https://registry.wallet-ui.dev) components
 
 ## Getting Started
@@ -13,7 +13,7 @@ This is a Next.js app containing:
 #### Create an app using this template
 
 ```shell
-npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind
+npx create-trezoa-dapp@latest -t gh:trezoa-foundation/templates/gill/gill-next-tailwind
 ```
 
 #### Install Dependencies

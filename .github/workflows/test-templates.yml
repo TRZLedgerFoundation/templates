@@ -98,10 +98,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create and Build using create-solana-dapp
-        uses: ./.github/workflows/actions/create-solana-dapp
+      - name: Create and Build using create-trezoa-dapp
+        uses: ./.github/workflows/actions/create-trezoa-dapp
         with:
-          cmd: 'npx -y create-solana-dapp@latest'
+          cmd: 'npx -y create-trezoa-dapp@latest'
           node-version: ${{ matrix.node }}
           package-manager: 'npm'
           template: ${{ matrix.template }}
@@ -119,10 +119,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create and Build using create-solana-dapp
-        uses: ./.github/workflows/actions/create-solana-dapp
+      - name: Create and Build using create-trezoa-dapp
+        uses: ./.github/workflows/actions/create-trezoa-dapp
         with:
-          cmd: 'pnpm create solana-dapp@latest'
+          cmd: 'pnpm create trezoa-dapp@latest'
           node-version: ${{ matrix.node }}
           package-manager: 'pnpm'
           template: ${{ matrix.template }}
@@ -140,10 +140,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Create and Build using create-solana-dapp
-        uses: ./.github/workflows/actions/create-solana-dapp
+      - name: Create and Build using create-trezoa-dapp
+        uses: ./.github/workflows/actions/create-trezoa-dapp
         with:
-          cmd: 'yarn create solana-dapp'
+          cmd: 'yarn create trezoa-dapp'
           node-version: ${{ matrix.node }}
           package-manager: 'yarn'
           template: ${{ matrix.template }}

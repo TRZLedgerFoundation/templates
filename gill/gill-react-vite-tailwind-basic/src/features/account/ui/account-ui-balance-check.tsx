@@ -1,12 +1,12 @@
 import { Address } from 'gill'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { AppAlert } from '@/components/app-alert'
 import { Button } from '@/components/ui/button'
 import { useRequestAirdropMutation } from '../data-access/use-request-airdrop-mutation'
 import { useGetBalanceQuery } from '../data-access/use-get-balance-query'
 
 export function AccountUiBalanceCheck({ address }: { address: Address }) {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
   const mutation = useRequestAirdropMutation({ address })
   const query = useGetBalanceQuery({ address })
 

@@ -1,8 +1,8 @@
 'use client'
 
 import { ArrowUpRightFromSquare } from 'lucide-react'
-import { useClusterState } from '@solana/react-hooks'
-import { resolveCluster } from '@/components/solana/clusters'
+import { useClusterState } from '@trezoa/react-hooks'
+import { resolveCluster } from '@/components/trezoa/clusters'
 
 type ExplorerLinkProps = {
   address?: string
@@ -20,7 +20,7 @@ function buildExplorerUrl({
 }: ExplorerLinkProps & {
   cluster: { id: string; endpoint: string }
 }) {
-  const base = 'https://explorer.solana.com'
+  const base = 'https://explorer.trezoa.com'
   const path = address ? `/address/${address}` : transaction ? `/tx/${transaction}` : block ? `/block/${block}` : '/'
   const clusterQuery =
     cluster.id === 'mainnet-beta'

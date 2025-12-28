@@ -1,7 +1,7 @@
-import type { Address, SolanaClient } from 'gill'
+import type { Address, TrezoaClient } from 'gill'
 
 export async function getTokenAccountsByOwner(
-  rpc: SolanaClient['rpc'],
+  rpc: TrezoaClient['rpc'],
   { address, programId }: { address: Address; programId: Address },
 ) {
   return await rpc

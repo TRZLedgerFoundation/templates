@@ -1,10 +1,10 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { View } from 'react-native'
 import { ActivityIndicator, Button, TextInput } from 'react-native-paper'
 import React, { useState } from 'react'
-import { useWalletUi } from '../solana/use-wallet-ui'
+import { useWalletUi } from '../trezoa/use-wallet-ui'
 import { useRequestAirdrop } from '@/components/account/use-request-airdrop'
 import { useTransferSol } from '@/components/account/use-transfer-sol'
 import { useAppTheme } from '@/components/app-theme'
@@ -19,12 +19,12 @@ export function AccountFeatureSend({ address }: { address: PublicKey }) {
 
   return (
     <AppView>
-      <AppText variant="titleMedium">Send SOL from the connected wallet.</AppText>
+      <AppText variant="titleMedium">Send TRZ from the connected wallet.</AppText>
       {requestAirdrop.isPending ? (
         <ActivityIndicator />
       ) : (
         <View style={{ gap: spacing.md }}>
-          <TextInput label="Amount (SOL)" value={amount} onChangeText={setAmount} keyboardType="numeric" />
+          <TextInput label="Amount (TRZ)" value={amount} onChangeText={setAmount} keyboardType="numeric" />
           <TextInput label="Destination Address" value={destinationAddress} onChangeText={setDestinationAddress} />
           <Button
             disabled={transferSol.isPending || amount === '' || destinationAddress === ''}
@@ -32,13 +32,13 @@ export function AccountFeatureSend({ address }: { address: PublicKey }) {
               transferSol
                 .mutateAsync({ amount: parseFloat(amount), destination: new PublicKey(destinationAddress) })
                 .then(() => {
-                  console.log(`Sent ${amount} SOL to ${destinationAddress}`)
+                  console.log(`Sent ${amount} TRZ to ${destinationAddress}`)
                 })
-                .catch((err) => console.log(`Error sending SOL: ${err}`, err))
+                .catch((err) => console.log(`Error sending TRZ: ${err}`, err))
             }}
             mode="contained"
           >
-            Send SOL
+            Send TRZ
           </Button>
         </View>
       )}

@@ -1,6 +1,6 @@
 import { AppView } from '@/components/app-view'
 import { useRouter } from 'expo-router'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { AccountFeatureAirdrop } from '@/components/account/account-feature-airdrop'
 
 export default function Airdrop() {

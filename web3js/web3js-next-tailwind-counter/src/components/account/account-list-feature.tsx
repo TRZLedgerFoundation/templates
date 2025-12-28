@@ -1,7 +1,7 @@
 'use client'
 
-import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletButton } from '../solana/solana-provider'
+import { useWallet } from '@trezoa/wallet-adapter-react'
+import { WalletButton } from '../trezoa/trezoa-provider'
 
 import { redirect } from 'next/navigation'
 

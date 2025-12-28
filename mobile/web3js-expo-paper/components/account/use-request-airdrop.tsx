@@ -1,5 +1,5 @@
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
-import { useConnection } from '@/components/solana/solana-provider'
+import { LAMPORTS_PER_TRZ, PublicKey } from '@trezoa/web3.js'
+import { useConnection } from '@/components/trezoa/trezoa-provider'
 import { useMutation } from '@tanstack/react-query'
 import { useGetBalanceInvalidate } from './use-get-balance'
 
@@ -12,7 +12,7 @@ export function useRequestAirdrop({ address }: { address: PublicKey }) {
     mutationFn: async (amount: number = 1) => {
       const [latestBlockhash, signature] = await Promise.all([
         connection.getLatestBlockhash(),
-        connection.requestAirdrop(address, amount * LAMPORTS_PER_SOL),
+        connection.requestAirdrop(address, amount * LAMPORTS_PER_TRZ),
       ])
 
       await connection.confirmTransaction({ signature, ...latestBlockhash }, 'confirmed')

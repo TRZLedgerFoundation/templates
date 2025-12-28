@@ -23,12 +23,12 @@ pub struct PaymentPayload {
     pub x402_version: u32,
     pub scheme: String,
     pub network: String,
-    pub payload: SolanaPaymentPayload,
+    pub payload: TrezoaPaymentPayload,
 }
 
-/// Solana-specific payment payload
+/// Trezoa-specific payment payload
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct SolanaPaymentPayload {
+pub struct TrezoaPaymentPayload {
     pub transaction: String, // Base64 encoded serialized transaction
 }
 

@@ -1,5 +1,5 @@
-name: 'Run create-solana-dapp'
-description: 'Run create-solana-dapp with the given command and template'
+name: 'Run create-trezoa-dapp'
+description: 'Run create-trezoa-dapp with the given command and template'
 inputs:
   cmd:
     description: 'The command to run'
@@ -23,7 +23,7 @@ runs:
         node-version: ${{ inputs.node-version }}
         package-manager: ${{ inputs.package-manager }}
 
-    - name: Create and Build using create-solana-dapp
+    - name: Create and Build using create-trezoa-dapp
       run: |
         cd $(mktemp -d)
         BRANCH="${{ github.head_ref || github.ref_name }}"

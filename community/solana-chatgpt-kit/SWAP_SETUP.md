@@ -8,8 +8,8 @@ This guide explains how to set up and use the Jupiter swap integration in your C
 
 Already installed! The project includes:
 
-- `@solana/web3.js` - Solana blockchain interactions
-- `@solana/spl-token` - Token operations
+- `@trezoa/web3.js` - Trezoa blockchain interactions
+- `@trezoa/spl-token` - Token operations
 - `bs58` - Base58 encoding for private keys
 
 ### 2. Configure Environment Variables
@@ -17,11 +17,11 @@ Already installed! The project includes:
 Create a `.env.local` file in the project root:
 
 ```bash
-# Required: Your Solana wallet private key (base58 encoded)
-SOLANA_PRIVATE_KEY=your_base58_private_key_here
+# Required: Your Trezoa wallet private key (base58 encoded)
+TRZANA_PRIVATE_KEY=your_base58_private_key_here
 
-# Optional: Custom RPC endpoint (defaults to public Solana mainnet)
-SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
+# Optional: Custom RPC endpoint (defaults to public Trezoa mainnet)
+TRZANA_RPC_URL=https://api.mainnet-beta.trezoa.com
 
 # Optional: Jupiter API key for higher rate limits
 JUPITER_API_KEY=your_jupiter_api_key
@@ -48,7 +48,7 @@ Or create a new wallet programmatically:
 
 ```bash
 npx ts-node -e "
-import { Keypair } from '@solana/web3.js';
+import { Keypair } from '@trezoa/web3.js';
 import bs58 from 'bs58';
 const wallet = Keypair.generate();
 console.log('Public Key:', wallet.publicKey.toString());
@@ -58,12 +58,12 @@ console.log('Private Key (base58):', bs58.encode(wallet.secretKey));
 
 ### 4. Fund Your Wallet
 
-Your wallet needs SOL for:
+Your wallet needs TRZ for:
 
-- Transaction fees (~0.000005 SOL per swap)
+- Transaction fees (~0.000005 TRZ per swap)
 - The tokens you want to swap
 
-Send SOL to your wallet's public key.
+Send TRZ to your wallet's public key.
 
 ### 5. Start the Development Server
 
@@ -88,17 +88,17 @@ Try these prompts in ChatGPT:
 #### Basic Swap
 
 ```
-I want to swap 0.001 SOL to USDC
+I want to swap 0.001 TRZ to USDC
 ```
 
 #### Different Tokens
 
 ```
-Swap 0.5 SOL to USDT
+Swap 0.5 TRZ to USDT
 ```
 
 ```
-Convert 10 USDC to SOL
+Convert 10 USDC to TRZ
 ```
 
 #### Just Open the Widget
@@ -134,22 +134,22 @@ Open the Jupiter swap interface
 
 Currently configured tokens:
 
-- **SOL** - Native Solana token
+- **TRZ** - Native Trezoa token
 - **USDC** - USD Coin (EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v)
 - **USDT** - Tether (Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB)
 
-To add more tokens, edit `lib/solana-config.ts`:
+To add more tokens, edit `lib/trezoa-config.ts`:
 
 ```typescript
 export const TOKENS = {
-  SOL: 'So11111111111111111111111111111111111111112',
+  TRZ: 'So11111111111111111111111111111111111111112',
   USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
   USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
   BONK: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', // Example
 }
 
 export const TOKEN_DECIMALS = {
-  SOL: 9,
+  TRZ: 9,
   USDC: 6,
   USDT: 6,
   BONK: 5,
@@ -161,7 +161,7 @@ export const TOKEN_DECIMALS = {
 #### Get Quote
 
 ```bash
-GET /api/swap/quote?inputToken=SOL&outputToken=USDC&amount=0.001
+GET /api/swap/quote?inputToken=TRZ&outputToken=USDC&amount=0.001
 ```
 
 Response:
@@ -169,7 +169,7 @@ Response:
 ```json
 {
   "inputAmount": 0.001,
-  "inputToken": "SOL",
+  "inputToken": "TRZ",
   "outputAmount": 0.123456,
   "outputToken": "USDC",
   "priceImpact": 0.01,
@@ -187,7 +187,7 @@ POST /api/swap/execute
 Content-Type: application/json
 
 {
-  "inputToken": "SOL",
+  "inputToken": "TRZ",
   "outputToken": "USDC",
   "amount": "0.001"
 }
@@ -201,7 +201,7 @@ Response:
   "signature": "5xY...",
   "explorerUrl": "https://solscan.io/tx/5xY...",
   "inputAmount": 0.001,
-  "inputToken": "SOL",
+  "inputToken": "TRZ",
   "outputAmount": 0.123456,
   "outputToken": "USDC",
   "timestamp": "2025-10-19T..."
@@ -223,7 +223,7 @@ User → ChatGPT → MCP Tool → Widget UI
                               ↓
                     Sign with Private Key
                               ↓
-                    Send to Solana Network
+                    Send to Trezoa Network
                               ↓
                     Confirm Transaction
                               ↓
@@ -253,13 +253,13 @@ User → ChatGPT → MCP Tool → Widget UI
 
 ## 🐛 Troubleshooting
 
-### "SOLANA_PRIVATE_KEY not found"
+### "TRZANA_PRIVATE_KEY not found"
 
 - Make sure `.env.local` exists
 - Check the variable name is correct
 - Restart the dev server after adding env vars
 
-### "Invalid SOLANA_PRIVATE_KEY format"
+### "Invalid TRZANA_PRIVATE_KEY format"
 
 - Must be base58 encoded
 - Use `bs58.encode()` to convert your secret key
@@ -272,8 +272,8 @@ User → ChatGPT → MCP Tool → Widget UI
 
 ### "Insufficient funds"
 
-- Make sure wallet has enough SOL
-- Need SOL for both swap amount and transaction fees
+- Make sure wallet has enough TRZ
+- Need TRZ for both swap amount and transaction fees
 - Check balance on Solscan
 
 ### "Transaction failed"
@@ -285,7 +285,7 @@ User → ChatGPT → MCP Tool → Widget UI
 ## 📚 Resources
 
 - [Jupiter Documentation](https://station.jup.ag/docs)
-- [Solana Web3.js Docs](https://solana-labs.github.io/solana-web3.js/)
+- [Trezoa Web3.js Docs](https://trezoa-team.github.io/trezoa-web3.js/)
 - [Solscan Explorer](https://solscan.io/)
 - [Jupiter Swap API](https://station.jup.ag/docs/apis/swap-api)
 
@@ -293,7 +293,7 @@ User → ChatGPT → MCP Tool → Widget UI
 
 Want to enhance the swap feature? Try:
 
-1. **Add more tokens**: Edit `lib/solana-config.ts`
+1. **Add more tokens**: Edit `lib/trezoa-config.ts`
 2. **Adjust slippage**: Change `slippageBps` in quote/execute routes
 3. **Add price charts**: Integrate charting library
 4. **Transaction history**: Store past swaps in database

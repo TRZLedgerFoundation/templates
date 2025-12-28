@@ -5,11 +5,11 @@
 import type { Request, Response } from 'express';
 import type { Address } from 'gill';
 import { PaymentRequest } from '../lib/payment-request.js';
-import { SolanaUtils } from '../lib/solana-utils.js';
+import { TrezoaUtils } from '../lib/trezoa-utils.js';
 import type { NonceDatabase } from '../lib/nonce-database.js';
 
 export interface SettleRouteContext {
-  solanaUtils: SolanaUtils;
+  trezoaUtils: TrezoaUtils;
   nonceDb: NonceDatabase;
   facilitatorAddress: Address;
   facilitatorKeypair: any; // Keypair from Gill
@@ -22,7 +22,7 @@ export interface SettleRouteContext {
 /**
  * Settle a payment (Step 2 of x402 protocol)
  * 1. Performs the same checks as /verify
- * 2. Submits the Solana transaction to the RPC, using the client's signature
+ * 2. Submits the Trezoa transaction to the RPC, using the client's signature
  * 3. Records the Nonce (or Signature) in the database
  * 4. Returns {"status": "settled"}
  */
@@ -57,7 +57,7 @@ export function settlePaymentRoute(context: SettleRouteContext) {
         return res.json({ status: 'error', error: 'Nonce has expired' });
       }
 
-      console.log('Starting Solana on-chain payment settlement...');
+      console.log('Starting Trezoa on-chain payment settlement...');
       console.log('Payment details:', {
         nonce: nonce,
         amount: nonceDetails.amount,
@@ -65,7 +65,7 @@ export function settlePaymentRoute(context: SettleRouteContext) {
         recipient: nonceDetails.recipient,
       });
 
-      console.log('x402 SOL Payment Setup:', {
+      console.log('x402 TRZ Payment Setup:', {
         clientPublicKey: nonceDetails.clientPublicKey,
         recipient: nonceDetails.recipient,
         amount: nonceDetails.amount,
@@ -75,10 +75,10 @@ export function settlePaymentRoute(context: SettleRouteContext) {
       const requiredAmount = BigInt(nonceDetails.amount);
 
       if (!context.simulateTransactions) {
-        // Check SOL balances in devnet mode
-        const clientBalance = await context.solanaUtils.getSOLBalance(nonceDetails.clientPublicKey);
+        // Check TRZ balances in devnet mode
+        const clientBalance = await context.trezoaUtils.getTRZBalance(nonceDetails.clientPublicKey);
 
-        console.log('SOL Balance check:', {
+        console.log('TRZ Balance check:', {
           clientBalance: clientBalance.toString(),
           requiredAmount: requiredAmount.toString(),
           sufficient: clientBalance >= requiredAmount,
@@ -87,14 +87,14 @@ export function settlePaymentRoute(context: SettleRouteContext) {
         if (clientBalance < requiredAmount) {
           return res.json({
             status: 'error',
-            error: `Insufficient SOL balance. Required: ${requiredAmount}, Available: ${clientBalance}`,
+            error: `Insufficient TRZ balance. Required: ${requiredAmount}, Available: ${clientBalance}`,
           });
         }
       } else {
         console.log(' Simulation Mode: Skipping balance checks for x402 demo');
       }
 
-      console.log(` Executing x402 payment: ${requiredAmount} lamports (${Number(requiredAmount) / 1000000000} SOL)`);
+      console.log(` Executing x402 payment: ${requiredAmount} lamports (${Number(requiredAmount) / 1000000000} TRZ)`);
 
       // Generate simulated or real transaction signature
       let transactionSignature: string;
@@ -111,18 +111,18 @@ export function settlePaymentRoute(context: SettleRouteContext) {
         }
 
         console.log('TRUE x402 PROTOCOL: Processing sponsored transaction');
-        console.log('   Client signed transaction (their SOL will move to merchant)');
+        console.log('   Client signed transaction (their TRZ will move to merchant)');
         console.log('   Facilitator will add signature as fee payer (pays gas)');
         console.log();
 
         try {
-          transactionSignature = await context.solanaUtils.submitSponsoredTransaction(
+          transactionSignature = await context.trezoaUtils.submitSponsoredTransaction(
             context.config.facilitatorPrivateKey, // facilitator private key (fee payer)
             paymentReq.signedTransaction // client-signed transaction
           );
           console.log('ATOMIC SETTLEMENT complete!');
           console.log(
-            `   View on Solana Explorer: https://explorer.solana.com/tx/${transactionSignature}?cluster=devnet`
+            `   View on Trezoa Explorer: https://explorer.trezoa.com/tx/${transactionSignature}?cluster=devnet`
           );
         } catch (error) {
           console.error('Sponsored transaction failed:', error);
@@ -134,7 +134,7 @@ export function settlePaymentRoute(context: SettleRouteContext) {
 
       // Verify the transfer worked by checking balances
       if (!context.simulateTransactions) {
-        const recipientBalance = await context.solanaUtils.getSOLBalance(nonceDetails.recipient);
+        const recipientBalance = await context.trezoaUtils.getTRZBalance(nonceDetails.recipient);
         console.log(` Transfer completed! Recipient balance: ${recipientBalance.toString()} lamports`);
       }
 

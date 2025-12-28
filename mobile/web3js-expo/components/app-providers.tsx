@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PropsWithChildren } from 'react'
 import { ClusterProvider } from './cluster/cluster-provider'
-import { SolanaProvider } from '@/components/solana/solana-provider'
+import { TrezoaProvider } from '@/components/trezoa/trezoa-provider'
 import { AppTheme } from '@/components/app-theme'
 import { AuthProvider } from '@/components/auth/auth-provider'
 
@@ -12,9 +12,9 @@ export function AppProviders({ children }: PropsWithChildren) {
     <AppTheme>
       <QueryClientProvider client={queryClient}>
         <ClusterProvider>
-          <SolanaProvider>
+          <TrezoaProvider>
             <AuthProvider>{children}</AuthProvider>
-          </SolanaProvider>
+          </TrezoaProvider>
         </ClusterProvider>
       </QueryClientProvider>
     </AppTheme>

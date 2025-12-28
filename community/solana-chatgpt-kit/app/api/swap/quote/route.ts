@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
-import { JUPITER_API, TOKENS, TOKEN_DECIMALS } from '@/lib/solana-config'
+import { JUPITER_API, TOKENS, TOKEN_DECIMALS } from '@/lib/trezoa-config'
 import { resolveTokenParam } from '@/lib/token-resolver'
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-    const inputToken = searchParams.get('inputToken') || 'SOL'
+    const inputToken = searchParams.get('inputToken') || 'TRZ'
     const outputToken = searchParams.get('outputToken') || 'USDC'
     const amount = searchParams.get('amount')
 
@@ -14,12 +14,12 @@ export async function GET(request: Request) {
     }
 
     // Resolve symbols or mint addresses
-    const inputResolved = await resolveTokenParam(inputToken, 'SOL')
+    const inputResolved = await resolveTokenParam(inputToken, 'TRZ')
     const outputResolved = await resolveTokenParam(outputToken, 'USDC')
     const inputMint = inputResolved.mint
     const outputMint = outputResolved.mint
 
-    // Convert amount to smallest unit (lamports for SOL)
+    // Convert amount to smallest unit (lamports for TRZ)
     const inputDecimals = inputResolved.decimals || 9
     const scaledAmount = Math.floor(parseFloat(amount) * Math.pow(10, inputDecimals))
 

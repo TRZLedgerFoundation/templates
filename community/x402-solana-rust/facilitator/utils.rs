@@ -1,9 +1,9 @@
 use base64::{Engine as _, engine::general_purpose};
-use solana_client::{
+use trezoa_client::{
     rpc_client::RpcClient,
     rpc_config::{ RpcSendTransactionConfig, CommitmentLevel }
 };
-use solana_sdk::{
+use trezoa_sdk::{
     pubkey::Pubkey,
     signature::Signature,
     transaction::VersionedTransaction,
@@ -43,7 +43,7 @@ pub fn validate_payment_transaction(
         return Err("Transaction signatures are empty".to_string());
     }
 
-    // Locate SPL Token Program instruction
+    // Locate TPL Token Program instruction
     let spl_token_program = spl_token::id();
 
     let token_ix = transaction.message.instructions()
@@ -54,7 +54,7 @@ pub fn validate_payment_transaction(
                 .map(|pid| *pid == spl_token_program)
                 .unwrap_or(false)
         })
-        .ok_or("Missing SPL token transfer instruction".to_string())?;
+        .ok_or("Missing TPL token transfer instruction".to_string())?;
 
     // Parse instruction bytes
     let ix_data = &token_ix.data;
@@ -63,7 +63,7 @@ pub fn validate_payment_transaction(
         return Err("Malformed token instruction data".to_string());
     }
 
-    // SPL Token instruction discriminator (3 = Transfer, 12 = TransferChecked)
+    // TPL Token instruction discriminator (3 = Transfer, 12 = TransferChecked)
     let discriminator = ix_data[0];
     if discriminator != 3 && discriminator != 12 {
         return Err(format!("Unexpected instruction type: {}", discriminator));
@@ -120,7 +120,7 @@ pub fn validate_payment_transaction(
     Ok(())
 }
 
-/// Broadcast transaction to Solana network
+/// Broadcast transaction to Trezoa network
 pub async fn broadcast_to_chain(
     rpc_url: &str,
     transaction: VersionedTransaction,

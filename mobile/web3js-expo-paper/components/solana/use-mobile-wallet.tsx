@@ -1,6 +1,6 @@
-import { transact } from '@solana-mobile/mobile-wallet-adapter-protocol-web3js'
-import { SignInPayload } from '@solana-mobile/mobile-wallet-adapter-protocol'
-import { Transaction, TransactionSignature, VersionedTransaction } from '@solana/web3.js'
+import { transact } from '@trezoa-mobile/mobile-wallet-adapter-protocol-web3js'
+import { SignInPayload } from '@trezoa-mobile/mobile-wallet-adapter-protocol'
+import { Transaction, TransactionSignature, VersionedTransaction } from '@trezoa/web3.js'
 import { useCallback, useMemo } from 'react'
 import { Account, useAuthorization } from './use-authorization'
 

@@ -1,4 +1,4 @@
-import { SolanaClusterId, useWalletUi, useWalletUiCluster } from '@wallet-ui/react'
+import { TrezoaClusterId, useWalletUi, useWalletUiCluster } from '@wallet-ui/react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -18,7 +18,7 @@ export function ClusterDropdown() {
         <Button variant="outline">{cluster.label}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuRadioGroup value={cluster.id} onValueChange={(cluster) => setCluster(cluster as SolanaClusterId)}>
+        <DropdownMenuRadioGroup value={cluster.id} onValueChange={(cluster) => setCluster(cluster as TrezoaClusterId)}>
           {clusters.map((cluster) => {
             return (
               <DropdownMenuRadioItem key={cluster.id} value={cluster.id}>

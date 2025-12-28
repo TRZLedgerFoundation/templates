@@ -21,7 +21,7 @@ export const MAX_FILE_SIZE = 500 * 1024 // 500KB
 
 /**
  * Read SVG or PNG logo and convert to data URI
- * @param logoPath - Path to the SVG or PNG file (defaults to Solana logo)
+ * @param logoPath - Path to the SVG or PNG file (defaults to Trezoa logo)
  */
 export const readLogoDataUri = (logoPath: string = LOGO_PATH): Result<string> => {
   return tryCatch(() => {
@@ -103,9 +103,9 @@ export const captureScreenshot = async (url: string): Promise<Result<Buffer>> =>
 }
 
 /**
- * Generate OG image with Solana logo and custom text/logo, or full screenshot
+ * Generate OG image with Trezoa logo and custom text/logo, or full screenshot
  * @param text - Text to display on the right side (ignored if customLogoPath or screenshotUrl is provided)
- * @param customLogoPath - Optional path to custom SVG or PNG logo to display on right side (with Solana logo + plus)
+ * @param customLogoPath - Optional path to custom SVG or PNG logo to display on right side (with Trezoa logo + plus)
  * @param screenshotUrl - Optional URL to capture full-size screenshot from (replaces entire image)
  */
 export const generateOgImage = async (
@@ -131,7 +131,7 @@ export const generateOgImage = async (
   // Otherwise, generate logo + text/custom logo image
   const logoResult = readLogoDataUri()
   if (!logoResult.ok) {
-    return err(`Failed to read Solana logo: ${logoResult.error}`)
+    return err(`Failed to read Trezoa logo: ${logoResult.error}`)
   }
 
   const solanaLogoDataUri = logoResult.value
@@ -168,7 +168,7 @@ export const generateOgImage = async (
               gap: '60px',
             }}
           >
-            <img src={solanaLogoDataUri} width={200} height={175} alt="Solana" />
+            <img src={solanaLogoDataUri} width={200} height={175} alt="Trezoa" />
 
             <div
               style={{

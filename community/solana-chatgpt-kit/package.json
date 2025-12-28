@@ -1,7 +1,7 @@
 {
-  "name": "solana-chatgpt-kit",
-  "displayName": "Solana ChatGPT Kit",
-  "description": "ChatGPT app with Solana features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode",
+  "name": "trezoa-chatgpt-kit",
+  "displayName": "Trezoa ChatGPT Kit",
+  "description": "ChatGPT app with Trezoa features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode",
   "author": {
     "name": "Arpit Singh",
     "url": "https://github.com/The-x-35"
@@ -37,8 +37,8 @@
     "@onsol/tldparser": "^1.0.8",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@solana/spl-token": "^0.4.14",
-    "@solana/web3.js": "^1.98.4",
+    "@trezoa/spl-token": "^0.4.14",
+    "@trezoa/web3.js": "^1.98.4",
     "bs58": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -61,9 +61,9 @@
     "typescript": "^5"
   },
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
-      "Welcome to Solana ChatGPT Kit! 🚀",
+      "Welcome to Trezoa ChatGPT Kit! 🚀",
       "",
       "📖 IMPORTANT: Read README.md for complete setup instructions and features!",
       "",
@@ -73,13 +73,13 @@
       "Choose your wallet mode:",
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
       "Option A: Private Key Mode (Server-Side Signing)",
-      "  • Edit lib/solana-config.ts: Set externalWallet = false",
+      "  • Edit lib/trezoa-config.ts: Set externalWallet = false",
       "  • Create .env.local and add:",
-      "    SOLANA_PRIVATE_KEY=your_base58_private_key_here",
+      "    TRZANA_PRIVATE_KEY=your_base58_private_key_here",
       "  • Transactions signed server-side automatically",
       "",
       "Option B: External Wallet Mode (Browser Wallet + x402 Payments)",
-      "  • Edit lib/solana-config.ts: Set externalWallet = true",
+      "  • Edit lib/trezoa-config.ts: Set externalWallet = true",
       "  • Create .env.local and add:",
       "    X402_TREASURY_ADDRESS=your_treasury_wallet_here",
       "  • Users connect Phantom/Solflare and sign transactions",
@@ -88,10 +88,10 @@
       "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
       "",
       "Optional: Add custom RPC endpoint to .env.local:",
-      "SOLANA_RPC_URL=https://your-rpc-endpoint.com",
+      "TRZANA_RPC_URL=https://your-rpc-endpoint.com",
       "",
       "To generate a new wallet (for private key mode):",
-      "npx ts-node -e \"import { Keypair } from '@solana/web3.js'; import bs58 from 'bs58'; const wallet = Keypair.generate(); console.log('Public Key:', wallet.publicKey.toString()); console.log('Private Key (base58):', bs58.encode(wallet.secretKey));\"",
+      "npx ts-node -e \"import { Keypair } from '@trezoa/web3.js'; import bs58 from 'bs58'; const wallet = Keypair.generate(); console.log('Public Key:', wallet.publicKey.toString()); console.log('Private Key (base58):', bs58.encode(wallet.secretKey));\"",
       "",
       "Start the development server:",
       "+{pm} dev",
@@ -103,7 +103,7 @@
       "1. Deploy your app or use ngrok for local testing",
       "2. In ChatGPT, go to Settings → Connectors → Create",
       "3. Add your MCP server URL: https://your-app.vercel.app/mcp",
-      "4. Start using Solana commands in ChatGPT!",
+      "4. Start using Trezoa commands in ChatGPT!",
       "",
       "⚠️  Security: Never share your private key or commit .env.local to git",
       "",
@@ -114,7 +114,7 @@
       "  • Security best practices"
     ],
     "rename": {
-      "solana-chatgpt-kit": {
+      "trezoa-chatgpt-kit": {
         "to": "{{name}}",
         "paths": [
           "package.json"

@@ -9,12 +9,12 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useClusterState, useSolanaClient } from '@solana/react-hooks'
-import { CLUSTERS, resolveCluster } from '@/components/solana/clusters'
+import { useClusterState, useTrezoaClient } from '@trezoa/react-hooks'
+import { CLUSTERS, resolveCluster } from '@/components/trezoa/clusters'
 
 export function ClusterDropdown() {
   const clusterState = useClusterState()
-  const client = useSolanaClient()
+  const client = useTrezoaClient()
   const cluster = resolveCluster(clusterState.endpoint)
 
   return (

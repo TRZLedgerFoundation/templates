@@ -1,13 +1,13 @@
 use std::env;
 use std::str::FromStr;
 use anyhow::{Context, Result};
-use solana_sdk::pubkey::Pubkey;
+use trezoa_sdk::pubkey::Pubkey;
 
 #[derive(Clone, Debug)]
 pub struct Config {
     pub receiver_address: String,
-    pub solana_network: String,
-    pub solana_rpc_url: String,
+    pub trezoa_network: String,
+    pub trezoa_rpc_url: String,
     pub usdc_mint: String,
     pub default_price: u64,
     pub host: String,
@@ -24,18 +24,18 @@ impl Config {
             .context("RECEIVER_WALLET_ADDRESS must be set in .env")?;
 
         Pubkey::from_str(&receiver_address)
-            .context("RECEIVER_WALLET_ADDRESS must be a valid Solana public key")?;
+            .context("RECEIVER_WALLET_ADDRESS must be a valid Trezoa public key")?;
 
         Ok(Self {
             // Required fields
             receiver_address,
 
             // Optionals with default
-            solana_network: env::var("SOLANA_NETWORK")
-                .unwrap_or_else(|_| "solana-devnet".to_string()),
+            trezoa_network: env::var("TRZANA_NETWORK")
+                .unwrap_or_else(|_| "trezoa-devnet".to_string()),
 
-            solana_rpc_url: env::var("SOLANA_RPC_URL")
-                .unwrap_or_else(|_| "https://api.devnet.solana.com".to_string()),
+            trezoa_rpc_url: env::var("TRZANA_RPC_URL")
+                .unwrap_or_else(|_| "https://api.devnet.trezoa.com".to_string()),
 
             usdc_mint: env::var("USDC_MINT_ADDRESS")
                 .unwrap_or_else(|_| {

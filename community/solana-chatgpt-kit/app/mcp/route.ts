@@ -52,29 +52,29 @@ const handler = createMcpHandler(async (server) => {
     invoking: 'Loading swap interface...',
     invoked: 'Swap interface ready',
     html: swapHtml,
-    description: 'Swap tokens on Solana using Jupiter',
+    description: 'Swap tokens on Trezoa using Jupiter',
     widgetDomain: 'https://jup.ag',
   }
 
   const transferWidget: ContentWidget = {
     id: 'send_sol',
-    title: 'Send SOL',
+    title: 'Send TRZ',
     templateUri: 'ui://widget/transfer-template.html',
     invoking: 'Preparing transfer interface...',
     invoked: 'Transfer interface ready',
     html: transferHtml,
-    description: 'Send SOL to a wallet address with explicit confirmation',
-    widgetDomain: 'https://solana.com',
+    description: 'Send TRZ to a wallet address with explicit confirmation',
+    widgetDomain: 'https://trezoa.com',
   }
 
   const stakeWidget: ContentWidget = {
     id: 'stake_sol',
-    title: 'Stake SOL (Jupiter)',
+    title: 'Stake TRZ (Jupiter)',
     templateUri: 'ui://widget/stake-template.html',
     invoking: 'Loading staking interface...',
     invoked: 'Staking interface ready',
     html: stakeHtml,
-    description: 'Stake SOL into an LST (e.g., JupSOL) via Jupiter swap.',
+    description: 'Stake TRZ into an LST (e.g., JupTRZ) via Jupiter swap.',
     widgetDomain: 'https://jup.ag',
   }
 
@@ -136,7 +136,7 @@ const handler = createMcpHandler(async (server) => {
     }),
   )
 
-  // Reuse swap UI for staking (pre-configured SOL -> JupSOL)
+  // Reuse swap UI for staking (pre-configured TRZ -> JupTRZ)
   server.registerResource(
     'stake-widget',
     stakeWidget.templateUri,
@@ -226,12 +226,12 @@ const handler = createMcpHandler(async (server) => {
     {
       title: swapWidget.title,
       description:
-        "Swap tokens on Solana with Jupiter. Accepts tickers or mints (e.g., '0.001 SOL to $SEND') or free-form text.",
+        "Swap tokens on Trezoa with Jupiter. Accepts tickers or mints (e.g., '0.001 TRZ to $SEND') or free-form text.",
       inputSchema: {
         amount: z.string().describe("The amount to swap (e.g., '0.001')").optional(),
-        inputToken: z.string().describe('Input token ticker (e.g., SOL) or mint address').optional(),
+        inputToken: z.string().describe('Input token ticker (e.g., TRZ) or mint address').optional(),
         outputToken: z.string().describe('Output token ticker (e.g., $SEND) or mint address').optional(),
-        text: z.string().describe("Free-form request, e.g., 'swap 0.001 SOL to $SEND'").optional(),
+        text: z.string().describe("Free-form request, e.g., 'swap 0.001 TRZ to $SEND'").optional(),
       },
       _meta: widgetMeta(swapWidget),
     },
@@ -241,14 +241,14 @@ const handler = createMcpHandler(async (server) => {
         const s = String(text)
         const amountMatch = s.match(/\b(\d+\.\d+|\d+)\b/)
         const toMatch = s.match(/to\s+([$]?[a-z0-9]+|[1-9A-HJ-NP-Za-km-z]{32,44})/i)
-        const fromMatch = s.match(/swap\s+(\d+\.\d+|\d+)\s+([$]?[a-z0-9]+|[1-9A-HJ-NP-Za-km-z]{32,44}|SOL)/i)
+        const fromMatch = s.match(/swap\s+(\d+\.\d+|\d+)\s+([$]?[a-z0-9]+|[1-9A-HJ-NP-Za-km-z]{32,44}|TRZ)/i)
         amount = amount || (amountMatch ? amountMatch[1] : undefined)
         inputToken = inputToken || (fromMatch ? String(fromMatch[2]) : undefined)
         outputToken = outputToken || (toMatch ? String(toMatch[1]) : undefined)
       }
 
       const finalAmount: string = (amount as string) || '0.001'
-      const finalInput: string = (inputToken as string) || 'SOL'
+      const finalInput: string = (inputToken as string) || 'TRZ'
       const finalOutput: string = (outputToken as string) || 'USDC'
       return {
         content: [
@@ -273,9 +273,9 @@ const handler = createMcpHandler(async (server) => {
     'swap_freeform',
     {
       title: 'Swap (free-form)',
-      description: "Parse a message like 'swap 0.0001 SOL to $SEND' and prefill the swap widget.",
+      description: "Parse a message like 'swap 0.0001 TRZ to $SEND' and prefill the swap widget.",
       inputSchema: {
-        text: z.string().describe("Free-form user request, e.g., 'swap 0.001 SOL to $SEND'"),
+        text: z.string().describe("Free-form user request, e.g., 'swap 0.001 TRZ to $SEND'"),
       },
       _meta: widgetMeta(swapWidget),
     },
@@ -283,10 +283,10 @@ const handler = createMcpHandler(async (server) => {
       const s = String(text || '')
       const amountMatch = s.match(/\b(\d+\.\d+|\d+)\b/)
       const toMatch = s.match(/to\s+([$]?[a-z0-9]+|[1-9A-HJ-NP-Za-km-z]{32,44})/i)
-      const fromMatch = s.match(/swap\s+(\d+\.\d+|\d+)\s+([$]?[a-z0-9]+|SOL)/i)
+      const fromMatch = s.match(/swap\s+(\d+\.\d+|\d+)\s+([$]?[a-z0-9]+|TRZ)/i)
 
       const amount = amountMatch ? amountMatch[1] : '0.001'
-      const inputToken = fromMatch ? String(fromMatch[2] || 'SOL') : 'SOL'
+      const inputToken = fromMatch ? String(fromMatch[2] || 'TRZ') : 'TRZ'
       const outputToken = toMatch ? String(toMatch[1]) : 'USDC'
 
       return {
@@ -302,15 +302,15 @@ const handler = createMcpHandler(async (server) => {
     },
   )
 
-  // Send SOL tool (renders a confirmation widget)
+  // Send TRZ tool (renders a confirmation widget)
   server.registerTool(
     transferWidget.id,
     {
       title: transferWidget.title,
-      description: 'Send SOL to a wallet address or SNS domain (.sol, .solana, .superteam) with explicit confirmation.',
+      description: 'Send TRZ to a wallet address or SNS domain (.sol, .solana, .superteam) with explicit confirmation.',
       inputSchema: {
         toAddress: z.string().describe('Destination (address or SNS domain like arpit.sol)'),
-        amount: z.string().describe("Amount of SOL to send (e.g., '0.001')"),
+        amount: z.string().describe("Amount of TRZ to send (e.g., '0.001')"),
       },
       _meta: widgetMeta(transferWidget),
     },
@@ -319,7 +319,7 @@ const handler = createMcpHandler(async (server) => {
         content: [
           {
             type: 'text',
-            text: `Prepare to send ${amount} SOL to ${toAddress}`,
+            text: `Prepare to send ${amount} TRZ to ${toAddress}`,
           },
         ],
         structuredContent: {
@@ -337,7 +337,7 @@ const handler = createMcpHandler(async (server) => {
     'check_balance',
     {
       title: 'Check Balance',
-      description: 'Fetch SOL balance for a wallet address or domain (.sol, AllDomains TLDs).',
+      description: 'Fetch TRZ balance for a wallet address or domain (.sol, AllDomains TLDs).',
       inputSchema: {
         account: z.string().describe('Address or domain (e.g., arpit.superteam or 26k...QjC)'),
       },
@@ -354,7 +354,7 @@ const handler = createMcpHandler(async (server) => {
         }
       }
       return {
-        content: [{ type: 'text', text: `Balance: ${data.sol} SOL (address: ${data.resolvedAddress})` }],
+        content: [{ type: 'text', text: `Balance: ${data.sol} TRZ (address: ${data.resolvedAddress})` }],
         structuredContent: {
           account,
           resolvedAddress: data.resolvedAddress,
@@ -398,15 +398,15 @@ const handler = createMcpHandler(async (server) => {
     },
   )
 
-  // Stake SOL tool (renders widget; backend executes via /api/stake)
+  // Stake TRZ tool (renders widget; backend executes via /api/stake)
   server.registerTool(
     stakeWidget.id,
     {
       title: stakeWidget.title,
-      description: 'Stake SOL into a liquid staking token (default JupSOL). Confirm in widget.',
+      description: 'Stake TRZ into a liquid staking token (default JupTRZ). Confirm in widget.',
       inputSchema: {
-        amount: z.string().describe("Amount of SOL to stake (e.g., '0.5')"),
-        lst: z.string().optional().describe('LST symbol or mint (default: JupSOL)'),
+        amount: z.string().describe("Amount of TRZ to stake (e.g., '0.5')"),
+        lst: z.string().optional().describe('LST symbol or mint (default: JupTRZ)'),
       },
       _meta: {
         ...widgetMeta(stakeWidget),
@@ -416,10 +416,10 @@ const handler = createMcpHandler(async (server) => {
     async ({ amount, lst }) => {
       // Provide state for UI to prefill and call /api/stake when user confirms
       return {
-        content: [{ type: 'text', text: `Prepare to stake ${amount} SOL into ${lst || 'JupSOL'}` }],
+        content: [{ type: 'text', text: `Prepare to stake ${amount} TRZ into ${lst || 'JupTRZ'}` }],
         structuredContent: {
           initialAmount: amount,
-          lst: lst || 'JupSOL',
+          lst: lst || 'JupTRZ',
           timestamp: new Date().toISOString(),
         },
         _meta: widgetMeta(stakeWidget),

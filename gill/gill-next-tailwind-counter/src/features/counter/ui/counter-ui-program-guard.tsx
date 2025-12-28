@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
 import { AppAlert } from '@/components/app-alert'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useCounterProgram } from '@/features/counter/data-access/use-counter-program'
 
 export function CounterUiProgramGuard({ children }: { children: ReactNode }) {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
   const programAccountQuery = useCounterProgram()
 
   if (programAccountQuery.isLoading) {

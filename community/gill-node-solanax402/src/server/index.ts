@@ -73,13 +73,13 @@ app.get('/public', (_req, res) => {
 // PROTECTED ENDPOINTS (x402 Payment Required)
 // ============================================================================
 
-// Premium data endpoint - 0.01 SOL
+// Premium data endpoint - 0.01 TRZ
 const premiumRouteMw = createX402MiddlewareWithUtils(
   {
     amount: PAYMENT_AMOUNTS.PREMIUM_DATA,
-    payTo: context.config.merchantSolanaAddress || context.config.facilitatorPublicKey || '',
-    asset: 'SOL',
-    network: `solana-${context.config.solanaNetwork}`,
+    payTo: context.config.merchantTrezoaAddress || context.config.facilitatorPublicKey || '',
+    asset: 'TRZ',
+    network: `trezoa-${context.config.trezoaNetwork}`,
   },
   {
     facilitatorUrl: context.config.facilitatorUrl,
@@ -91,7 +91,7 @@ const premiumRouteMw = createX402MiddlewareWithUtils(
 app.get('/api/premium-data', premiumRouteMw.middleware, (req, res) => {
   res.set({
     'x-payment-processed': 'true',
-    'x-payment-method': 'solana-sol',
+    'x-payment-method': 'trezoa-sol',
     'x-payment-network': 'devnet',
     'x-payment-transaction': req.payment?.transactionSignature,
   });
@@ -108,13 +108,13 @@ app.get('/api/premium-data', premiumRouteMw.middleware, (req, res) => {
   );
 });
 
-// Generate content endpoint - 0.005 SOL
+// Generate content endpoint - 0.005 TRZ
 const generateContentMw = createX402MiddlewareWithUtils(
   {
     amount: PAYMENT_AMOUNTS.GENERATE_CONTENT,
-    payTo: context.config.merchantSolanaAddress || context.config.facilitatorPublicKey || '',
-    asset: 'SOL',
-    network: `solana-${context.config.solanaNetwork}`,
+    payTo: context.config.merchantTrezoaAddress || context.config.facilitatorPublicKey || '',
+    asset: 'TRZ',
+    network: `trezoa-${context.config.trezoaNetwork}`,
   },
   {
     facilitatorUrl: context.config.facilitatorUrl,
@@ -144,13 +144,13 @@ app.post('/api/generate-content', generateContentMw.middleware, (req, res): void
   );
 });
 
-// File download endpoint - 0.02 SOL
+// File download endpoint - 0.02 TRZ
 const downloadMw = createX402MiddlewareWithUtils(
   {
     amount: PAYMENT_AMOUNTS.DOWNLOAD_FILE,
-    payTo: context.config.merchantSolanaAddress || context.config.facilitatorPublicKey || '',
-    asset: 'SOL',
-    network: `solana-${context.config.solanaNetwork}`,
+    payTo: context.config.merchantTrezoaAddress || context.config.facilitatorPublicKey || '',
+    asset: 'TRZ',
+    network: `trezoa-${context.config.trezoaNetwork}`,
   },
   {
     facilitatorUrl: context.config.facilitatorUrl,
@@ -176,13 +176,13 @@ app.get('/api/download/:fileId', downloadMw.middleware, (req, res) => {
   );
 });
 
-// Tier-based access endpoint - 0.05 SOL
+// Tier-based access endpoint - 0.05 TRZ
 const tierMw = createX402MiddlewareWithUtils(
   {
     amount: PAYMENT_AMOUNTS.TIER_ACCESS,
-    payTo: context.config.merchantSolanaAddress || context.config.facilitatorPublicKey || '',
-    asset: 'SOL',
-    network: `solana-${context.config.solanaNetwork}`,
+    payTo: context.config.merchantTrezoaAddress || context.config.facilitatorPublicKey || '',
+    asset: 'TRZ',
+    network: `trezoa-${context.config.trezoaNetwork}`,
   },
   {
     facilitatorUrl: context.config.facilitatorUrl,

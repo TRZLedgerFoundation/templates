@@ -1,14 +1,14 @@
 {
   "name": "gill-node-script",
   "displayName": "Node Server",
-  "description": "Node.js script with gill (based on @solana/kit)",
+  "description": "Node.js script with gill (based on @trezoa/kit)",
   "usecase": "Backend",
   "keywords": [
     "gill",
     "node",
-    "solana-kit"
+    "trezoa-kit"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",

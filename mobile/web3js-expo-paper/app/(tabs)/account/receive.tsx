@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { AccountFeatureReceive } from '@/components/account/account-feature-receive'
 import { AppView } from '@/components/app-view'
 

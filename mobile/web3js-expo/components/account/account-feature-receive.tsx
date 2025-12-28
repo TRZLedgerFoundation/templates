@@ -1,6 +1,6 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { AppQrCode } from '@/components/app-qr-code'
 import { Button } from '@react-navigation/elements'
 import Clipboard from '@react-native-clipboard/clipboard'

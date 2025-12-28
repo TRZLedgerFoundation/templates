@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { PublicKey, Keypair } from '@solana/web3.js'
+import { PublicKey, Keypair } from '@trezoa/web3.js'
 import BN from 'bn.js'
 import bs58 from 'bs58'
-import { useWalletSession } from '@solana/react-hooks'
+import { useWalletSession } from '@trezoa/react-hooks'
 import { mintTo } from '@lightprotocol/compressed-token'
 import { parseRecipients, calculateBatches, createRpcConnection } from './airdrop-utils'
 import type { AirdropData, AirdropConfig, AirdropProgress } from './airdrop-types'

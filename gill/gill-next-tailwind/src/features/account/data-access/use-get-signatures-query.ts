@@ -1,10 +1,10 @@
 import type { Address } from 'gill'
 import { useQuery } from '@tanstack/react-query'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useGetSignaturesQueryKey } from './use-get-signatures-query-key'
 
 export function useGetSignaturesQuery({ address }: { address: Address }) {
-  const { client } = useSolana()
+  const { client } = useTrezoa()
 
   return useQuery({
     queryKey: useGetSignaturesQueryKey({ address }),

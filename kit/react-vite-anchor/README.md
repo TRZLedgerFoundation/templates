@@ -1,11 +1,11 @@
 # vite-anchor
 
-React + Vite starter with Tailwind CSS, `@solana/react-hooks`, and an Anchor vault program example.
+React + Vite starter with Tailwind CSS, `@trezoa/react-hooks`, and an Anchor vault program example.
 
 ## Getting Started
 
 ```shell
-npx create-solana-dapp@latest -t kit/vite-anchor
+npx create-trezoa-dapp@latest -t kit/vite-anchor
 ```
 
 ```shell
@@ -17,9 +17,9 @@ Open [http://localhost:5173](http://localhost:5173), connect your wallet, and in
 
 ## What's Included
 
-- **Wallet connection** via `@solana/react-hooks` with auto-discovery
-- **SOL Vault program** - deposit and withdraw SOL from a personal PDA vault
-- **Codama-generated client** - type-safe program interactions using `@solana/kit`
+- **Wallet connection** via `@trezoa/react-hooks` with auto-discovery
+- **TRZ Vault program** - deposit and withdraw TRZ from a personal PDA vault
+- **Codama-generated client** - type-safe program interactions using `@trezoa/kit`
 - **Tailwind CSS v4** with light/dark mode
 
 ## Stack
@@ -28,8 +28,8 @@ Open [http://localhost:5173](http://localhost:5173), connect your wallet, and in
 | -------------- | --------------------------------------- |
 | Frontend       | React 19, Vite, TypeScript              |
 | Styling        | Tailwind CSS v4                         |
-| Solana Client  | `@solana/client`, `@solana/react-hooks` |
-| Program Client | Codama-generated, `@solana/kit`         |
+| Trezoa Client  | `@trezoa/client`, `@trezoa/react-hooks` |
+| Program Client | Codama-generated, `@trezoa/kit`         |
 | Program        | Anchor (Rust)                           |
 
 ## Project Structure
@@ -38,7 +38,7 @@ Open [http://localhost:5173](http://localhost:5173), connect your wallet, and in
 ├── src/
 │   ├── App.tsx               # Main app with wallet UI
 │   ├── VaultCard.tsx         # Vault deposit/withdraw UI
-│   ├── providers.tsx         # Solana client setup
+│   ├── providers.tsx         # Trezoa client setup
 │   ├── generated/vault/      # Codama-generated program client
 │   └── main.tsx              # Entry point
 ├── anchor/                   # Anchor workspace
@@ -53,12 +53,12 @@ The included vault program is already deployed to devnet. To deploy your own:
 ### Prerequisites
 
 - [Rust](https://rustup.rs/)
-- [Solana CLI](https://solana.com/docs/intro/installation)
+- [Trezoa CLI](https://trezoa.com/docs/intro/installation)
 - [Anchor](https://www.anchor-lang.com/docs/installation)
 
 ### Steps
 
-1. **Configure Solana CLI for devnet**
+1. **Configure Trezoa CLI for devnet**
 
    ```bash
    solana config set --url devnet
@@ -67,8 +67,8 @@ The included vault program is already deployed to devnet. To deploy your own:
 2. **Create a wallet (if needed) and fund it**
 
    ```bash
-   solana-keygen new
-   solana airdrop 2
+   trezoa-keygen new
+   trezoa airdrop 2
    ```
 
 3. **Build and deploy the program**
@@ -90,7 +90,7 @@ The included vault program is already deployed to devnet. To deploy your own:
 
 ## Testing
 
-Tests use [LiteSVM](https://github.com/LiteSVM/litesvm), a fast lightweight Solana VM for testing.
+Tests use [LiteSVM](https://github.com/LiteSVM/litesvm), a fast lightweight Trezoa VM for testing.
 
 ```bash
 npm run anchor-build   # Build the program first
@@ -111,8 +111,8 @@ This uses [Codama](https://github.com/codama-idl/codama) to generate a type-safe
 
 ## Learn More
 
-- [Solana Docs](https://solana.com/docs) - core concepts and guides
+- [Trezoa Docs](https://trezoa.com/docs) - core concepts and guides
 - [Anchor Docs](https://www.anchor-lang.com/docs) - program development framework
-- [Deploying Programs](https://solana.com/docs/programs/deploying) - deployment guide
-- [framework-kit](https://github.com/solana-foundation/framework-kit) - the React hooks used here
+- [Deploying Programs](https://trezoa.com/docs/programs/deploying) - deployment guide
+- [framework-kit](https://github.com/trezoa-foundation/framework-kit) - the React hooks used here
 - [Codama](https://github.com/codama-idl/codama) - client generation from IDL

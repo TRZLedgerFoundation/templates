@@ -1,14 +1,14 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { useSolanaClient, useClusterState } from '@solana/react-hooks'
+import { useTrezoaClient, useClusterState } from '@trezoa/react-hooks'
 import { getTokenAccountsByOwner } from './get-token-accounts-by-owner'
 
 const TOKEN_PROGRAM_ID = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
 const TOKEN_2022_PROGRAM_ID = 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb'
 
 export function useGetTokenAccountsQuery({ address }: { address: string }) {
-  const client = useSolanaClient()
+  const client = useTrezoaClient()
   const cluster = useClusterState()
   const [data, setData] = useState<any[] | undefined>()
   const [isLoading, setIsLoading] = useState(true)

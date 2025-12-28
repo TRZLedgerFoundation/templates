@@ -1,14 +1,14 @@
 # gill-node-express
 
-Simple node Express API that comes with [gill](https://github.com/solana-foundation/gill)
-based on [@solana/kit](https://github.com/anza-xyz/kit).
+Simple node Express API that comes with [gill](https://github.com/trezoa-foundation/gill)
+based on [@trezoa/kit](https://github.com/anza-xyz/kit).
 
 ## Getting started
 
 Clone the repo:
 
 ```shell
-git clone https://github.com/solana-foundation/templates
+git clone https://github.com/trezoa-foundation/templates
 cd templates/gill/gill-node-express
 ```
 
@@ -50,8 +50,8 @@ npm run docker:run
 
 The following environment variables can be used to configure the API:
 
-- `SOLANA_RPC_ENDPOINT`: The Solana RPC endpoint to use. Defaults to `devnet`.
-- `SOLANA_SIGNER_PATH`: The path to the keypair signer file. Defaults to `./keypair-signer.json`.
+- `TRZANA_RPC_ENDPOINT`: The Trezoa RPC endpoint to use. Defaults to `devnet`.
+- `TRZANA_SIGNER_PATH`: The path to the keypair signer file. Defaults to `./keypair-signer.json`.
 - `CORS_ORIGINS`: A comma-separated list of allowed origins for CORS. Defaults to `*`.
 
 ## Examples (curl)

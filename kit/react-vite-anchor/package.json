@@ -1,16 +1,16 @@
 {
   "name": "react-vite-anchor",
-  "description": "React + Vite, Tailwind, @solana/react-hooks, Anchor vault program",
+  "description": "React + Vite, Tailwind, @trezoa/react-hooks, Anchor vault program",
   "keywords": [
-    "anchor",
+    "trezoaanchor",
     "kit",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript",
     "vite"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "rename": {
       "scaffold": {
         "to": "{{name}}",
@@ -24,8 +24,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "anchor-build": "cd anchor && anchor build",
-    "anchor-test": "cd anchor && anchor test --skip-deploy",
+    "anchor-build": "cd trezoaanchor && trezoaanchor build",
+    "anchor-test": "cd trezoaanchor && trezoaanchor test --skip-deploy",
     "build": "tsc -b && vite build",
     "ci": "npm run build && npm run lint && npm run format:check",
     "codama:js": "codama run js",
@@ -37,9 +37,9 @@
     "setup": "npm run anchor-build && npm run codama:js"
   },
   "dependencies": {
-    "@solana/client": "^1.2.0",
-    "@solana/kit": "^5.1.0",
-    "@solana/react-hooks": "^1.1.5",
+    "@trezoa/client": "^1.2.0",
+    "@trezoa/kit": "^5.1.0",
+    "@trezoa/react-hooks": "^1.1.5",
     "@tailwindcss/vite": "^4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

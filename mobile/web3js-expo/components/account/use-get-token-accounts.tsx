@@ -1,7 +1,7 @@
-import { PublicKey } from '@solana/web3.js'
-import { useConnection } from '@/components/solana/solana-provider'
+import { PublicKey } from '@trezoa/web3.js'
+import { useConnection } from '@/components/trezoa/trezoa-provider'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token'
+import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@trezoa/spl-token'
 
 export function useGetTokenAccountsQueryKey({ address, endpoint }: { address: PublicKey; endpoint: string }) {
   return ['get-token-accounts', { endpoint, address }]

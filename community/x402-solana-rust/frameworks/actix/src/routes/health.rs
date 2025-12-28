@@ -10,7 +10,7 @@ pub async fn health_check(config: web::Data<Arc<Config>>) -> HttpResponse {
         "status": "healthy",
         "service": "x402-rust-server",
         "framework": "actix",
-        "network": config.solana_network,
+        "network": config.trezoa_network,
         "receiver": config.receiver_address,
     }))
 }

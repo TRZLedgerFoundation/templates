@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { AppText } from '@/components/app-text'
 import { ActivityIndicator, View } from 'react-native'
 import { AppView } from '@/components/app-view'

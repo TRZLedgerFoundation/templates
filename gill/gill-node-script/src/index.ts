@@ -4,17 +4,17 @@ import 'dotenv/config'
 import c from 'kleur'
 import prompts from 'prompts'
 
-// Solana Client SDK
-import { Address, createSolanaClient, getMonikerFromGenesisHash, isAddress, lamportsToSol } from 'gill'
-// Solana Client SDK (Node.js)
+// Trezoa Client SDK
+import { Address, createTrezoaClient, getMonikerFromGenesisHash, isAddress, lamportsToSol } from 'gill'
+// Trezoa Client SDK (Node.js)
 import { loadKeypairSignerFromFile } from 'gill/node'
 
-// Get the Solana RPC endpoint from the environment variable or default to devnet
-const urlOrMoniker = process.env.SOLANA_RPC_ENDPOINT || 'devnet'
-const client = createSolanaClient({ urlOrMoniker })
+// Get the Trezoa RPC endpoint from the environment variable or default to devnet
+const urlOrMoniker = process.env.TRZANA_RPC_ENDPOINT || 'devnet'
+const client = createTrezoaClient({ urlOrMoniker })
 
-// Load the keypair from the .env file or use the default (~/.config/solana/id.json)
-const signer = await loadKeypairSignerFromFile(process.env.SOLANA_SIGNER_PATH)
+// Load the keypair from the .env file or use the default (~/.config/trezoa/id.json)
+const signer = await loadKeypairSignerFromFile(process.env.TRZANA_SIGNER_PATH)
 
 // BELOW IS AN EXAMPLE, YOU CAN REMOVE IT AND REPLACE IT WITH YOUR OWN CODE
 
@@ -22,11 +22,11 @@ const signer = await loadKeypairSignerFromFile(process.env.SOLANA_SIGNER_PATH)
 async function showBalance(address: Address) {
   const balance = await client.rpc.getBalance(address).send()
   console.log(c.gray(`Address : ${c.magenta(address)}`))
-  console.log(c.gray(`Balance : ${c.magenta(lamportsToSol(balance.value))} SOL`))
+  console.log(c.gray(`Balance : ${c.magenta(lamportsToSol(balance.value))} TRZ`))
 }
 
 // Welcome message
-console.log(c.green(c.bold('Gm! Say hi to your new Solana script!')))
+console.log(c.green(c.bold('Gm! Say hi to your new Trezoa script!')))
 
 // Show the endpoint and cluster
 console.log(c.gray(`Endpoint: ${urlOrMoniker.split('?')[0]}`))

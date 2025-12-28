@@ -1,13 +1,13 @@
 import { AppView } from '@/components/app-view'
 import { AppText } from '@/components/app-text'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import Snackbar from 'react-native-snackbar'
 import { ActivityIndicator, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { Button } from '@react-navigation/elements'
 import { useThemeColor } from '@/hooks/use-theme-color'
 import { useMutation } from '@tanstack/react-query'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { ellipsify } from '@/utils/ellipsify'
 
 function useSignMessage({ address }: { address: PublicKey }) {

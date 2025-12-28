@@ -1,8 +1,8 @@
 {
-  "name": "x402-solana-rust",
-  "displayName": "x402 Solana Rust",
+  "name": "x402-trezoa-rust",
+  "displayName": "x402 Trezoa Rust",
   "version": "1.0.0",
-  "description": "x402 payment server template for Solana with Rust",
+  "description": "x402 payment server template for Trezoa with Rust",
   "usecase": "Payments",
   "bin": {
     "create-x402": "./create.js"
@@ -20,9 +20,9 @@
     "actix",
     "rocket"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
-      "x402 Solana Rust Server Created!",
+      "x402 Trezoa Rust Server Created!",
       "",
       "Your server has been configured and is ready to use.",
       "",
@@ -41,11 +41,11 @@
       "",
       "Learn more:",
       "- x402 Protocol: https://x402.org",
-      "- Solana x402 Guide: https://solana.com/developers/guides/getstarted/intro-to-x402",
+      "- Trezoa x402 Guide: https://trezoa.com/developers/guides/getstarted/intro-to-x402",
       "- Documentation: README.md"
     ],
     "rename": {
-      "x402-solana-rust": {
+      "x402-trezoa-rust": {
         "to": "{{name}}",
         "paths": [
           "Cargo.toml",
@@ -57,7 +57,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/crypto-priest/x402-solana-rust"
+    "url": "https://github.com/crypto-priest/x402-trezoa-rust"
   },
   "license": "MIT"
 }

@@ -2,7 +2,7 @@
 
 /**
  * Generate a fixed client keypair for testing
- * Run this once to create the keypair, then fund it with devnet SOL
+ * Run this once to create the keypair, then fund it with devnet TRZ
  */
 
 import nacl from 'tweetnacl';
@@ -22,16 +22,16 @@ if (fs.existsSync(KEYPAIR_FILE)) {
   console.log();
   console.log('Public Key:', saved.publicKey);
   console.log();
-  console.log('To fund this wallet with devnet SOL:');
+  console.log('To fund this wallet with devnet TRZ:');
   console.log();
-  console.log('Option 1: Solana CLI');
-  console.log(`  solana airdrop 1 ${saved.publicKey}`);
+  console.log('Option 1: Trezoa CLI');
+  console.log(`  trezoa airdrop 1 ${saved.publicKey}`);
   console.log();
   console.log('Option 2: Web faucet');
-  console.log(`  https://faucet.solana.com/?address=${saved.publicKey}`);
+  console.log(`  https://faucet.trezoa.com/?address=${saved.publicKey}`);
   console.log();
   console.log('Check balance:');
-  console.log(`  solana balance ${saved.publicKey}`);
+  console.log(`  trezoa balance ${saved.publicKey}`);
   console.log();
   console.log('Delete keypair and regenerate:');
   console.log('  rm test-client-keypair.json && node generate-test-client.mjs');
@@ -65,20 +65,20 @@ console.log(' Saved to:', KEYPAIR_FILE);
 console.log();
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log();
-console.log(' FUND THIS WALLET WITH DEVNET SOL');
+console.log(' FUND THIS WALLET WITH DEVNET TRZ');
 console.log();
-console.log('This wallet needs SOL to make payments in tests.');
+console.log('This wallet needs TRZ to make payments in tests.');
 console.log();
-console.log('Option 1: Use Solana CLI');
-console.log(`  solana airdrop 1 ${publicKeyBase58}`);
+console.log('Option 1: Use Trezoa CLI');
+console.log(`  trezoa airdrop 1 ${publicKeyBase58}`);
 console.log();
 console.log('Option 2: Use web faucet');
-console.log(`  https://faucet.solana.com/?address=${publicKeyBase58}`);
+console.log(`  https://faucet.trezoa.com/?address=${publicKeyBase58}`);
 console.log();
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log();
 console.log('Check balance:');
-console.log(`  solana balance ${publicKeyBase58}`);
+console.log(`  trezoa balance ${publicKeyBase58}`);
 console.log();
 console.log('After funding, run tests with:');
 console.log('  node test-real-devnet.mjs');

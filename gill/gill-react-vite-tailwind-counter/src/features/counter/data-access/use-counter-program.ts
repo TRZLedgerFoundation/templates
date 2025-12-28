@@ -1,10 +1,10 @@
 import { COUNTER_PROGRAM_ADDRESS } from '@project/anchor'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useQuery } from '@tanstack/react-query'
 import { useClusterVersion } from '@/features/cluster/data-access/use-cluster-version'
 
 export function useCounterProgram() {
-  const { client, cluster } = useSolana()
+  const { client, cluster } = useTrezoa()
   const query = useClusterVersion()
 
   return useQuery({

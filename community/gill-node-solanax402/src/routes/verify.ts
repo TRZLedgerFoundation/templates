@@ -5,11 +5,11 @@
 import type { Request, Response } from 'express';
 import type { Address } from 'gill';
 import { PaymentRequest } from '../lib/payment-request.js';
-import { SolanaUtils } from '../lib/solana-utils.js';
+import { TrezoaUtils } from '../lib/trezoa-utils.js';
 import type { NonceDatabase } from '../lib/nonce-database.js';
 
 export interface VerifyRouteContext {
-  solanaUtils: SolanaUtils;
+  trezoaUtils: TrezoaUtils;
   nonceDb: NonceDatabase;
   facilitatorAddress: Address;
   maxPaymentAmount: bigint;
@@ -59,7 +59,7 @@ export function verifyPaymentRoute(context: VerifyRouteContext) {
       console.log('FACILITATOR DEBUG: Client PubKey:', clientPublicKey);
       console.log('FACILITATOR DEBUG: Signature:', signature);
 
-      const isValidSignature = context.solanaUtils.verifyStructuredDataSignature(
+      const isValidSignature = context.trezoaUtils.verifyStructuredDataSignature(
         structuredData,
         signature,
         clientPublicKey
@@ -94,11 +94,11 @@ export function verifyPaymentRoute(context: VerifyRouteContext) {
         return res.json({ isValid: false, error: 'Invalid payment amount' });
       }
 
-      if (!context.solanaUtils.isValidPublicKey(payload.recipient)) {
+      if (!context.trezoaUtils.isValidPublicKey(payload.recipient)) {
         return res.json({ isValid: false, error: 'Invalid recipient address' });
       }
 
-      if (!context.solanaUtils.isValidPublicKey(clientPublicKey)) {
+      if (!context.trezoaUtils.isValidPublicKey(clientPublicKey)) {
         return res.json({ isValid: false, error: 'Invalid client public key' });
       }
 

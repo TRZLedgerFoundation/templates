@@ -62,7 +62,7 @@ anchor/deploy-wallet.json
 /anchor/target/debug
 /anchor/target/deploy
 /anchor/target/release
-/anchor/target/sbf-solana-solana
+/anchor/target/sbf-trezoa-trezoa
 /anchor/target/test-ledger
 /anchor/target/.rustc_info.json
 test-ledger

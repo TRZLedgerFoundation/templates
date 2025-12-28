@@ -1,6 +1,6 @@
-import { useWallet } from '@solana/wallet-adapter-react'
+import { useWallet } from '@trezoa/wallet-adapter-react'
 import { ExplorerLink } from '@/components/cluster/cluster-ui'
-import { WalletButton } from '@/components/solana/solana-provider'
+import { WalletButton } from '@/components/trezoa/trezoa-provider'
 import { AppHero } from '@/components/app-hero'
 import { ellipsify } from '@/lib/utils'
 import { useBasicProgram } from './basic-data-access'

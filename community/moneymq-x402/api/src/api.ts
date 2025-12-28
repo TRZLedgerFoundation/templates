@@ -1,5 +1,5 @@
 import express from 'express'
-import { Network, paymentMiddleware, SolanaAddress } from 'x402-express'
+import { Network, paymentMiddleware, TrezoaAddress } from 'x402-express'
 import { config } from 'dotenv'
 import path from 'path'
 
@@ -10,7 +10,7 @@ type Resource = `${string}://${string}`
 const API_PORT = process.env.API_PORT || 4021
 const FACILITATOR_URL = (process.env.FACILITATOR_URL as Resource) || 'http://localhost:3000'
 const NETWORK = (process.env.NETWORK || 'solana') as Network
-const PAYOUT_RECIPIENT_ADDRESS = process.env.PAYOUT_RECIPIENT_ADDRESS as SolanaAddress
+const PAYOUT_RECIPIENT_ADDRESS = process.env.PAYOUT_RECIPIENT_ADDRESS as TrezoaAddress
 
 if (!PAYOUT_RECIPIENT_ADDRESS) {
   throw new Error('PAYOUT_RECIPIENT_ADDRESS is not set')

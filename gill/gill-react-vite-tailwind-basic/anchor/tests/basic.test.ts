@@ -1,6 +1,6 @@
 import {
   Blockhash,
-  createSolanaClient,
+  createTrezoaClient,
   createTransaction,
   Instruction,
   KeyPairSigner,
@@ -9,7 +9,7 @@ import {
 import { getGreetInstruction } from '../src'
 import { loadKeypairSignerFromFile } from 'gill/node'
 
-const { rpc, sendAndConfirmTransaction } = createSolanaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
+const { rpc, sendAndConfirmTransaction } = createTrezoaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
 describe('basic', () => {
   let payer: KeyPairSigner
 

@@ -1,6 +1,6 @@
 'use client'
 import { useAuth } from '@/components/auth/auth-provider'
-import { useWalletConnection } from '@solana/react-hooks'
+import { useWalletConnection } from '@trezoa/react-hooks'
 
 export const useCombinedSignOut = () => {
   const { signOut } = useAuth()

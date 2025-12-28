@@ -17,7 +17,7 @@ fn rocket() -> _ {
 
     log::info!("Starting x402 Rust Server (Rocket)");
     log::info!("Receiver: {}", config.receiver_address);
-    log::info!("Network: {}", config.solana_network);
+    log::info!("Network: {}", config.trezoa_network);
 
     let addr = config.server_address();
     log::info!("Server listening on http://{}", addr);

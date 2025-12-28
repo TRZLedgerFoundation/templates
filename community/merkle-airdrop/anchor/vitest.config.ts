@@ -12,7 +12,7 @@ export default defineConfig({
     include: ['tests/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     exclude: ['node_modules', 'dist', 'target'],
     env: {
-      ANCHOR_PROVIDER_URL: 'https://api.devnet.solana.com',
+      ANCHOR_PROVIDER_URL: 'https://api.devnet.trezoa.com',
       ANCHOR_WALLET: './deploy-wallet.json',
     },
   },

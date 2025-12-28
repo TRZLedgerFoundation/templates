@@ -42,7 +42,7 @@ export function useAirdropClaim(): UseAirdropClaimResult {
       setStatus('Success!')
       console.log('Claim result:', result)
       alert(
-        `Airdrop claimed successfully!\nAmount: ${parseInt(result.amount) / 1e9} SOL\nSignature: ${result.signature}`,
+        `Airdrop claimed successfully!\nAmount: ${parseInt(result.amount) / 1e9} TRZ\nSignature: ${result.signature}`,
       )
     } catch (error) {
       console.error('Error:', error)

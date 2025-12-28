@@ -1,5 +1,5 @@
 /**
- * x402 Solana Facilitator Application
+ * x402 Trezoa Facilitator Application
  * TypeScript implementation using Gill SDK with Gill template patterns
  */
 
@@ -45,7 +45,7 @@ app.get(
 app.post(
   '/verify',
   verifyPaymentRoute({
-    solanaUtils: context.solanaUtils,
+    trezoaUtils: context.solanaUtils,
     nonceDb: context.nonceDb,
     facilitatorAddress: context.facilitatorAddress,
     maxPaymentAmount: context.config.maxPaymentAmount,
@@ -55,7 +55,7 @@ app.post(
 app.post(
   '/settle',
   settlePaymentRoute({
-    solanaUtils: context.solanaUtils,
+    trezoaUtils: context.solanaUtils,
     nonceDb: context.nonceDb,
     facilitatorAddress: context.facilitatorAddress,
     facilitatorKeypair: context.facilitatorKeypair,
@@ -106,7 +106,7 @@ async function start() {
     app.listen(context.config.port, () => {
       context.log.info(`Facilitator App running on port ${context.config.port}`);
       context.log.info(`Facilitator Public Key: ${context.facilitatorAddress.toString()}`);
-      context.log.info(`Solana RPC: ${context.config.solanaRpcUrl}`);
+      context.log.info(`Trezoa RPC: ${context.config.solanaRpcUrl}`);
       context.log.info(`Simulation Mode: ${context.config.simulateTransactions}`);
     });
   } catch (error) {

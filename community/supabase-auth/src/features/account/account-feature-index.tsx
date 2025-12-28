@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { useWalletSession } from '@solana/react-hooks'
+import { useWalletSession } from '@trezoa/react-hooks'
 import { WalletDropdown } from '@/components/wallet-dropdown'
 
 export default function AccountFeatureIndex() {

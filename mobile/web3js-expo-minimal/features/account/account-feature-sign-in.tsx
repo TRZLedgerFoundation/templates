@@ -1,4 +1,4 @@
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { Button, View } from 'react-native'
 import { appStyles } from '@/constants/app-styles'
 import { useMobileWalletAdapter } from '@wallet-ui/react-native-web3js'

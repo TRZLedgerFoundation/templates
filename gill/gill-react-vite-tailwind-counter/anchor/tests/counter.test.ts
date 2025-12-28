@@ -1,10 +1,10 @@
 import {
   Blockhash,
-  createSolanaClient,
+  createTrezoaClient,
   createTransaction,
   generateKeyPairSigner,
   Instruction,
-  isSolanaError,
+  isTrezoaError,
   KeyPairSigner,
   signTransactionMessageWithSigners,
 } from 'gill'
@@ -18,7 +18,7 @@ import {
 } from '../src'
 import { loadKeypairSignerFromFile } from 'gill/node'
 
-const { rpc, sendAndConfirmTransaction } = createSolanaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
+const { rpc, sendAndConfirmTransaction } = createTrezoaClient({ urlOrMoniker: process.env.ANCHOR_PROVIDER_URL! })
 
 describe('counter', () => {
   let payer: KeyPairSigner
@@ -113,7 +113,7 @@ describe('counter', () => {
     try {
       await fetchCounter(rpc, counter.address)
     } catch (e) {
-      if (!isSolanaError(e)) {
+      if (!isTrezoaError(e)) {
         throw new Error(`Unexpected error: ${e}`)
       }
       expect(e.message).toEqual(`Account not found at address: ${counter.address}`)

@@ -1,9 +1,9 @@
-import { clusterApiUrl, Connection } from '@solana/web3.js'
+import { clusterApiUrl, Connection } from '@trezoa/web3.js'
 import { atom, useAtomValue, useSetAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import React, { createContext, useContext } from 'react'
 
-export interface SolanaCluster {
+export interface TrezoaCluster {
   name: string
   endpoint: string
   network?: ClusterNetwork
@@ -20,7 +20,7 @@ export enum ClusterNetwork {
 // By default, we don't configure the mainnet-beta cluster
 // The endpoint provided by clusterApiUrl('mainnet-beta') does not allow access from the browser due to CORS restrictions
 // To use the mainnet-beta cluster, provide a custom endpoint
-export const defaultClusters: SolanaCluster[] = [
+export const defaultClusters: TrezoaCluster[] = [
   {
     name: 'devnet',
     endpoint: clusterApiUrl('devnet'),
@@ -34,10 +34,10 @@ export const defaultClusters: SolanaCluster[] = [
   },
 ]
 
-const clusterAtom = atomWithStorage<SolanaCluster>('solana-cluster', defaultClusters[0])
-const clustersAtom = atomWithStorage<SolanaCluster[]>('solana-clusters', defaultClusters)
+const clusterAtom = atomWithStorage<TrezoaCluster>('trezoa-cluster', defaultClusters[0])
+const clustersAtom = atomWithStorage<TrezoaCluster[]>('trezoa-clusters', defaultClusters)
 
-const activeClustersAtom = atom<SolanaCluster[]>((get) => {
+const activeClustersAtom = atom<TrezoaCluster[]>((get) => {
   const clusters = get(clustersAtom)
   const cluster = get(clusterAtom)
   return clusters.map((item) => ({
@@ -46,18 +46,18 @@ const activeClustersAtom = atom<SolanaCluster[]>((get) => {
   }))
 })
 
-const activeClusterAtom = atom<SolanaCluster>((get) => {
+const activeClusterAtom = atom<TrezoaCluster>((get) => {
   const clusters = get(activeClustersAtom)
 
   return clusters.find((item) => item.active) || clusters[0]
 })
 
 export interface ClusterProviderContext {
-  cluster: SolanaCluster
-  clusters: SolanaCluster[]
-  addCluster: (cluster: SolanaCluster) => void
-  deleteCluster: (cluster: SolanaCluster) => void
-  setCluster: (cluster: SolanaCluster) => void
+  cluster: TrezoaCluster
+  clusters: TrezoaCluster[]
+  addCluster: (cluster: TrezoaCluster) => void
+  deleteCluster: (cluster: TrezoaCluster) => void
+  setCluster: (cluster: TrezoaCluster) => void
 
   getExplorerUrl(path: string): string
 }
@@ -73,7 +73,7 @@ export function ClusterProvider({ children }: { children: React.ReactNode }) {
   const value: ClusterProviderContext = {
     cluster,
     clusters: clusters.sort((a, b) => (a.name > b.name ? 1 : -1)),
-    addCluster: (cluster: SolanaCluster) => {
+    addCluster: (cluster: TrezoaCluster) => {
       try {
         new Connection(cluster.endpoint)
         setClusters([...clusters, cluster])
@@ -81,11 +81,11 @@ export function ClusterProvider({ children }: { children: React.ReactNode }) {
         console.error(`${err}`)
       }
     },
-    deleteCluster: (cluster: SolanaCluster) => {
+    deleteCluster: (cluster: TrezoaCluster) => {
       setClusters(clusters.filter((item) => item.name !== cluster.name))
     },
-    setCluster: (cluster: SolanaCluster) => setCluster(cluster),
-    getExplorerUrl: (path: string) => `https://explorer.solana.com/${path}${getClusterUrlParam(cluster)}`,
+    setCluster: (cluster: TrezoaCluster) => setCluster(cluster),
+    getExplorerUrl: (path: string) => `https://explorer.trezoa.com/${path}${getClusterUrlParam(cluster)}`,
   }
   return <Context.Provider value={value}>{children}</Context.Provider>
 }
@@ -94,7 +94,7 @@ export function useCluster() {
   return useContext(Context)
 }
 
-function getClusterUrlParam(cluster: SolanaCluster): string {
+function getClusterUrlParam(cluster: TrezoaCluster): string {
   let suffix = ''
   switch (cluster.network) {
     case ClusterNetwork.Devnet:

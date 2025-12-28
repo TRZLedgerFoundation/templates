@@ -3,25 +3,25 @@ import { generateKeyPair } from 'crypto'
 import { promisify } from 'util'
 import type { GillWalletInfo, GillNetworkConfig } from './types'
 import {
-  createSolanaRpc,
+  createTrezoaRpc,
   createKeyPairSignerFromBytes,
   lamports,
   type Address,
   type Rpc,
-  type SolanaRpcApi,
+  type TrezoaRpcApi,
 } from 'gill'
 
 const generateKeyPairAsync = promisify(generateKeyPair)
 
 export function createGillWalletClient(config: GillNetworkConfig) {
   const networkUrls = {
-    devnet: process.env.DEVNET_RPC_URL || 'https://api.devnet.solana.com',
-    mainnet: process.env.MAINNET_RPC_URL || 'https://api.mainnet-beta.solana.com',
-    testnet: process.env.TESTNET_RPC_URL || 'https://api.testnet.solana.com',
+    devnet: process.env.DEVNET_RPC_URL || 'https://api.devnet.trezoa.com',
+    mainnet: process.env.MAINNET_RPC_URL || 'https://api.mainnet-beta.trezoa.com',
+    testnet: process.env.TESTNET_RPC_URL || 'https://api.testnet.trezoa.com',
   }
 
   const rpcUrl = config.rpcUrl || networkUrls[config.network as keyof typeof networkUrls]
-  const rpc = createSolanaRpc(rpcUrl)
+  const rpc = createTrezoaRpc(rpcUrl)
 
   return { rpc }
 }
@@ -56,7 +56,7 @@ export async function generateGillWallet(name: string): Promise<GillWalletInfo> 
       base58: bs58.encode(secretKeyBytes),
       array: Array.from(secretKeyBytes),
     },
-    balance: '0 SOL',
+    balance: '0 TRZ',
     funded: false,
     signer, // Include the Gill signer
   }
@@ -97,10 +97,10 @@ export async function createGillWalletFromKey(name: string, privateKeyInput: str
   }
 }
 
-export async function checkGillWalletBalance(rpc: Rpc<SolanaRpcApi>, walletAddress: Address): Promise<number> {
+export async function checkGillWalletBalance(rpc: Rpc<TrezoaRpcApi>, walletAddress: Address): Promise<number> {
   try {
     const balance = await rpc.getBalance(walletAddress).send()
-    return Number(balance.value) / 1e9 // Convert lamports to SOL
+    return Number(balance.value) / 1e9 // Convert lamports to TRZ
   } catch (error) {
     console.error(`❌ Error checking balance for ${walletAddress}:`, error)
     return 0
@@ -108,12 +108,12 @@ export async function checkGillWalletBalance(rpc: Rpc<SolanaRpcApi>, walletAddre
 }
 
 export async function requestGillAirdrop(
-  rpc: Rpc<SolanaRpcApi>,
+  rpc: Rpc<TrezoaRpcApi>,
   walletAddress: Address,
   amount: number = 2,
 ): Promise<boolean> {
   try {
-    console.log(`💧 Requesting ${amount} SOL airdrop for ${walletAddress}...`)
+    console.log(`💧 Requesting ${amount} TRZ airdrop for ${walletAddress}...`)
 
     const signature = await rpc.requestAirdrop(walletAddress, lamports(BigInt(amount * 1e9))).send()
 
@@ -154,17 +154,17 @@ export async function requestGillAirdrop(
   }
 }
 
-export async function updateGillWalletStatus(rpc: Rpc<SolanaRpcApi>, wallet: GillWalletInfo): Promise<GillWalletInfo> {
+export async function updateGillWalletStatus(rpc: Rpc<TrezoaRpcApi>, wallet: GillWalletInfo): Promise<GillWalletInfo> {
   const balance = await checkGillWalletBalance(rpc, wallet.address)
   return {
     ...wallet,
-    balance: `${balance} SOL`,
+    balance: `${balance} TRZ`,
     funded: balance > 0,
   }
 }
 
 export async function ensureGillWalletFunded(
-  rpc: Rpc<SolanaRpcApi>,
+  rpc: Rpc<TrezoaRpcApi>,
   wallet: GillWalletInfo,
   minBalance: number = 1,
   airdropAmount: number = 2,
@@ -173,14 +173,14 @@ export async function ensureGillWalletFunded(
   const balance = parseFloat(updatedWallet.balance?.split(' ')[0] || '0')
 
   if (balance < minBalance) {
-    console.log(`💧 Wallet needs funding (current: ${balance} SOL, required: ${minBalance} SOL)...`)
+    console.log(`💧 Wallet needs funding (current: ${balance} TRZ, required: ${minBalance} TRZ)...`)
     const airdropSuccess = await requestGillAirdrop(rpc, wallet.address, airdropAmount)
 
     if (airdropSuccess) {
       return await updateGillWalletStatus(rpc, updatedWallet)
     } else {
       console.log('⚠️  Automatic airdrop failed. Please fund manually:')
-      console.log(`solana airdrop ${airdropAmount} ${wallet.address} --url devnet`)
+      console.log(`trezoa airdrop ${airdropAmount} ${wallet.address} --url devnet`)
       return updatedWallet
     }
   }
@@ -189,14 +189,14 @@ export async function ensureGillWalletFunded(
 }
 
 export async function fundPrimaryWallet(
-  rpc: Rpc<SolanaRpcApi>,
+  rpc: Rpc<TrezoaRpcApi>,
   wallet: GillWalletInfo,
   requiredAmount: number = 5,
 ): Promise<GillWalletInfo> {
   const balance = await checkGillWalletBalance(rpc, wallet.address)
 
   if (balance < requiredAmount) {
-    console.log(`💧 Funding primary wallet with ${requiredAmount} SOL...`)
+    console.log(`💧 Funding primary wallet with ${requiredAmount} TRZ...`)
     const airdropSuccess = await requestGillAirdrop(rpc, wallet.address, requiredAmount)
 
     if (!airdropSuccess) {
@@ -206,28 +206,28 @@ export async function fundPrimaryWallet(
     return await updateGillWalletStatus(rpc, wallet)
   }
 
-  console.log(`✅ Primary wallet already has ${balance} SOL (required: ${requiredAmount} SOL)`)
+  console.log(`✅ Primary wallet already has ${balance} TRZ (required: ${requiredAmount} TRZ)`)
   return wallet
 }
 
 export async function distributeSolToWallets(
-  rpc: Rpc<SolanaRpcApi>,
+  rpc: Rpc<TrezoaRpcApi>,
   fromWallet: GillWalletInfo,
   toWallets: GillWalletInfo[],
   amountPerWallet: number = 0.1,
 ): Promise<GillWalletInfo[]> {
   if (!fromWallet.signer) {
-    throw new Error('Primary wallet must have signer to distribute SOL')
+    throw new Error('Primary wallet must have signer to distribute TRZ')
   }
 
-  console.log(`📤 Distributing ${amountPerWallet} SOL to ${toWallets.length} wallets...`)
+  console.log(`📤 Distributing ${amountPerWallet} TRZ to ${toWallets.length} wallets...`)
   console.log(`💰 From wallet: ${fromWallet.address} (${fromWallet.keypairFile})`)
 
   const updatedWallets: GillWalletInfo[] = []
 
   for (const wallet of toWallets) {
     try {
-      console.log(`💸 Sending ${amountPerWallet} SOL to ${wallet.address}...`)
+      console.log(`💸 Sending ${amountPerWallet} TRZ to ${wallet.address}...`)
 
       const { execSync } = require('child_process')
 
@@ -247,7 +247,7 @@ export async function distributeSolToWallets(
 
       const updatedWallet = {
         ...wallet,
-        balance: `${amountPerWallet} SOL`,
+        balance: `${amountPerWallet} TRZ`,
         funded: true,
       }
 
@@ -259,7 +259,7 @@ export async function distributeSolToWallets(
       console.error(`❌ Failed to transfer to ${wallet.address}:`, error)
       updatedWallets.push({
         ...wallet,
-        balance: '0 SOL',
+        balance: '0 TRZ',
         funded: false,
       })
     }
@@ -268,7 +268,7 @@ export async function distributeSolToWallets(
   return updatedWallets
 }
 
-export async function generateGillTestWallets(rpc: Rpc<SolanaRpcApi>, count: number): Promise<GillWalletInfo[]> {
+export async function generateGillTestWallets(rpc: Rpc<TrezoaRpcApi>, count: number): Promise<GillWalletInfo[]> {
   const testWallets: GillWalletInfo[] = []
 
   for (let i = 1; i <= count; i++) {
@@ -295,7 +295,7 @@ export async function createPrimaryWalletFromInput(
 }
 
 export async function setupEfficientWalletFunding(
-  rpc: Rpc<SolanaRpcApi>,
+  rpc: Rpc<TrezoaRpcApi>,
   primaryWallet: GillWalletInfo,
   testWallets: GillWalletInfo[],
   distributionAmount: number = 0.1,
@@ -307,9 +307,9 @@ export async function setupEfficientWalletFunding(
   const totalDistribution = testWallets.length * distributionAmount
 
   console.log(`🎯 Setting up efficient funding:`)
-  console.log(`   • Primary wallet: ${primaryWalletAmount} SOL airdrop`)
-  console.log(`   • Distribution: ${distributionAmount} SOL × ${testWallets.length} wallets = ${totalDistribution} SOL`)
-  console.log(`   • Remaining: ~${(primaryWalletAmount - totalDistribution).toFixed(2)} SOL for fees and buffer`)
+  console.log(`   • Primary wallet: ${primaryWalletAmount} TRZ airdrop`)
+  console.log(`   • Distribution: ${distributionAmount} TRZ × ${testWallets.length} wallets = ${totalDistribution} TRZ`)
+  console.log(`   • Remaining: ~${(primaryWalletAmount - totalDistribution).toFixed(2)} TRZ for fees and buffer`)
 
   const fundedPrimary = await fundPrimaryWallet(rpc, primaryWallet, primaryWalletAmount)
 

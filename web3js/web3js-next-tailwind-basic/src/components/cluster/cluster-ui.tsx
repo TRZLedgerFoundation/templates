@@ -1,6 +1,6 @@
 'use client'
 
-import { useConnection } from '@solana/wallet-adapter-react'
+import { useConnection } from '@trezoa/wallet-adapter-react'
 
 import { useQuery } from '@tanstack/react-query'
 import * as React from 'react'

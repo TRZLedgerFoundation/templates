@@ -1,8 +1,8 @@
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { UiWalletAccount, useWalletUiSigner } from '@wallet-ui/react'
 import { useWalletUiSignAndSend } from '@wallet-ui/react-gill'
-import { install as installEd25519 } from '@solana/webcrypto-ed25519-polyfill'
+import { install as installEd25519 } from '@trezoa/webcrypto-ed25519-polyfill'
 import { generateKeyPairSigner } from 'gill'
 import { getInitializeInstruction } from '@project/anchor'
 import { toastTx } from '@/components/toast-tx'
@@ -12,7 +12,7 @@ import { toast } from 'sonner'
 installEd25519()
 
 export function useCounterInitializeMutation({ account }: { account: UiWalletAccount }) {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
   const queryClient = useQueryClient()
   const signer = useWalletUiSigner({ account })
   const signAndSend = useWalletUiSignAndSend()

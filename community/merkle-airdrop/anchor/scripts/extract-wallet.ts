@@ -170,7 +170,7 @@ export async function listGillWallets(): Promise<void> {
         // Check balance using Gill
         const balance = await client.rpc.getBalance(address(wallet.address)).send()
         const balanceSol = Number(balance.value) / 1e9
-        console.log(`     Balance: ${balanceSol.toFixed(4)} SOL (via Gill)`)
+        console.log(`     Balance: ${balanceSol.toFixed(4)} TRZ (via Gill)`)
       } catch {
         console.log(`     Balance: Unable to fetch (via Gill)`)
       }

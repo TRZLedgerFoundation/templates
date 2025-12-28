@@ -1,8 +1,8 @@
 import type { Address } from 'gill'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 
 export function useGetBalanceQueryKey({ address }: { address: Address }) {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
 
   return ['get-balance', { cluster, address }]
 }

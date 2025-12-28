@@ -1,15 +1,15 @@
 /**
- * Solana utilities using Gill SDK
- * Handles Solana operations, signatures, and transactions
+ * Trezoa utilities using Gill SDK
+ * Handles Trezoa operations, signatures, and transactions
  */
 
-import { createSolanaRpc, createSolanaRpcSubscriptions, address } from 'gill';
+import { createTrezoaRpc, createTrezoaRpcSubscriptions, address } from 'gill';
 import type { Address } from 'gill';
 import { SignatureVerificationError } from '../errors/index.js';
 import nacl from 'tweetnacl';
 import bs58 from 'bs58';
 
-export interface SolanaUtilsConfig {
+export interface TrezoaUtilsConfig {
   rpcEndpoint: string;
   rpcSubscriptionsEndpoint?: string;
 }
@@ -28,7 +28,7 @@ export interface StructuredData {
   message: Record<string, unknown>;
 }
 
-export interface X402SOLPaymentTransactionParams {
+export interface X402TRZPaymentTransactionParams {
   fromPublicKey: string;
   toPublicKey: string;
   amount: bigint;
@@ -37,29 +37,29 @@ export interface X402SOLPaymentTransactionParams {
   resourceId: string;
 }
 
-export class SolanaUtils {
-  private rpc: ReturnType<typeof createSolanaRpc>;
-  private rpcSubscriptions?: ReturnType<typeof createSolanaRpcSubscriptions>;
+export class TrezoaUtils {
+  private rpc: ReturnType<typeof createTrezoaRpc>;
+  private rpcSubscriptions?: ReturnType<typeof createTrezoaRpcSubscriptions>;
   private rpcUrl: string;
 
-  constructor(config: SolanaUtilsConfig) {
+  constructor(config: TrezoaUtilsConfig) {
     this.rpcUrl = config.rpcEndpoint;
-    this.rpc = createSolanaRpc(config.rpcEndpoint);
+    this.rpc = createTrezoaRpc(config.rpcEndpoint);
     if (config.rpcSubscriptionsEndpoint) {
-      this.rpcSubscriptions = createSolanaRpcSubscriptions(config.rpcSubscriptionsEndpoint);
+      this.rpcSubscriptions = createTrezoaRpcSubscriptions(config.rpcSubscriptionsEndpoint);
     }
   }
 
   /**
-   * Get SOL balance for a public key
+   * Get TRZ balance for a public key
    */
-  async getSOLBalance(publicKey: string): Promise<bigint> {
+  async getTRZBalance(publicKey: string): Promise<bigint> {
     try {
       const addr = address(publicKey);
       const balance = await this.rpc.getBalance(addr).send();
       return balance.value;
     } catch (error) {
-      console.error('Error getting SOL balance:', error);
+      console.error('Error getting TRZ balance:', error);
       return BigInt(0);
     }
   }
@@ -93,7 +93,7 @@ export class SolanaUtils {
   }
 
   /**
-   * Verify a structured data signature (EIP-712 equivalent for Solana)
+   * Verify a structured data signature (EIP-712 equivalent for Trezoa)
    */
   verifyStructuredDataSignature(structuredData: StructuredData, signature: string, publicKey: string): boolean {
     try {
@@ -140,14 +140,14 @@ export class SolanaUtils {
   }
 
   /**
-   * Convert lamports to SOL
+   * Convert lamports to TRZ
    */
-  lamportsToSOL(lamports: bigint): number {
+  lamportsToTRZ(lamports: bigint): number {
     return Number(lamports) / 1_000_000_000;
   }
 
   /**
-   * Convert SOL to lamports
+   * Convert TRZ to lamports
    */
   solToLamports(sol: number): bigint {
     return BigInt(Math.floor(sol * 1_000_000_000));
@@ -186,12 +186,12 @@ export class SolanaUtils {
   async submitSponsoredTransaction(facilitatorPrivateKey: string, serializedTransaction: string): Promise<string> {
     try {
       console.log('TRUE x402 ATOMIC SETTLEMENT: Sponsored Transaction');
-      console.log('  Client has signed transaction (their SOL will move)');
+      console.log('  Client has signed transaction (their TRZ will move)');
       console.log('  Facilitator will add signature as fee payer (pays gas)');
       console.log();
 
-      // Import @solana/web3.js for transaction handling
-      const { Connection, Transaction, Keypair } = await import('@solana/web3.js');
+      // Import @trezoa/web3.js for transaction handling
+      const { Connection, Transaction, Keypair } = await import('@trezoa/web3.js');
 
       const connection = new Connection(this.rpcUrl, 'confirmed');
 
@@ -210,19 +210,19 @@ export class SolanaUtils {
       console.log('     - Client signature:', transaction.signatures[0] ? 'Present' : 'Missing');
       console.log();
       console.log('  How TRUE x402 works:');
-      console.log('     - Client signs: Authorizes their SOL to move');
+      console.log('     - Client signs: Authorizes their TRZ to move');
       console.log('     - Facilitator signs: Pays gas fee (sponsored transaction)');
       console.log('     - Single atomic transaction on-chain');
       console.log("     - Client's funds -> Merchant (instant settlement)");
       console.log();
 
-      console.log('  Facilitator signing as fee payer and sending to Solana devnet...');
+      console.log('  Facilitator signing as fee payer and sending to Trezoa devnet...');
 
       // Add facilitator's signature (fee payer) to the already client-signed transaction
       transaction.partialSign(facilitatorKeypair);
 
       console.log('  Both signatures present (client + facilitator)');
-      console.log('  Sending to Solana network...');
+      console.log('  Sending to Trezoa network...');
 
       // Send the transaction (all signatures are already in place)
       const rawTransaction = transaction.serialize();
@@ -236,9 +236,9 @@ export class SolanaUtils {
 
       console.log('  ATOMIC SETTLEMENT COMPLETE!');
       console.log('     Signature:', signature);
-      console.log('     Explorer:', `https://explorer.solana.com/tx/${signature}?cluster=devnet`);
+      console.log('     Explorer:', `https://explorer.trezoa.com/tx/${signature}?cluster=devnet`);
       console.log();
-      console.log("  Client's SOL moved to merchant, facilitator paid gas!");
+      console.log("  Client's TRZ moved to merchant, facilitator paid gas!");
 
       return signature;
     } catch (error) {

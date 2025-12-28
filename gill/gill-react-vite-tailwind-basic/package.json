@@ -1,24 +1,24 @@
 {
   "name": "gill-react-vite-tailwind-basic",
   "displayName": "Vite Fullstack Boilerplate",
-  "description": "React+Vite, Tailwind, gill (based on @solana/kit), basic Anchor example, Wallet UI",
+  "description": "React+Vite, Tailwind, gill (based on @trezoa/kit), basic Anchor example, Wallet UI",
   "usecase": "Starter",
   "keywords": [
     "anchor-basic",
     "gill",
     "react",
-    "solana-kit",
+    "trezoa-kit",
     "tailwind",
     "typescript",
     "vite",
     "wallet-ui"
   ],
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "To configure the Anchor deployment keypair, run this:",
       "+{pm} run setup",
       "Run Anchor commands:",
-      "+{pm} run anchor build | test | localnet | deploy"
+      "+{pm} run trezoaanchor build | test | localnet | deploy"
     ],
     "rename": {
       "basic": {
@@ -35,18 +35,18 @@
       }
     },
     "versions": {
-      "anchor": "0.31.1",
-      "solana": "2.1.0"
+      "trezoaanchor": "0.31.1",
+      "trezoa": "2.1.0"
     }
   },
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "anchor": "cd anchor && anchor",
-    "anchor-build": "cd anchor && anchor build",
-    "anchor-localnet": "cd anchor && anchor localnet",
-    "anchor-test": "cd anchor && anchor test",
+    "trezoaanchor": "cd trezoaanchor && anchor",
+    "anchor-build": "cd trezoaanchor && trezoaanchor build",
+    "anchor-localnet": "cd trezoaanchor && trezoaanchor localnet",
+    "anchor-test": "cd trezoaanchor && trezoaanchor test",
     "build": "tsc -b && vite build",
     "codama:js": "codama run js -c ./anchor/codama.js",
     "ci": "npm run build && npm run lint && npm run format:check && npm run codama:js",
@@ -55,7 +55,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "preview": "vite preview",
-    "setup": "npm run anchor keys sync && npm run codama:js"
+    "setup": "npm run trezoaanchor keys sync && npm run codama:js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
@@ -63,7 +63,7 @@
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
-    "@solana-mobile/wallet-standard-mobile": "^0.4.1",
+    "@trezoa-mobile/wallet-standard-mobile": "^0.4.1",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/react-query": "^5.89.0",
     "@wallet-ui/react": "2.0.0",

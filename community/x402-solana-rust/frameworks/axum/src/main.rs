@@ -18,7 +18,7 @@ async fn main() -> anyhow::Result<()> {
 
     log::info!("Starting x402 Rust Server (Axum)");
     log::info!("Receiver: {}", config.receiver_address);
-    log::info!("Network: {}", config.solana_network);
+    log::info!("Network: {}", config.trezoa_network);
 
     let config = Arc::new(config);
 

@@ -12,7 +12,7 @@ use crate::{
 /// Direct blockchain facilitator for local transaction processing
 ///
 /// Handles payment verification and settlement without external dependencies
-/// by directly interacting with the Solana RPC endpoint.
+/// by directly interacting with the Trezoa RPC endpoint.
 pub struct LocalFacilitator {
     rpc_url: String,
 }

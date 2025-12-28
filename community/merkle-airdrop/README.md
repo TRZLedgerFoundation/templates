@@ -1,21 +1,21 @@
-## Solana Merkle Airdrop Distributor (Codama + Anchor)
+## Trezoa Merkle Airdrop Distributor (Codama + Anchor)
 
-A modern, script-driven Solana airdrop template that distributes SOL to many recipients efficiently using a Merkle tree. Only the 32‑byte Merkle root is stored on-chain. The project uses Anchor for the on-chain program, Codama for a generated TypeScript client, and the @solana/kit for transactions. This README focuses on how the program works and how to use it through the provided scripts.
+A modern, script-driven Trezoa airdrop template that distributes TRZ to many recipients efficiently using a Merkle tree. Only the 32‑byte Merkle root is stored on-chain. The project uses Anchor for the on-chain program, Codama for a generated TypeScript client, and the @trezoa/kit for transactions. This README focuses on how the program works and how to use it through the provided scripts.
 
 ### Table of Contents
 
-- [Solana Merkle Airdrop Distributor (Codama + Anchor)](#solana-merkle-airdrop-distributor-codama--anchor)
+- [Trezoa Merkle Airdrop Distributor (Codama + Anchor)](#trezoa-merkle-airdrop-distributor-codama--anchor)
   - [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
   - [Quick Installation (Recommended)](#quick-installation-recommended)
   - [Manual Installation](#manual-installation)
     - [1. Install Rust](#1-install-rust)
-    - [2. Install Solana CLI](#2-install-solana-cli)
+    - [2. Install Trezoa CLI](#2-install-trezoa-cli)
     - [3. Install Anchor CLI](#3-install-anchor-cli)
     - [4. Install Node.js and Yarn](#4-install-nodejs-and-yarn)
   - [Verify Installation](#verify-installation)
-  - [Solana CLI Basics](#solana-cli-basics)
-    - [Configure Solana CLI](#configure-solana-cli)
+  - [Trezoa CLI Basics](#trezoa-cli-basics)
+    - [Configure Trezoa CLI](#configure-trezoa-cli)
     - [Create a Wallet](#create-a-wallet)
     - [Fund Your Wallet](#fund-your-wallet)
   - [Quick Setup](#quick-setup)
@@ -42,14 +42,14 @@ A modern, script-driven Solana airdrop template that distributes SOL to many rec
 
 ## Prerequisites
 
-Before you can build and deploy Solana programs with this template, you need to install Rust, Solana CLI, and Anchor CLI on your system.
+Before you can build and deploy Trezoa programs with this template, you need to install Rust, Trezoa CLI, and Anchor CLI on your system.
 
 ### Quick Installation (Recommended)
 
 On Mac and Linux, run this single command to install all dependencies:
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.dev | bash
+curl --proto '=https' --tlsv1.2 -sSfL https://trezoa-install.solana.workers.dev | bash
 ```
 
 **Windows Users:** You must first install WSL (Windows Subsystem for Linux). Then run the command above in the Ubuntu (Linux) terminal.
@@ -59,7 +59,7 @@ After installation, you should see output similar to:
 ```
 Installed Versions:
 Rust: rustc 1.85.0 (4d91de4e4 2025-02-17)
-Solana CLI: solana-cli 2.1.15 (src:53545685; feat:3271415109, client:Agave)
+Trezoa CLI: trezoa-cli 2.1.15 (src:53545685; feat:3271415109, client:Trezoa-team)
 Anchor CLI: anchor-cli 0.31.1
 Node.js: v23.9.0
 Yarn: 1.22.1
@@ -73,7 +73,7 @@ If the quick installation works, skip to [Verify Installation](#verify-installat
 
 #### 1. Install Rust
 
-Solana programs are written in Rust. Install it using rustup:
+Trezoa programs are written in Rust. Install it using rustup:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -85,18 +85,18 @@ Reload your PATH environment variable:
 . "$HOME/.cargo/env"
 ```
 
-#### 2. Install Solana CLI
+#### 2. Install Trezoa CLI
 
-Install the Solana CLI tool suite:
+Install the Trezoa CLI tool suite:
 
 ```bash
 sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
 ```
 
-Add Solana to your PATH (if prompted):
+Add Trezoa to your PATH (if prompted):
 
 ```bash
-export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+export PATH="$HOME/.local/share/trezoa/install/active_release/bin:$PATH"
 ```
 
 #### 3. Install Anchor CLI
@@ -138,9 +138,9 @@ Check that all tools are installed correctly:
 rustc --version
 # Expected: rustc 1.84.1+
 
-# Check Solana CLI
+# Check Trezoa CLI
 solana --version
-# Expected: solana-cli 2.0.26+
+# Expected: trezoa-cli 2.0.26+
 
 # Check Anchor CLI
 anchor --version
@@ -155,9 +155,9 @@ yarn --version
 # Expected: 1.22.1+
 ```
 
-### Solana CLI Basics
+### Trezoa CLI Basics
 
-#### Configure Solana CLI
+#### Configure Trezoa CLI
 
 Set your cluster to devnet for development:
 
@@ -176,7 +176,7 @@ solana config get
 Generate a new keypair for development:
 
 ```bash
-solana-keygen new
+trezoa-keygen new
 ```
 
 Get your wallet address:
@@ -187,10 +187,10 @@ solana address
 
 #### Fund Your Wallet
 
-Request devnet SOL for testing:
+Request devnet TRZ for testing:
 
 ```bash
-solana airdrop 2
+trezoa airdrop 2
 ```
 
 Check your balance:
@@ -199,14 +199,14 @@ Check your balance:
 solana balance
 ```
 
-**Note:** The airdrop command is limited to 5 SOL per request and may have rate limits. Alternatively, use the [Solana Web Faucet](https://faucet.solana.com/).
+**Note:** The airdrop command is limited to 5 TRZ per request and may have rate limits. Alternatively, use the [Trezoa Web Faucet](https://faucet.trezoa.com/).
 
 ---
 
 ### Quick Setup
 
 ```bash
-pnpm create solana-dapp@latest -t gh:solana-foundation/templates/community/merkle-airdrop
+pnpm create trezoa-dapp@latest -t gh:trezoa-foundation/templates/community/merkle-airdrop
 ```
 
 ```bash
@@ -214,7 +214,7 @@ cd <your-project>
 pnpm install
 ```
 
-Generates the necessary TypeScript types and client code from the Solana program:
+Generates the necessary TypeScript types and client code from the Trezoa program:
 
 ```bash
 pnpm codama:generate
@@ -228,9 +228,9 @@ pnpm airdrop:setup
 
 This single command will:
 
-- ✅ Create deployment wallet and fund it with SOL
+- ✅ Create deployment wallet and fund it with TRZ
 - ✅ Generate test wallets for airdrop recipients
-- ✅ Build and deploy the Solana program
+- ✅ Build and deploy the Trezoa program
 - ✅ Update all configuration files
 - ✅ Generate the Merkle tree for airdrop distribution
 
@@ -266,7 +266,7 @@ Airdrop distribution is reduced to a single on-chain commitment (the Merkle root
                 │ funds                      │ prevent double-claim
                 │                            │
            ┌────▼──────────┐            ┌────▼──────────┐
-           │ Vault (PDA)   │ ───SOL──▶  │ Recipient     │
+           │ Vault (PDA)   │ ───TRZ──▶  │ Recipient     │
            └───────────────┘            └───────────────┘
 ```
 
@@ -309,7 +309,7 @@ Gotcha: Proof order and the leaf encoding must match exactly. Any mismatch yield
   - Space: `8 (discriminator) + 32 + 32 + 8 + 8 + 1` ≈ 89 bytes; allocate with headroom (e.g., 128 bytes)
 
 - Vault PDA (System Account owned by program)
-  - Purpose: Holds SOL to be distributed.
+  - Purpose: Holds TRZ to be distributed.
   - Example seeds: ["vault", airdropState]
   - Data: lamports only; no data account needed if purely a System Account
   - Property: Only the program can move lamports from this PDA.
@@ -334,7 +334,7 @@ Gotcha: Seeds shown are representative. Use the seeds compiled into your program
     - Creates/initializes `airdropState`
     - Optionally creates `vault`
     - Records the Merkle root and total allocation
-    - May assert that sufficient SOL is present or transferred to `vault`
+    - May assert that sufficient TRZ is present or transferred to `vault`
 
 - claimAirdrop
   - Inputs: `amount: u64`, `leafIndex: u32|u64`, `proof: [[u8; 32]]`
@@ -361,13 +361,13 @@ Safeguards:
 
 ### Program Interactions
 
-Below are concise TypeScript examples using the generated Codama client. These snippets assume the scripts have already generated and wired the client paths. Use @solana/kit to create and send transactions.
+Below are concise TypeScript examples using the generated Codama client. These snippets assume the scripts have already generated and wired the client paths. Use @trezoa/kit to create and send transactions.
 
 Initialize airdrop:
 
 ```ts
 import { getInitializeAirdropInstruction } from './anchor/generated/clients/ts/instructions/initializeAirdrop'
-import { address } from '@solana/kit' // Solana Kit address helpers
+import { address } from '@trezoa/kit' // Trezoa Kit address helpers
 // import your client, RPC, and wallet abstractions from your app’s runtime
 
 const initIx = getInitializeAirdropInstruction({
@@ -377,7 +377,7 @@ const initIx = getInitializeAirdropInstruction({
   amount: BigInt(totalLamports), // u64
 })
 
-// Use your Solana Kit transaction helpers to send:
+// Use your Trezoa Kit transaction helpers to send:
 // await sendInstructions([initIx], { payer: authority, rpc });
 ```
 
@@ -385,7 +385,7 @@ Claim airdrop:
 
 ```ts
 import { getClaimAirdropInstruction } from './anchor/generated/clients/ts/instructions/claimAirdrop'
-import { address } from '@solana/kit'
+import { address } from '@trezoa/kit'
 
 const proofBytes = proofHexArray.map((h) => new Uint8Array(Buffer.from(h.slice(2), 'hex')))
 
@@ -435,14 +435,14 @@ The test suite validates:
 - Incorrect proof or wrong amount fails verification
 - Aggregate `claimedAmount` reflects actual transfers
 
-See `anchor/tests/solana-distributor-comprehensive.test.ts` for end‑to‑end coverage using the generated client and Solana Kit helpers.
+See `anchor/tests/trezoa-distributor-comprehensive.test.ts` for end‑to‑end coverage using the generated client and Trezoa Kit helpers.
 
 ---
 
 ### Version and Compatibility Notes
 
 - Anchor CLI: 0.31.1
-- Solana CLI: 2.2.20+ (2.2.x)
+- Trezoa CLI: 2.2.20+ (2.2.x)
 - Rust: 1.88.0+
 - Node.js: 22+
 
@@ -471,7 +471,7 @@ The template and generated client target these versions for consistent behavior 
 - Can someone claim twice with the same wallet?
   - No. The claim creates a `Claim Status` PDA keyed by `(airdropState, recipient)`. Second attempts are rejected.
 
-- What if the vault runs out of SOL?
+- What if the vault runs out of TRZ?
   - Claims will fail. Replenishment behavior depends on your program’s design. This template expects sufficient initial funding during initialization.
 
 - Can I rotate the authority?
@@ -484,7 +484,7 @@ The template and generated client target these versions for consistent behavior 
 - Merkle root: A 32‑byte commitment to a set. Verifies inclusion with minimal proofs.
 - Merkle proof: A sequence of sibling hashes used to reconstruct the root from a leaf.
 - PDA (Program Derived Address): Deterministic, program-owned address derived from seeds, not signable by a private key.
-- Lamports: Smallest unit of SOL (1 SOL = 1,000,000,000 lamports).
+- Lamports: Smallest unit of TRZ (1 TRZ = 1,000,000,000 lamports).
 - Discriminator: Anchor’s 8‑byte account type prefix stored in every account it manages.
 - Authority: The signer that initializes the airdrop; typically controls setup, not claims.
 - Vault: Program-owned System Account holding the lamports to distribute.
@@ -504,10 +504,10 @@ The template and generated client target these versions for consistent behavior 
 
 ## Key Technologies
 
-- **[@solana/kit](https://github.com/anza-xyz/kit)**: Modern Solana JavaScript SDK
-- **[@solana/react-hooks](https://www.npmjs.com/package/@solana/react-hooks)**: React hooks for Solana
+- **[@trezoa/kit](https://github.com/anza-xyz/kit)**: Modern Trezoa JavaScript SDK
+- **[@trezoa/react-hooks](https://www.npmjs.com/package/@trezoa/react-hooks)**: React hooks for Trezoa
 - **[Codama](https://github.com/codama-idl/codama)**: Automatic client generation
-- **[Anchor Framework](https://www.anchor-lang.com/)**: Solana program development
+- **[Anchor Framework](https://www.anchor-lang.com/)**: Trezoa program development
 - **[Vitest](https://vitest.dev/)**: Fast unit testing framework
 
 ---

@@ -7,12 +7,12 @@ import {
   ComputeBudgetProgram,
   Keypair,
   Connection,
-} from '@solana/web3.js'
+} from '@trezoa/web3.js'
 import {
   getAssociatedTokenAddress,
   createTransferCheckedInstruction,
   createAssociatedTokenAccountInstruction,
-} from '@solana/spl-token'
+} from '@trezoa/spl-token'
 import { getWallet, getConnection } from '../utils/wallet'
 import { getCurrentNetwork } from '../utils/network'
 import { log } from '../utils/logger'
@@ -152,7 +152,7 @@ export class PaidAPI extends BaseAPI {
       log('info', `Payment required: ${paymentReq.maxAmountRequired} of ${paymentReq.asset}`)
 
       // Verify network matches
-      const expectedNetwork = currentNetwork === 'devnet' ? 'solana-devnet' : 'solana-mainnet'
+      const expectedNetwork = currentNetwork === 'devnet' ? 'trezoa-devnet' : 'trezoa-mainnet'
       if (paymentReq.network !== expectedNetwork) {
         throw new Error(`Network mismatch: API expects ${paymentReq.network} but you're on ${expectedNetwork}`)
       }
@@ -209,7 +209,7 @@ export class PaidAPI extends BaseAPI {
     const feePayerPubkey = wallet.publicKey
 
     log('info', `Amount: ${amount} (${amount / 1_000_000} USDC)`)
-    log('info', 'Note: User needs SOL for transaction fees (~0.000005 SOL + potential ~0.002 SOL for ATA creation)')
+    log('info', 'Note: User needs TRZ for transaction fees (~0.000005 TRZ + potential ~0.002 TRZ for ATA creation)')
 
     // Get associated token accounts
     const fromTokenAccount = await getAssociatedTokenAddress(usdcMint, wallet.publicKey)
@@ -218,7 +218,7 @@ export class PaidAPI extends BaseAPI {
     // Check if recipient's token account exists, create if needed
     // NOTE: In production, receivers typically already have USDC ATAs set up.
     // This check ensures the payment succeeds even if the receiver doesn't have an ATA yet.
-    // The sender pays a one-time fee (~0.00203928 SOL) to create the receiver's ATA.
+    // The sender pays a one-time fee (~0.00203928 TRZ) to create the receiver's ATA.
     // This fee is only paid once - subsequent transactions to the same receiver won't need this.
     const recipientAccountInfo = await connection.getAccountInfo(toTokenAccount)
 
@@ -229,7 +229,7 @@ export class PaidAPI extends BaseAPI {
 
     // Add ATA creation instruction if recipient doesn't have one
     if (!recipientAccountInfo) {
-      log('info', 'Recipient ATA does not exist. Adding creation instruction (sender pays ~0.002 SOL fee)')
+      log('info', 'Recipient ATA does not exist. Adding creation instruction (sender pays ~0.002 TRZ fee)')
       instructions.push(
         createAssociatedTokenAccountInstruction(
           wallet.publicKey, // payer (sender pays the ATA creation fee)

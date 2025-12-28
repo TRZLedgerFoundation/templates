@@ -1,4 +1,4 @@
-import { X402PaymentHandler } from 'x402-solana/server'
+import { X402PaymentHandler } from 'x402-trezoa/server'
 
 // Initialize x402 Payment Handler for mainnet
 export function getX402Handler(): X402PaymentHandler {
@@ -9,7 +9,7 @@ export function getX402Handler(): X402PaymentHandler {
     throw new Error('X402_TREASURY_ADDRESS not found in environment variables')
   }
 
-  const rpcUrl = 'https://api.mainnet-beta.solana.com'
+  const rpcUrl = 'https://api.mainnet-beta.trezoa.com'
   console.log(`🔧 x402 Config: treasury=${treasuryAddress}, facilitator=${facilitatorUrl}, rpcUrl=${rpcUrl}`)
 
   const handler = new X402PaymentHandler({

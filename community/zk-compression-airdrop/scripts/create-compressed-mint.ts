@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { Keypair } from '@solana/web3.js'
+import { Keypair } from '@trezoa/web3.js'
 import { createRpc } from '@lightprotocol/stateless.js'
 import { createMint } from '@lightprotocol/compressed-token'
 import bs58 from 'bs58'
@@ -15,7 +15,7 @@ async function main() {
     process.exit(1)
   }
 
-  // createRpc accepts 3 endpoints: (1) standard Solana RPC, (2) compression API (Photon indexer), (3) prover
+  // createRpc accepts 3 endpoints: (1) standard Trezoa RPC, (2) compression API (Photon indexer), (3) prover
   // Helius provides all three services on the same endpoint, so we pass it three times
   // See: https://www.zkcompression.com/learn/node-operators
   const rpc = createRpc(RPC_ENDPOINT, RPC_ENDPOINT, RPC_ENDPOINT)
@@ -44,7 +44,7 @@ async function main() {
   console.log('Network:', RPC_ENDPOINT)
 
   const balance = await rpc.getBalance(payerKeypair.publicKey)
-  console.log('Balance:', (balance / 1e9).toFixed(4), 'SOL\n')
+  console.log('Balance:', (balance / 1e9).toFixed(4), 'TRZ\n')
 
   const { mint, transactionSignature } = await createMint(rpc, payerKeypair, payerKeypair.publicKey, 9)
 

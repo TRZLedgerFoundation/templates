@@ -1,4 +1,4 @@
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { AppText } from '@/components/app-text'
 import { ellipsify } from '@/utils/ellipsify'
 import { AppView } from '@/components/app-view'
@@ -9,9 +9,9 @@ import { AccountUiTokenAccounts } from '@/components/account/account-ui-token-ac
 import { RefreshControl, ScrollView } from 'react-native'
 import { useCallback, useState } from 'react'
 import { useGetBalanceInvalidate } from '@/components/account/use-get-balance'
-import { PublicKey } from '@solana/web3.js'
+import { PublicKey } from '@trezoa/web3.js'
 import { useGetTokenAccountsInvalidate } from '@/components/account/use-get-token-accounts'
-import { WalletUiButtonConnect } from '@/components/solana/wallet-ui-button-connect'
+import { WalletUiButtonConnect } from '@/components/trezoa/wallet-ui-button-connect'
 
 export function AccountFeature() {
   const { account } = useWalletUi()

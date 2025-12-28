@@ -9,15 +9,15 @@ export function AppProviders({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={queryClient}>
       <NetworkProvider>
-        <SolanaNetworkProvider>{children}</SolanaNetworkProvider>
+        <TrezoaNetworkProvider>{children}</TrezoaNetworkProvider>
       </NetworkProvider>
     </QueryClientProvider>
   )
 }
 
-// We have this SolanaNetworkProvider because of the network switching logic.
+// We have this TrezoaNetworkProvider because of the network switching logic.
 // If you only connect to a single network, use MobileWalletAdapterProvider directly.
-function SolanaNetworkProvider({ children }: PropsWithChildren) {
+function TrezoaNetworkProvider({ children }: PropsWithChildren) {
   const { selectedNetwork } = useNetwork()
   return (
     <MobileWalletAdapterProvider

@@ -1,5 +1,5 @@
-import { useMobileWallet } from '@/components/solana/use-mobile-wallet'
-import { useAuthorization } from '@/components/solana/use-authorization'
+import { useMobileWallet } from '@/components/trezoa/use-mobile-wallet'
+import { useAuthorization } from '@/components/trezoa/use-authorization'
 
 export function useWalletUi() {
   const { connect, signAndSendTransaction, signMessage, signIn } = useMobileWallet()

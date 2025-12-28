@@ -1,5 +1,5 @@
-import { useWallet } from '@solana/wallet-adapter-react'
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js'
+import { useWallet } from '@trezoa/wallet-adapter-react'
+import { LAMPORTS_PER_TRZ, PublicKey } from '@trezoa/web3.js'
 import { RefreshCw } from 'lucide-react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useMemo, useState } from 'react'
@@ -26,7 +26,7 @@ export function AccountBalance({ address }: { address: PublicKey }) {
 
   return (
     <h1 className="text-5xl font-bold cursor-pointer" onClick={() => query.refetch()}>
-      {query.data ? <BalanceSol balance={query.data} /> : '...'} SOL
+      {query.data ? <BalanceSol balance={query.data} /> : '...'} TRZ
     </h1>
   )
 }
@@ -245,7 +245,7 @@ export function AccountTransactions({ address }: { address: PublicKey }) {
 }
 
 function BalanceSol({ balance }: { balance: number }) {
-  return <span>{Math.round((balance / LAMPORTS_PER_SOL) * 100000) / 100000}</span>
+  return <span>{Math.round((balance / LAMPORTS_PER_TRZ) * 100000) / 100000}</span>
 }
 
 function ModalReceive({ address }: { address: PublicKey }) {

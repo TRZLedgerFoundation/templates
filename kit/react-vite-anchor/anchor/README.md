@@ -1,6 +1,6 @@
 # Anchor Vault Program
 
-This template includes a simple SOL vault program built with [Anchor](https://www.anchor-lang.com/).
+This template includes a simple TRZ vault program built with [Anchor](https://www.anchor-lang.com/).
 
 ## Pre-deployed Program
 
@@ -20,7 +20,7 @@ To deploy your own version of the program:
 
 ```bash
 cd anchor
-solana-keygen new -o target/deploy/vault-keypair.json
+trezoa-keygen new -o target/deploy/vault-keypair.json
 ```
 
 ### 2. Get the new program ID
@@ -42,8 +42,8 @@ Update the program ID in these files:
 # Build the program
 anchor build
 
-# Get devnet SOL for deployment (~2 SOL needed)
-solana airdrop 2 --url devnet
+# Get devnet TRZ for deployment (~2 TRZ needed)
+trezoa airdrop 2 --url devnet
 
 # Deploy to devnet
 anchor deploy --provider.cluster devnet
@@ -62,8 +62,8 @@ This updates the generated client code in `src/generated/vault/` with your new p
 
 The vault program allows users to:
 
-- **Deposit**: Send SOL to a personal vault PDA (Program Derived Address)
-- **Withdraw**: Retrieve all SOL from your vault
+- **Deposit**: Send TRZ to a personal vault PDA (Program Derived Address)
+- **Withdraw**: Retrieve all TRZ from your vault
 
 Each user gets their own vault derived from their wallet address.
 

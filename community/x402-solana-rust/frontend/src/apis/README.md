@@ -199,7 +199,7 @@ For endpoints that require x402 payment, see `PaidAPI.ts` as a reference. Paymen
 
 The `PaidAPI` class has complete examples of:
 
-- Building Solana payment transactions with full type safety
+- Building Trezoa payment transactions with full type safety
 - Creating x402 payment payloads
 - Handling payment verification
 
@@ -215,7 +215,7 @@ import { getCurrentNetwork } from '../utils/network'
 
 - **log(type: LogType, message: string)**: Log to activity feed (`'info'`, `'success'`, `'error'`)
 - **getWallet(): Keypair | null**: Get the loaded wallet
-- **getConnection(): Connection | null**: Get the Solana connection
+- **getConnection(): Connection | null**: Get the Trezoa connection
 - **getCurrentNetwork(): NetworkType**: Get current network (`'devnet'` or `'mainnet'`)
 
 ## TypeScript Benefits

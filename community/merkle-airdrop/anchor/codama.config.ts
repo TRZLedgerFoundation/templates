@@ -2,17 +2,17 @@ import { createFromRoot } from 'codama'
 import { rootNodeFromAnchor, AnchorIdl } from '@codama/nodes-from-anchor'
 import { renderJavaScriptVisitor } from '@codama/renderers'
 import { visit } from '@codama/visitors-core'
-import anchorIdl from './target/idl/solana_distributor.json'
+import anchorIdl from './target/idl/trezoa_distributor.json'
 import path from 'path'
 import { execSync } from 'child_process'
 import * as fs from 'fs'
 
 /**
- * Codama Configuration for Solana Distributor Program
+ * Codama Configuration for Trezoa Distributor Program
  *
  * This configuration generates TypeScript clients from the Anchor IDL
  * using Codama's code generation capabilities. The generated clients
- * will be compatible with Gill (Solana Kit) instead of @solana/web3.js v1.
+ * will be compatible with Gill (Trezoa Kit) instead of @trezoa/web3.js v1.
  */
 
 async function generateProgramId(): Promise<string> {
@@ -28,15 +28,15 @@ async function generateProgramId(): Promise<string> {
     }
 
     // Generate new keypair
-    execSync(`solana-keygen new --no-bip39-passphrase --silent --outfile ${keypairPath}`)
+    execSync(`trezoa-keygen new --no-bip39-passphrase --silent --outfile ${keypairPath}`)
 
     // Get the public key
-    const programId = execSync(`solana-keygen pubkey ${keypairPath}`, { encoding: 'utf8' }).trim()
+    const programId = execSync(`trezoa-keygen pubkey ${keypairPath}`, { encoding: 'utf8' }).trim()
 
     console.log(`✅ Generated new program ID: ${programId}`)
 
     // Update lib.rs
-    const libRsPath = path.join(__dirname, 'programs', 'solana-distributor', 'src', 'lib.rs')
+    const libRsPath = path.join(__dirname, 'programs', 'trezoa-distributor', 'src', 'lib.rs')
     let libRsContent = fs.readFileSync(libRsPath, 'utf8')
 
     // Replace the declare_id! line
@@ -50,7 +50,7 @@ async function generateProgramId(): Promise<string> {
     let anchorTomlContent = fs.readFileSync(anchorTomlPath, 'utf8')
 
     // Replace the program ID in Anchor.toml
-    anchorTomlContent = anchorTomlContent.replace(/solana_distributor = ".*"/, `solana_distributor = "${programId}"`)
+    anchorTomlContent = anchorTomlContent.replace(/trezoa_distributor = ".*"/, `trezoa_distributor = "${programId}"`)
 
     fs.writeFileSync(anchorTomlPath, anchorTomlContent)
     console.log('✅ Updated Anchor.toml with new program ID')
@@ -75,7 +75,7 @@ async function generateClients() {
 
   try {
     // Check if program ID is valid before building
-    const libRsPath = path.join(__dirname, 'programs', 'solana-distributor', 'src', 'lib.rs')
+    const libRsPath = path.join(__dirname, 'programs', 'trezoa-distributor', 'src', 'lib.rs')
 
     if (fs.existsSync(libRsPath)) {
       const libRsContent = fs.readFileSync(libRsPath, 'utf8')

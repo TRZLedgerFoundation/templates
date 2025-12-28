@@ -1,13 +1,13 @@
-# x402 Solana Protocol Implementation
+# x402 Trezoa Protocol Implementation
 
-A TypeScript implementation of the x402 payment protocol for Solana blockchain, featuring instant finality, sponsored transactions, and replay attack protection.
+A TypeScript implementation of the x402 payment protocol for Trezoa blockchain, featuring instant finality, sponsored transactions, and replay attack protection.
 
 ## Overview
 
-The x402 protocol enables payment-gated access to web resources through Solana blockchain payments. This implementation provides:
+The x402 protocol enables payment-gated access to web resources through Trezoa blockchain payments. This implementation provides:
 
 - **Instant Finality**: Client funds move immediately to merchant (on-chain settlement)
-- **Sponsored Transactions**: Facilitator pays gas fees, client authorizes SOL transfer
+- **Sponsored Transactions**: Facilitator pays gas fees, client authorizes TRZ transfer
 - **Replay Protection**: Cryptographic nonce system prevents duplicate payments
 - **TypeScript**: Full type safety with Zod validation
 - **Production Ready**: PM2 process management, structured logging, error handling
@@ -26,21 +26,21 @@ The x402 protocol enables payment-gated access to web resources through Solana b
                                                                             │
                                                                             ▼
                                                                  ┌─────────────────┐
-                                                      │  Solana Devnet  │
+                                                      │  Trezoa Devnet  │
                                                       │  (Blockchain)   │
                                                                  └─────────────────┘
 ```
 
 ### Flow
 
-1. **Client** creates and signs Solana transaction (client -> merchant transfer)
+1. **Client** creates and signs Trezoa transaction (client -> merchant transfer)
 2. **Client** signs authorization payload (for replay protection)
 3. **Client** sends both to server via HTTP header
 4. **Server** middleware extracts payment and forwards to facilitator
 5. **Facilitator** verifies signatures and checks nonce
 6. **Facilitator** adds signature as fee payer (sponsors transaction)
-7. **Facilitator** broadcasts to Solana blockchain
-8. **Instant Settlement**: Client's SOL moves to merchant on-chain
+7. **Facilitator** broadcasts to Trezoa blockchain
+8. **Instant Settlement**: Client's TRZ moves to merchant on-chain
 9. **Server** delivers protected resource
 
 ## Project Structure
@@ -64,7 +64,7 @@ x402_ts/
 │   │   ├── get-server-context.ts   # Server context
 │   │   ├── nonce-database.ts       # SQLite nonce management
 │   │   ├── payment-request.ts      # Payment payload structures
-│   │   ├── solana-utils.ts         # Solana/Gill SDK utilities
+│   │   ├── trezoa-utils.ts         # Trezoa/Gill SDK utilities
 │   │   └── x402-middleware.ts      # Express middleware
 │   └── routes/
 │       ├── health.ts               # Health check endpoint
@@ -107,7 +107,7 @@ cp env.example .env
 Required environment variables:
 
 - `FACILITATOR_PRIVATE_KEY` - Facilitator's private key (base58)
-- `SOLANA_RPC_URL` - Solana RPC endpoint (default: devnet)
+- `TRZANA_RPC_URL` - Trezoa RPC endpoint (default: devnet)
 - `SIMULATE_TRANSACTIONS` - Set to `false` for real blockchain transactions
 
 ### 3. Build TypeScript
@@ -159,7 +159,7 @@ npm run generate:client
 ### Fund Test Wallet on Devnet
 
 ```bash
-solana airdrop 1 <YOUR_CLIENT_PUBLIC_KEY> --url devnet
+trezoa airdrop 1 <YOUR_CLIENT_PUBLIC_KEY> --url devnet
 ```
 
 ## How It Works
@@ -171,7 +171,7 @@ This implementation uses **sponsored transactions** for TRUE x402 instant finali
 1. **Client Side**:
    - Creates authorization payload with nonce
    - Signs authorization (Ed25519 signature for replay protection)
-   - Creates Solana transaction (client -> merchant transfer)
+   - Creates Trezoa transaction (client -> merchant transfer)
    - Signs transaction with their private key
    - Sends both to server
 
@@ -181,8 +181,8 @@ This implementation uses **sponsored transactions** for TRUE x402 instant finali
    - Marks nonce as used immediately
    - Deserializes client-signed transaction
    - Adds facilitator signature as fee payer
-   - Broadcasts to Solana blockchain
-   - Client's SOL moves to merchant instantly
+   - Broadcasts to Trezoa blockchain
+   - Client's TRZ moves to merchant instantly
 
 3. **Result**:
    - Client's funds committed on-chain (instant finality)
@@ -196,7 +196,7 @@ This implementation uses **sponsored transactions** for TRUE x402 instant finali
 {
   payload: {
     amount: "10000000",           // Amount in lamports
-    recipient: "merchant_address", // Merchant Solana address
+    recipient: "merchant_address", // Merchant Trezoa address
     resourceId: "/api/resource",   // Resource identifier
     resourceUrl: "/api/resource",  // Resource URL
     nonce: "unique_hex_string",    // Cryptographic nonce
@@ -204,8 +204,8 @@ This implementation uses **sponsored transactions** for TRUE x402 instant finali
     expiry: 1234571490             // Expiration timestamp
   },
   signature: "base58_signature",   // Client's Ed25519 signature
-  clientPublicKey: "client_pub",   // Client's Solana public key
-  signedTransaction: "base64_tx"   // Client-signed Solana transaction
+  clientPublicKey: "client_pub",   // Client's Trezoa public key
+  signedTransaction: "base64_tx"   // Client-signed Trezoa transaction
 }
 ```
 
@@ -229,7 +229,7 @@ GET /public
 
 // Protected endpoint (requires x402 payment)
 GET /api/premium-data
-  - Requires 0.01 SOL payment
+  - Requires 0.01 TRZ payment
   - Returns premium content after payment verification
 
 // Other protected routes
@@ -339,7 +339,7 @@ npm run fmt:check
 
 - **Runtime**: Node.js with TypeScript
 - **Framework**: Express.js
-- **Blockchain**: Solana (via Gill SDK and @solana/web3.js)
+- **Blockchain**: Trezoa (via Gill SDK and @trezoa/web3.js)
 - **Database**: SQLite3 (for nonce management)
 - **Process Management**: PM2
 - **Validation**: Zod
@@ -356,17 +356,17 @@ See `env.example` for all available configuration options:
 # Facilitator
 FACILITATOR_PORT=3001
 FACILITATOR_PRIVATE_KEY=<base58_private_key>
-SOLANA_RPC_URL=https://api.devnet.solana.com
+TRZANA_RPC_URL=https://api.devnet.trezoa.com
 SIMULATE_TRANSACTIONS=false
 MAX_PAYMENT_AMOUNT=1000000000
 
 # Server
 SERVER_PORT=3000
 FACILITATOR_URL=http://localhost:3001
-MERCHANT_SOLANA_ADDRESS=<merchant_public_key>
+MERCHANT_TRZANA_ADDRESS=<merchant_public_key>
 
-# Solana
-SOLANA_NETWORK=devnet
+# Trezoa
+TRZANA_NETWORK=devnet
 ```
 
 ### PM2 Configuration
@@ -388,9 +388,9 @@ The `ecosystem.config.cjs` file configures PM2 process management:
 - Ensure ports 3000 and 3001 are available
 - Check PM2 logs: `npm run logs`
 
-**Tests fail with "insufficient SOL"**
+**Tests fail with "insufficient TRZ"**
 
-- Fund test client wallet: `solana airdrop 1 <address> --url devnet`
+- Fund test client wallet: `trezoa airdrop 1 <address> --url devnet`
 - Check `SIMULATE_TRANSACTIONS=false` in `.env`
 
 **Replay attack test succeeds twice**
@@ -400,8 +400,8 @@ The `ecosystem.config.cjs` file configures PM2 process management:
 
 **Transaction fails on-chain**
 
-- Ensure facilitator has SOL for gas fees
-- Check Solana devnet is operational
+- Ensure facilitator has TRZ for gas fees
+- Check Trezoa devnet is operational
 - Verify RPC endpoint is accessible
 
 ## Security Considerations
@@ -434,8 +434,8 @@ This implementation follows the Gill Node Express template patterns and addresse
 
 Built with:
 
-- [Gill SDK](https://www.gillsdk.com/) - Solana TypeScript SDK
-- [@solana/web3.js](https://github.com/solana-labs/solana-web3.js) - Solana JavaScript API
+- [Gill SDK](https://www.gillsdk.com/) - Trezoa TypeScript SDK
+- [@trezoa/web3.js](https://github.com/trezoa-team/trezoa-web3.js) - Trezoa JavaScript API
 - [Express.js](https://expressjs.com/) - Web framework
 - [PM2](https://pm2.keymetrics.io/) - Process manager
 - [Zod](https://github.com/colinhacks/zod) - Schema validation

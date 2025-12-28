@@ -47,7 +47,7 @@ export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
           <Card className="w-full max-w-md">
             <CardHeader>
               <CardTitle>Authentication Required</CardTitle>
-              <CardDescription>Please sign in with your Solana wallet to access this page</CardDescription>
+              <CardDescription>Please sign in with your Trezoa wallet to access this page</CardDescription>
             </CardHeader>
             <CardContent>
               <Button onClick={() => router.replace('/')} className="w-full">

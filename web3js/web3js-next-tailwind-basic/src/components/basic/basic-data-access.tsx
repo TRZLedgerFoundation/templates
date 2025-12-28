@@ -1,12 +1,12 @@
 'use client'
 
 import { getBasicProgram, getBasicProgramId } from '@project/anchor'
-import { useConnection } from '@solana/wallet-adapter-react'
-import { Cluster } from '@solana/web3.js'
+import { useConnection } from '@trezoa/wallet-adapter-react'
+import { Cluster } from '@trezoa/web3.js'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { useCluster } from '../cluster/cluster-data-access'
-import { useAnchorProvider } from '../solana/solana-provider'
+import { useAnchorProvider } from '../trezoa/trezoa-provider'
 import { useTransactionToast } from '../use-transaction-toast'
 import { toast } from 'sonner'
 

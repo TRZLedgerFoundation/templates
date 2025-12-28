@@ -1,11 +1,11 @@
 # x402 Payment Testing UI
 
-Web-based interface for testing x402 Solana payment API endpoints with wallet integration and real-time logging.
+Web-based interface for testing x402 Trezoa payment API endpoints with wallet integration and real-time logging.
 
 ## Features
 
 - **Interactive UI** - Test all API endpoints visually
-- **Wallet Integration** - Load and use Solana wallets
+- **Wallet Integration** - Load and use Trezoa wallets
 - **Payment Testing** - Sign and submit USDC payments
 - **Real-time Logs** - Track requests, responses, and transactions
 - **Network Switching** - Toggle between devnet and mainnet
@@ -34,7 +34,7 @@ Edit `.env` and configure:
 ### Generate a Test Wallet
 
 ```bash
-solana-keygen new --no-bip39-passphrase --outfile keypair.json
+trezoa-keygen new --no-bip39-passphrase --outfile keypair.json
 cat keypair.json
 # Copy the array and paste into .env as VITE_SIGNER_KEYPAIR
 ```
@@ -51,18 +51,18 @@ Opens at `http://localhost:5173`
 
 ### 1. Load Wallet
 
-Click "Load Wallet from .env" to initialize your Solana wallet. Your public key will be displayed.
+Click "Load Wallet from .env" to initialize your Trezoa wallet. Your public key will be displayed.
 
 ### 2. Fund Wallet (Devnet)
 
-Get devnet SOL and USDC:
+Get devnet TRZ and USDC:
 
 ```bash
-# Devnet SOL (for transaction fees)
-solana airdrop 2 YOUR_WALLET_ADDRESS --url devnet
+# Devnet TRZ (for transaction fees)
+trezoa airdrop 2 YOUR_WALLET_ADDRESS --url devnet
 
 # Devnet USDC
-# Use Solana faucets or Circle's devnet USDC faucet
+# Use Trezoa faucets or Circle's devnet USDC faucet
 ```
 
 ### 3. Test Endpoints
@@ -157,7 +157,7 @@ sequenceDiagram
     participant UI as Frontend UI
     participant Wallet as Browser Wallet
     participant API as Backend API
-    participant Solana as Solana
+    participant Trezoa as Trezoa
 
     UI->>API: GET /api/paid
     API->>UI: 402 Payment Required
@@ -166,8 +166,8 @@ sequenceDiagram
     Wallet->>UI: Signed transaction
 
     UI->>API: GET /api/paid<br/>X-PAYMENT: {tx}
-    API->>Solana: Verify & submit
-    Solana->>API: Confirmed
+    API->>Trezoa: Verify & submit
+    Trezoa->>API: Confirmed
     API->>UI: 200 OK + content
 ```
 
@@ -180,7 +180,7 @@ sequenceDiagram
 
 ### "Failed to create payment"
 
-- Check devnet SOL balance (need ~0.001 SOL for fees)
+- Check devnet TRZ balance (need ~0.001 TRZ for fees)
 - Check devnet USDC balance
 - Verify RPC URL is accessible
 - Check browser console for errors
@@ -200,8 +200,8 @@ sequenceDiagram
 
 - [Main README](../README.md)
 - [x402 Protocol](https://x402.org)
-- [Solana Web3.js Docs](https://solana-labs.github.io/solana-web3.js/)
+- [Trezoa Web3.js Docs](https://trezoa-team.github.io/trezoa-web3.js/)
 
 ---
 
-Built for testing x402 payment APIs on Solana
+Built for testing x402 payment APIs on Trezoa

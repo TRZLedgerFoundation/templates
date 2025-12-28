@@ -29,7 +29,7 @@ ${colors.cyan}${colors.bright}
  ░██  ░██       ░██    ░██ ░██  ░██                        ░██ ░██    ░██ ░██           ░██             ░██
 ░██    ░██      ░██     ░████   ░████████            ░███████   ░███████  ░██           ░██       ░███████
 ${colors.reset}
-${colors.dim}                           Solana x402 Payment Protocol - Rust Template${colors.reset}
+${colors.dim}                           Trezoa x402 Payment Protocol - Rust Template${colors.reset}
 `
 
 var projectName = process.argv[2]
@@ -197,7 +197,7 @@ const setupProject = (answer) => {
     console.log(`     ${colors.dim}$${colors.reset} cd ${projectName}`)
     console.log(`     ${colors.dim}$${colors.reset} cp .env.example .env`)
     console.log(
-      `     ${colors.dim}$${colors.reset} ${colors.dim}# Edit .env and add your Solana receiver wallet address${colors.reset}\n`,
+      `     ${colors.dim}$${colors.reset} ${colors.dim}# Edit .env and add your Trezoa receiver wallet address${colors.reset}\n`,
     )
 
     console.log(`  ${colors.cyan}2.${colors.reset} ${colors.dim}Start the server${colors.reset}`)
@@ -217,7 +217,7 @@ const setupProject = (answer) => {
       `${colors.bright}${colors.blue}└─────────────────────────────────────────────────────────────────────────────┘${colors.reset}\n`,
     )
 
-    console.log(`  ${colors.cyan}1.${colors.reset} ${colors.dim}Generate a Solana keypair${colors.reset}`)
+    console.log(`  ${colors.cyan}1.${colors.reset} ${colors.dim}Generate a Trezoa keypair${colors.reset}`)
     console.log(`     ${colors.dim}$${colors.reset} solana-keygen new --no-bip39-passphrase --outfile keypair.json\n`)
 
     console.log(`  ${colors.cyan}2.${colors.reset} ${colors.dim}Configure frontend environment${colors.reset}`)
@@ -231,7 +231,7 @@ const setupProject = (answer) => {
       `     ${colors.green}>>${colors.reset} Frontend will start on ${colors.bright}${colors.cyan}http://localhost:5173${colors.reset}\n`,
     )
 
-    console.log(`${colors.dim}  The frontend provides a web UI to test your APIs with Solana payments.${colors.reset}`)
+    console.log(`${colors.dim}  The frontend provides a web UI to test your APIs with Trezoa payments.${colors.reset}`)
     console.log(`${colors.dim}  Your wallet public key will be displayed automatically!${colors.reset}\n`)
 
     console.log(

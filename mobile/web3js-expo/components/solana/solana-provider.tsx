@@ -1,29 +1,29 @@
-import { Connection, type ConnectionConfig } from '@solana/web3.js'
+import { Connection, type ConnectionConfig } from '@trezoa/web3.js'
 import React, { createContext, type ReactNode, useContext, useMemo } from 'react'
 import { useCluster } from '../cluster/cluster-provider'
 
-export interface SolanaProviderState {
+export interface TrezoaProviderState {
   connection: Connection
 }
 
-export interface SolanaProviderProps {
+export interface TrezoaProviderProps {
   children: ReactNode
   config?: ConnectionConfig
 }
 
-const ConnectionContext = createContext<SolanaProviderState>({} as SolanaProviderState)
+const ConnectionContext = createContext<TrezoaProviderState>({} as TrezoaProviderState)
 
-export function SolanaProvider({ children, config = { commitment: 'confirmed' } }: SolanaProviderProps) {
+export function TrezoaProvider({ children, config = { commitment: 'confirmed' } }: TrezoaProviderProps) {
   const { selectedCluster } = useCluster()
   const connection = useMemo(() => new Connection(selectedCluster.endpoint, config), [selectedCluster, config])
 
   return <ConnectionContext.Provider value={{ connection }}>{children}</ConnectionContext.Provider>
 }
 
-export function useSolana(): SolanaProviderState {
+export function useTrezoa(): TrezoaProviderState {
   return useContext(ConnectionContext)
 }
 
 export function useConnection(): Connection {
-  return useSolana().connection
+  return useTrezoa().connection
 }

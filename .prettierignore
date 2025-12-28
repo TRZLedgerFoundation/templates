@@ -16,7 +16,7 @@ gill/**/anchor/src/client/js/generated
 gill/**/anchor/target/debug
 gill/**/anchor/target/deploy
 gill/**/anchor/target/release
-gill/**/anchor/target/sbf-solana-solana
+gill/**/anchor/target/sbf-trezoa-trezoa
 gill/**/anchor/target/test-ledger
 gill/**/anchor/target/.rustc_info.json
 gill/**/dist
@@ -27,7 +27,7 @@ web3js/**/.anchor
 web3js/**/anchor/target/debug
 web3js/**/anchor/target/deploy
 web3js/**/anchor/target/release
-web3js/**/anchor/target/sbf-solana-solana
+web3js/**/anchor/target/sbf-trezoa-trezoa
 web3js/**/anchor/target/test-ledger
 web3js/**/anchor/target/.rustc_info.json
 web3js/**/dist

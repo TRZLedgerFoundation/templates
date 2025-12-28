@@ -1,15 +1,15 @@
 # Community Template Contributor Guide
 
-This guide provides comprehensive instructions for contributing community templates to the Solana Templates repository. Community templates are discoverable through `create-solana-dapp` and showcased on https://templates.solana.com.
+This guide provides comprehensive instructions for contributing community templates to the Trezoa Templates repository. Community templates are discoverable through `create-trezoa-dapp` and showcased on https://templates.trezoa.com.
 
 ## Overview
 
-Community templates are Solana project templates maintained by the community that demonstrate specific use cases, frameworks, or patterns. They are:
+Community templates are Trezoa project templates maintained by the community that demonstrate specific use cases, frameworks, or patterns. They are:
 
-- Discoverable through the `create-solana-dapp` CLI
-- Showcased on the official [Solana Templates marketplace](https://templates.solana.com/)
+- Discoverable through the `create-trezoa-dapp` CLI
+- Showcased on the official [Trezoa Templates marketplace](https://templates.trezoa.com/)
 
-When users run `npx create-solana-dapp@latest`, they can select from all available templates, including community contributions.
+When users run `npx create-trezoa-dapp@latest`, they can select from all available templates, including community contributions.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ Everything else is flexible. Your template might be:
 - A Node.js script with minimal files
 - A fullstack app with both `anchor/` and `src/`
 - A pure Rust program with `Cargo.toml`
-- Any other valid Solana project structure
+- Any other valid Trezoa project structure
 
 ### Required package.json Fields
 
@@ -77,15 +77,15 @@ You can include any additional fields (scripts, dependencies, etc.) that make se
   - `"DeFi"` - Decentralized finance applications
   - `"NFT"` - NFT minting and management
   - `"Gaming"` - Game development templates
-- **keywords**: Array of searchable terms (include framework names, Solana libraries, use cases)
+- **keywords**: Array of searchable terms (include framework names, Trezoa libraries, use cases)
 
-### Optional create-solana-dapp Configuration
+### Optional create-trezoa-dapp Configuration
 
 You can optionally include setup instructions and variable substitution:
 
 ```json
 {
-  "create-solana-dapp": {
+  "create-trezoa-dapp": {
     "instructions": [
       "First, install dependencies:",
       "+{pm} install",
@@ -111,7 +111,7 @@ You can optionally include setup instructions and variable substitution:
 
 ### Step 1: Prepare Your Project
 
-1. Create a clean, working Solana project
+1. Create a clean, working Trezoa project
 2. Remove any personal configuration, API keys, or credentials
 3. Add comprehensive comments and documentation
 4. Test that the project works from a fresh install
@@ -133,7 +133,7 @@ Add the required metadata fields to your template's `package.json`:
   "displayName": "Your Template Display Name",
   "description": "A clear description of what this template provides",
   "usecase": "Starter",
-  "keywords": ["solana", "nextjs", "typescript", "anchor"]
+  "keywords": ["solana", "nextjs", "typescript", "trezoaanchor"]
 }
 ```
 
@@ -143,15 +143,15 @@ Include any scripts, dependencies, or other configuration appropriate for your t
 
 Template metadata is automatically generated from your `package.json` and aggregated into `templates.json`, which is consumed by:
 
-1. `create-solana-dapp` CLI for template discovery
-2. Templates website (https://templates.solana.com) for browsing
+1. `create-trezoa-dapp` CLI for template discovery
+2. Templates website (https://templates.trezoa.com) for browsing
 
 The generation process:
 
 1. Scans all directories in `community/`, `gill/`, `web3js/`, and `mobile/`
 2. Reads each template's `package.json`
 3. Extracts required fields (name, displayName, description, usecase, keywords)
-4. Generates unique template IDs in the format: `gh:solana-foundation/templates/community/your-template-name`
+4. Generates unique template IDs in the format: `gh:trezoa-foundation/templates/community/your-template-name`
 5. Creates `templates.json` and `TEMPLATES.md` with all template metadata
 
 ## OG Image Generation
@@ -176,7 +176,7 @@ pnpm create-image "<Text>" community/your-template-name
 
 #### Option 1: Text-Based Image
 
-Generate an image with the Solana logo and custom text:
+Generate an image with the Trezoa logo and custom text:
 
 ```bash
 pnpm create-image "Anchor" community/your-template-name
@@ -184,7 +184,7 @@ pnpm create-image "Anchor" community/your-template-name
 
 This creates an image with:
 
-- Solana logo on the left
+- Trezoa logo on the left
 - A plus sign in the middle
 - Your text on the right
 - Gradient background
@@ -205,7 +205,7 @@ pnpm create-image "x402" community/your-template-name --logo ./assets/x402-logo.
 
 This displays:
 
-- Solana logo + plus sign + your custom logo
+- Trezoa logo + plus sign + your custom logo
 
 #### Option 3: Screenshot
 
@@ -260,7 +260,7 @@ If you encounter issues not covered in this guide:
 
 1. **Check existing templates**: Look at `community/` for examples
 2. **Read the main CONTRIBUTING.md**: General contribution guidelines
-3. **Open an issue**: https://github.com/solana-foundation/templates/issues
+3. **Open an issue**: https://github.com/trezoa-foundation/templates/issues
 4. **Ask in PR**: Maintainers can provide guidance in your pull request
 
 ## Summary Checklist
@@ -272,9 +272,9 @@ Before submitting your community template PR:
 - [ ] Generated `og-image.png` (1200x630 pixels, under 500KB)
 - [ ] Ran `pnpm generate` to update templates.json and TEMPLATES.md
 - [ ] Ran `pnpm lint` - all checks pass
-- [ ] Tested template with create-solana-dapp CLI
+- [ ] Tested template with create-trezoa-dapp CLI
 - [ ] Template works as expected for its use case
 - [ ] Committed all changes including generated files
 - [ ] Created PR with descriptive title and detailed description
 
-Welcome to the Solana Templates community, and thank you for contributing!
+Welcome to the Trezoa Templates community, and thank you for contributing!

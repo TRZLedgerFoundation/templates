@@ -1,16 +1,16 @@
 'use client'
 
-import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token'
-import { useConnection, useWallet } from '@solana/wallet-adapter-react'
+import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@trezoa/spl-token'
+import { useConnection, useWallet } from '@trezoa/wallet-adapter-react'
 import {
   Connection,
-  LAMPORTS_PER_SOL,
+  LAMPORTS_PER_TRZ,
   PublicKey,
   SystemProgram,
   TransactionMessage,
   TransactionSignature,
   VersionedTransaction,
-} from '@solana/web3.js'
+} from '@trezoa/web3.js'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 export function useGetBalance({ address }: { address: PublicKey }) {
@@ -114,7 +114,7 @@ export function useRequestAirdrop({ address }: { address: PublicKey }) {
     mutationFn: async (amount: number = 1) => {
       const [latestBlockhash, signature] = await Promise.all([
         connection.getLatestBlockhash(),
-        connection.requestAirdrop(address, amount * LAMPORTS_PER_SOL),
+        connection.requestAirdrop(address, amount * LAMPORTS_PER_TRZ),
       ])
 
       await connection.confirmTransaction({ signature, ...latestBlockhash }, 'confirmed')
@@ -158,7 +158,7 @@ async function createTransaction({
     SystemProgram.transfer({
       fromPubkey: publicKey,
       toPubkey: destination,
-      lamports: amount * LAMPORTS_PER_SOL,
+      lamports: amount * LAMPORTS_PER_TRZ,
     }),
   ]
 

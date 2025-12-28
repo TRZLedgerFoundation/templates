@@ -33,7 +33,7 @@ import {
   type TransactionSigner,
   type WritableAccount,
   type WritableSignerAccount,
-} from "@solana/kit";
+} from "@trezoa/kit";
 import { VAULT_PROGRAM_ADDRESS } from "../programs";
 import {
   expectAddress,

@@ -1,4 +1,4 @@
-import { Keypair, PublicKey } from '@solana/web3.js'
+import { Keypair, PublicKey } from '@trezoa/web3.js'
 import { useMemo } from 'react'
 import { ExplorerLink } from '@/components/cluster/cluster-ui'
 import { Button } from '@/components/ui/button'

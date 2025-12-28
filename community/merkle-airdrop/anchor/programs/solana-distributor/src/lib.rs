@@ -1,10 +1,10 @@
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::keccak;
+use anchor_lang::trezoa_program::keccak;
 
 declare_id!("111111111111111111111111111111111111");
 
 #[program]
-pub mod solana_distributor {
+pub mod trezoa_distributor {
     use super::*;
 
     pub fn initialize_airdrop(
@@ -21,14 +21,14 @@ pub mod solana_distributor {
         airdrop_state.amount_claimed = 0;
         airdrop_state.bump = ctx.bumps.airdrop_state;
 
-        // Transfer SOL from authority to the vault (airdrop_state account)
-        let transfer_ix = anchor_lang::solana_program::system_instruction::transfer(
+        // Transfer TRZ from authority to the vault (airdrop_state account)
+        let transfer_ix = anchor_lang::trezoa_program::system_instruction::transfer(
             &ctx.accounts.authority.key(),
             &airdrop_state.key(),
             amount,
         );
 
-        anchor_lang::solana_program::program::invoke(
+        anchor_lang::trezoa_program::program::invoke(
             &transfer_ix,
             &[
                 ctx.accounts.authority.to_account_info(),
@@ -65,7 +65,7 @@ pub mod solana_distributor {
             ErrorCode::InvalidProof
         );
 
-        // Step 3: Transfer SOL from airdrop_state to the user
+        // Step 3: Transfer TRZ from airdrop_state to the user
         **airdrop_state.to_account_info().try_borrow_mut_lamports()? -= amount;
         **ctx.accounts.signer.to_account_info().try_borrow_mut_lamports()? += amount;
 
@@ -91,18 +91,18 @@ pub mod solana_distributor {
         // Update the Merkle root
         airdrop_state.merkle_root = new_merkle_root;
         
-        // Add additional SOL to the airdrop if provided
+        // Add additional TRZ to the airdrop if provided
         if additional_amount > 0 {
             airdrop_state.airdrop_amount = airdrop_state.airdrop_amount.saturating_add(additional_amount);
             
-            // Transfer additional SOL from authority to the vault
-            let transfer_ix = anchor_lang::solana_program::system_instruction::transfer(
+            // Transfer additional TRZ from authority to the vault
+            let transfer_ix = anchor_lang::trezoa_program::system_instruction::transfer(
                 &ctx.accounts.authority.key(),
                 &airdrop_state.key(),
                 additional_amount,
             );
 
-            anchor_lang::solana_program::program::invoke(
+            anchor_lang::trezoa_program::program::invoke(
                 &transfer_ix,
                 &[
                     ctx.accounts.authority.to_account_info(),
@@ -207,9 +207,9 @@ pub struct AirdropState {
     pub merkle_root: [u8; 32],
     /// The authority allowed to update the merkle root
     pub authority: Pubkey,
-    /// Total SOL allocated for this airdrop (in lamports)
+    /// Total TRZ allocated for this airdrop (in lamports)
     pub airdrop_amount: u64,
-    /// Total SOL claimed so far (in lamports)
+    /// Total TRZ claimed so far (in lamports)
     pub amount_claimed: u64,
     /// Bump seed for the PDA
     pub bump: u8,

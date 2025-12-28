@@ -1,14 +1,14 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { SolanaProvider } from '@solana/react-hooks'
-import { autoDiscover, createClient } from '@solana/client'
+import { TrezoaProvider } from '@trezoa/react-hooks'
+import { autoDiscover, createClient } from '@trezoa/client'
 
 const client = createClient({
-  endpoint: 'https://api.devnet.solana.com',
+  endpoint: 'https://api.devnet.trezoa.com',
   walletConnectors: autoDiscover(),
 })
 
 export function Provider({ children }: { children: ReactNode }) {
-  return <SolanaProvider client={client}>{children}</SolanaProvider>
+  return <TrezoaProvider client={client}>{children}</TrezoaProvider>
 }

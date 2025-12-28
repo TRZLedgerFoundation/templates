@@ -1,267 +1,267 @@
 # Kit
 
-Kit Templates (using @solana/kit)
+Kit Templates (using @trezoa/kit)
 
 ### [nextjs](kit/nextjs)
 
-`gh:solana-foundation/templates/kit/nextjs`
+`gh:trezoa-foundation/templates/kit/nextjs`
 
-> Next.js, Tailwind, @solana/react-hooks
+> Next.js, Tailwind, @trezoa/react-hooks
 
-`kit` `nextjs` `react` `solana-kit` `tailwind` `typescript`
+`kit` `nextjs` `react` `trezoa-kit` `tailwind` `typescript`
 
 ### [nextjs-anchor](kit/nextjs-anchor)
 
-`gh:solana-foundation/templates/kit/nextjs-anchor`
+`gh:trezoa-foundation/templates/kit/nextjs-anchor`
 
-> Next.js, Tailwind, @solana/react-hooks, Anchor vault program
+> Next.js, Tailwind, @trezoa/react-hooks, Anchor vault program
 
-`anchor` `kit` `nextjs` `react` `solana-kit` `tailwind` `typescript`
+`anchor` `kit` `nextjs` `react` `trezoa-kit` `tailwind` `typescript`
 
 ### [react-vite](kit/react-vite)
 
-`gh:solana-foundation/templates/kit/react-vite`
+`gh:trezoa-foundation/templates/kit/react-vite`
 
-> React + Vite, Tailwind, @solana/react-hooks
+> React + Vite, Tailwind, @trezoa/react-hooks
 
-`kit` `react` `solana-kit` `tailwind` `typescript` `vite`
+`kit` `react` `trezoa-kit` `tailwind` `typescript` `vite`
 
 ### [react-vite-anchor](kit/react-vite-anchor)
 
-`gh:solana-foundation/templates/kit/react-vite-anchor`
+`gh:trezoa-foundation/templates/kit/react-vite-anchor`
 
-> React + Vite, Tailwind, @solana/react-hooks, Anchor vault program
+> React + Vite, Tailwind, @trezoa/react-hooks, Anchor vault program
 
-`anchor` `kit` `react` `solana-kit` `tailwind` `typescript` `vite`
+`anchor` `kit` `react` `trezoa-kit` `tailwind` `typescript` `vite`
 
 # Gill
 
-Gill Templates (based on @solana/kit)
+Gill Templates (based on @trezoa/kit)
 
 ### [gill-next-tailwind](gill/gill-next-tailwind)
 
-`gh:solana-foundation/templates/gill/gill-next-tailwind`
+`gh:trezoa-foundation/templates/gill/gill-next-tailwind`
 
-> Next.js, Tailwind, gill (based on @solana/kit), Wallet UI
+> Next.js, Tailwind, gill (based on @trezoa/kit), Wallet UI
 
-`gill` `nextjs` `react` `solana-kit` `tailwind` `typescript` `wallet-ui`
+`gill` `nextjs` `react` `trezoa-kit` `tailwind` `typescript` `wallet-ui`
 
 ### [gill-next-tailwind-basic](gill/gill-next-tailwind-basic)
 
-`gh:solana-foundation/templates/gill/gill-next-tailwind-basic`
+`gh:trezoa-foundation/templates/gill/gill-next-tailwind-basic`
 
-> Next.js, Tailwind, basic Anchor example, gill (based on @solana/kit), Wallet UI
+> Next.js, Tailwind, basic Anchor example, gill (based on @trezoa/kit), Wallet UI
 
-`anchor-basic` `gill` `nextjs` `react` `solana-kit` `tailwind` `typescript` `wallet-ui`
+`anchor-basic` `gill` `nextjs` `react` `trezoa-kit` `tailwind` `typescript` `wallet-ui`
 
 ### [gill-next-tailwind-counter](gill/gill-next-tailwind-counter)
 
-`gh:solana-foundation/templates/gill/gill-next-tailwind-counter`
+`gh:trezoa-foundation/templates/gill/gill-next-tailwind-counter`
 
-> Next.js, Tailwind, Anchor Counter example, gill (based on @solana/kit), Wallet UI
+> Next.js, Tailwind, Anchor Counter example, gill (based on @trezoa/kit), Wallet UI
 
-`anchor-counter` `gill` `nextjs` `react` `solana-kit` `tailwind` `typescript` `wallet-ui`
+`trezoaanchor-counter` `gill` `nextjs` `react` `trezoa-kit` `tailwind` `typescript` `wallet-ui`
 
 ### [gill-next-tailwind-minimal](gill/gill-next-tailwind-minimal)
 
-`gh:solana-foundation/templates/gill/gill-next-tailwind-minimal`
+`gh:trezoa-foundation/templates/gill/gill-next-tailwind-minimal`
 
-> Minimal Next.js, Tailwind, gill (based on @solana/kit), Wallet UI
+> Minimal Next.js, Tailwind, gill (based on @trezoa/kit), Wallet UI
 
-`gill` `minimal` `nextjs` `react` `solana-kit` `tailwind` `typescript` `wallet-ui`
+`gill` `minimal` `nextjs` `react` `trezoa-kit` `tailwind` `typescript` `wallet-ui`
 
 ### [gill-node-express](gill/gill-node-express)
 
-`gh:solana-foundation/templates/gill/gill-node-express`
+`gh:trezoa-foundation/templates/gill/gill-node-express`
 
-> Node.js Express API with gill (based on @solana/kit)
+> Node.js Express API with gill (based on @trezoa/kit)
 
-`express` `gill` `node` `solana-kit`
+`express` `gill` `node` `trezoa-kit`
 
 ### [gill-node-script](gill/gill-node-script)
 
-`gh:solana-foundation/templates/gill/gill-node-script`
+`gh:trezoa-foundation/templates/gill/gill-node-script`
 
-> Node.js script with gill (based on @solana/kit)
+> Node.js script with gill (based on @trezoa/kit)
 
-`gill` `node` `solana-kit`
+`gill` `node` `trezoa-kit`
 
 ### [gill-react-vite-tailwind](gill/gill-react-vite-tailwind)
 
-`gh:solana-foundation/templates/gill/gill-react-vite-tailwind`
+`gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind`
 
-> React+Vite, Tailwind, gill (based on @solana/kit), Wallet UI
+> React+Vite, Tailwind, gill (based on @trezoa/kit), Wallet UI
 
-`gill` `react` `solana-kit` `tailwind` `typescript` `vite` `wallet-ui`
+`gill` `react` `trezoa-kit` `tailwind` `typescript` `vite` `wallet-ui`
 
 ### [gill-react-vite-tailwind-basic](gill/gill-react-vite-tailwind-basic)
 
-`gh:solana-foundation/templates/gill/gill-react-vite-tailwind-basic`
+`gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-basic`
 
-> React+Vite, Tailwind, gill (based on @solana/kit), basic Anchor example, Wallet UI
+> React+Vite, Tailwind, gill (based on @trezoa/kit), basic Anchor example, Wallet UI
 
-`anchor-basic` `gill` `react` `solana-kit` `tailwind` `typescript` `vite` `wallet-ui`
+`anchor-basic` `gill` `react` `trezoa-kit` `tailwind` `typescript` `vite` `wallet-ui`
 
 ### [gill-react-vite-tailwind-counter](gill/gill-react-vite-tailwind-counter)
 
-`gh:solana-foundation/templates/gill/gill-react-vite-tailwind-counter`
+`gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-counter`
 
-> React+Vite, Tailwind, gill (based on @solana/kit), Anchor Counter example, Wallet UI
+> React+Vite, Tailwind, gill (based on @trezoa/kit), Anchor Counter example, Wallet UI
 
-`anchor-counter` `gill` `react` `solana-kit` `tailwind` `typescript` `vite` `wallet-ui`
+`trezoaanchor-counter` `gill` `react` `trezoa-kit` `tailwind` `typescript` `vite` `wallet-ui`
 
 ### [gill-react-vite-tailwind-minimal](gill/gill-react-vite-tailwind-minimal)
 
-`gh:solana-foundation/templates/gill/gill-react-vite-tailwind-minimal`
+`gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind-minimal`
 
-> Minimal React+Vite, Tailwind, gill (based on @solana/kit), Wallet UI
+> Minimal React+Vite, Tailwind, gill (based on @trezoa/kit), Wallet UI
 
-`gill` `minimal` `react` `solana-kit` `tailwind` `typescript` `vite` `wallet-ui`
+`gill` `minimal` `react` `trezoa-kit` `tailwind` `typescript` `vite` `wallet-ui`
 
-# Solana Mobile
+# Trezoa Mobile
 
-Solana Mobile Templates
+Trezoa Mobile Templates
 
 ### [web3js-expo](mobile/web3js-expo)
 
-`gh:solana-foundation/templates/mobile/web3js-expo`
+`gh:trezoa-foundation/templates/mobile/web3js-expo`
 
-> A template for building a Solana mobile app with Expo and React Native.
+> A template for building a Trezoa mobile app with Expo and React Native.
 
-`expo` `mobile-wallet-adapter` `react-native` `solana-web3js`
+`expo` `mobile-wallet-adapter` `react-native` `trezoa-web3js`
 
 ### [web3js-expo-minimal](mobile/web3js-expo-minimal)
 
-`gh:solana-foundation/templates/mobile/web3js-expo-minimal`
+`gh:trezoa-foundation/templates/mobile/web3js-expo-minimal`
 
-> A minimal template for building a Solana mobile app with Expo and React Native.
+> A minimal template for building a Trezoa mobile app with Expo and React Native.
 
-`expo` `mobile-wallet-adapter` `react-native` `solana-web3js`
+`expo` `mobile-wallet-adapter` `react-native` `trezoa-web3js`
 
 ### [web3js-expo-paper](mobile/web3js-expo-paper)
 
-`gh:solana-foundation/templates/mobile/web3js-expo-paper`
+`gh:trezoa-foundation/templates/mobile/web3js-expo-paper`
 
-> A template for building a Solana mobile app with Expo and React Native Paper.
+> A template for building a Trezoa mobile app with Expo and React Native Paper.
 
-`expo` `mobile-wallet-adapter` `react-native` `react-native-paper` `solana-web3js`
+`expo` `mobile-wallet-adapter` `react-native` `react-native-paper` `trezoa-web3js`
 
 # Web3.js Templates
 
-Templates using @solana/web3.js (legacy)
+Templates using @trezoa/web3.js (legacy)
 
 ### [web3js-next-tailwind](web3js/web3js-next-tailwind)
 
-`gh:solana-foundation/templates/web3js/web3js-next-tailwind`
+`gh:trezoa-foundation/templates/web3js/web3js-next-tailwind`
 
-> Next.js, Tailwind, @solana/web3.js, Wallet Adapter
+> Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter
 
-`nextjs` `react` `solana-web3js` `tailwind` `typescript` `wallet-adapter`
+`nextjs` `react` `trezoa-web3js` `tailwind` `typescript` `wallet-adapter`
 
 ### [web3js-next-tailwind-basic](web3js/web3js-next-tailwind-basic)
 
-`gh:solana-foundation/templates/web3js/web3js-next-tailwind-basic`
+`gh:trezoa-foundation/templates/web3js/web3js-next-tailwind-basic`
 
-> Next.js, Tailwind, @solana/web3.js, Wallet Adapter, basic Anchor program
+> Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter, basic Anchor program
 
-`anchor-basic` `nextjs` `react` `solana-web3js` `tailwind` `typescript` `wallet-adapter`
+`anchor-basic` `nextjs` `react` `trezoa-web3js` `tailwind` `typescript` `wallet-adapter`
 
 ### [web3js-next-tailwind-counter](web3js/web3js-next-tailwind-counter)
 
-`gh:solana-foundation/templates/web3js/web3js-next-tailwind-counter`
+`gh:trezoa-foundation/templates/web3js/web3js-next-tailwind-counter`
 
-> Next.js, Tailwind, @solana/web3.js, Wallet Adapter, Anchor Counter program
+> Next.js, Tailwind, @trezoa/web3.js, Wallet Adapter, Anchor Counter program
 
-`anchor-counter` `nextjs` `react` `solana-web3js` `tailwind` `typescript` `wallet-adapter`
+`trezoaanchor-counter` `nextjs` `react` `trezoa-web3js` `tailwind` `typescript` `wallet-adapter`
 
 ### [web3js-react-vite-tailwind](web3js/web3js-react-vite-tailwind)
 
-`gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind`
+`gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind`
 
-> React + Vite, Tailwind, @solana/web3.js, Wallet Adapter
+> React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter
 
-`react` `solana-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
+`react` `trezoa-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
 
 ### [web3js-react-vite-tailwind-basic](web3js/web3js-react-vite-tailwind-basic)
 
-`gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind-basic`
+`gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind-basic`
 
-> React + Vite, Tailwind, @solana/web3.js, Wallet Adapter, basic Anchor program
+> React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter, basic Anchor program
 
-`anchor-basic` `react` `solana-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
+`anchor-basic` `react` `trezoa-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
 
 ### [web3js-react-vite-tailwind-counter](web3js/web3js-react-vite-tailwind-counter)
 
-`gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind-counter`
+`gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind-counter`
 
-> React + Vite, Tailwind, @solana/web3.js, Wallet Adapter, Anchor Counter program
+> React + Vite, Tailwind, @trezoa/web3.js, Wallet Adapter, Anchor Counter program
 
-`anchor-counter` `web3js` `react` `solana-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
+`trezoaanchor-counter` `web3js` `react` `trezoa-web3js` `tailwind` `typescript` `vite` `wallet-adapter`
 
 # Community Templates
 
-Templates maintained by the Solana community
+Templates maintained by the Trezoa community
 
-### [gill-node-solanax402](community/gill-node-solanax402)
+### [gill-node-trezoa-x402](community/gill-node-trezoa-x402)
 
-`gh:solana-foundation/templates/community/gill-node-solanax402`
+`gh:trezoa-foundation/templates/community/gill-node-trezoa-x402`
 
-> x402 protocol implementation for Solana with Facilitator and Server apps using TypeScript and Gill SDK
+> x402 protocol implementation for Trezoa with Facilitator and Server apps using TypeScript and Gill SDK
 
 `solana` `x402` `payment` `protocol` `blockchain` `typescript` `gill`
 
 ### [merkle-airdrop](community/merkle-airdrop)
 
-`gh:solana-foundation/templates/community/merkle-airdrop`
+`gh:trezoa-foundation/templates/community/merkle-airdrop`
 
-> A modern, script-driven Solana airdrop template that distributes SOL to many recipients efficiently using a Merkle tree
+> A modern, script-driven Trezoa airdrop template that distributes TRZ to many recipients efficiently using a Merkle tree
 
 `nextjs` `react` `tailwind` `typescript` `framework-kit`
 
 ### [moneymq-x402](community/moneymq-x402)
 
-`gh:solana-foundation/templates/community/moneymq-x402`
+`gh:trezoa-foundation/templates/community/moneymq-x402`
 
-> Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Solana
+> Complete x402 payment protocol demo with MoneyMQ facilitator, showing micropayment-protected APIs on Trezoa
 
 `x402` `moneymq` `payments` `micropayments` `solana` `api-monetization` `kora` `facilitator` `typescript`
 
-### [solana-chatgpt-kit](community/solana-chatgpt-kit)
+### [trezoa-chatgpt-kit](community/trezoa-chatgpt-kit)
 
-`gh:solana-foundation/templates/community/solana-chatgpt-kit`
+`gh:trezoa-foundation/templates/community/trezoa-chatgpt-kit`
 
-> ChatGPT app with Solana features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode
+> ChatGPT app with Trezoa features - Swaps, transfers, staking and data query via natural language. Browser wallets + x402 payments or private key mode
 
 `solana` `chatgpt` `openai` `mcp` `jupiter` `x402` `payments` `swap` `wallet` `defi` `staking` `nextjs` `typescript` `spl-token` `sns`
 
 ### [supabase-auth](community/supabase-auth)
 
-`gh:solana-foundation/templates/community/supabase-auth`
+`gh:trezoa-foundation/templates/community/supabase-auth`
 
-> Authenticate Solana wallets with Supabase
+> Authenticate Trezoa wallets with Supabase
 
 `supabase` `authentication` `solana` `framework-kit`
 
-### [x402-solana-rust](community/x402-solana-rust)
+### [x402-trezoa-rust](community/x402-trezoa-rust)
 
-`gh:solana-foundation/templates/community/x402-solana-rust`
+`gh:trezoa-foundation/templates/community/x402-trezoa-rust`
 
-> x402 payment server template for Solana with Rust
+> x402 payment server template for Trezoa with Rust
 
 `solana` `x402` `rust` `payments` `api` `axum` `actix` `rocket`
 
 ### [x402-template](community/x402-template)
 
-`gh:solana-foundation/templates/community/x402-template`
+`gh:trezoa-foundation/templates/community/x402-template`
 
-> Next.js Solana starter with X402 payment protocol integration
+> Next.js Trezoa starter with X402 payment protocol integration
 
 `solana` `nextjs` `x402` `template` `starter`
 
 ### [zk-compression-airdrop](community/zk-compression-airdrop)
 
-`gh:solana-foundation/templates/community/zk-compression-airdrop`
+`gh:trezoa-foundation/templates/community/zk-compression-airdrop`
 
-> ZK-Compression based airdrop app built with Next.js, Tailwind, and @solana/react-hooks
+> ZK-Compression based airdrop app built with Next.js, Tailwind, and @trezoa/react-hooks
 
-`minimal` `nextjs` `react` `solana-kit` `tailwind` `typescript` `zk-compression` `airdrop` `zero-knowledge` `zk` `framework-kit`
+`minimal` `nextjs` `react` `trezoa-kit` `tailwind` `typescript` `zk-compression` `airdrop` `zero-knowledge` `zk` `framework-kit`

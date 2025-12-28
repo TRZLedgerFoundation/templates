@@ -1,5 +1,5 @@
 'use client'
-import { useWalletSession } from '@solana/react-hooks'
+import { useWalletSession } from '@trezoa/react-hooks'
 import { AccountUiBalanceCheck } from './account-ui-balance-check'
 
 export function AccountUiChecker() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useConnection } from '../solana/solana-provider'
+import { useConnection } from '../trezoa/trezoa-provider'
 import { AppText } from '@/components/app-text'
 import { Cluster } from '@/components/cluster/cluster'
 
@@ -11,7 +11,7 @@ export function ClusterUiVersion({ selectedCluster }: { selectedCluster: Cluster
     queryFn: () =>
       connection.getVersion().then((version) => {
         return {
-          core: version['solana-core'],
+          core: version['trezoa-core'],
           features: version['feature-set'],
         }
       }),

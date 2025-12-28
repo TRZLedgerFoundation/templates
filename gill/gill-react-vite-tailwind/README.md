@@ -3,7 +3,7 @@
 This is a React/Vite app containing:
 
 - Tailwind and Shadcn UI for styling
-- [Gill](https://gill.site/) Solana SDK
+- [Gill](https://gill.site/) Trezoa SDK
 - Shadcn [Wallet UI](https://registry.wallet-ui.dev) components
 
 ## Getting Started
@@ -13,7 +13,7 @@ This is a React/Vite app containing:
 #### Download the template
 
 ```shell
-npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-react-vite-tailwind
+npx create-trezoa-dapp@latest -t gh:trezoa-foundation/templates/gill/gill-react-vite-tailwind
 ```
 
 #### Install Dependencies

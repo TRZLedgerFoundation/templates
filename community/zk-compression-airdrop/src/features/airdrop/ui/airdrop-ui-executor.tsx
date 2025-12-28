@@ -5,7 +5,7 @@ import { AirdropProgressDisplay } from './airdrop-ui-progress'
 import { AirdropControls } from './airdrop-ui-controls'
 import { AirdropAlerts } from './airdrop-ui-alerts'
 import { useAirdrop } from '@/features/airdrop/data-access/use-airdrop'
-import { useWalletSession } from '@solana/react-hooks'
+import { useWalletSession } from '@trezoa/react-hooks'
 import type { AirdropConfig, AirdropData } from '@/features/airdrop/data-access/airdrop-types'
 
 interface AirdropExecutorProps {

@@ -1,11 +1,11 @@
 /**
  * Airdrop Client
- * Core logic for claiming airdrops on Solana
+ * Core logic for claiming airdrops on Trezoa
  */
 
 import {
-  createSolanaRpc,
-  createSolanaRpcSubscriptions,
+  createTrezoaRpc,
+  createTrezoaRpcSubscriptions,
   getProgramDerivedAddress,
   address,
   createTransactionMessage,
@@ -18,7 +18,7 @@ import {
   createKeyPairSignerFromBytes,
   sendAndConfirmTransactionFactory,
   pipe,
-} from '@solana/kit'
+} from '@trezoa/kit'
 import bs58 from 'bs58'
 import { generateProofForRecipient } from './merkle-tree'
 import { serializeClaimInstructionData, ACCOUNT_ROLES, PROGRAM_ADDRESSES } from './airdrop-instructions'
@@ -37,23 +37,23 @@ export interface ClaimResult {
 
 const NETWORK_CONFIG: Record<string, { http: string; ws: string }> = {
   devnet: {
-    http: 'https://api.devnet.solana.com',
-    ws: 'wss://api.devnet.solana.com',
+    http: 'https://api.devnet.trezoa.com',
+    ws: 'wss://api.devnet.trezoa.com',
   },
   testnet: {
-    http: 'https://api.testnet.solana.com',
-    ws: 'wss://api.testnet.solana.com',
+    http: 'https://api.testnet.trezoa.com',
+    ws: 'wss://api.testnet.trezoa.com',
   },
   mainnet: {
-    http: 'https://api.mainnet-beta.solana.com',
-    ws: 'wss://api.mainnet-beta.solana.com',
+    http: 'https://api.mainnet-beta.trezoa.com',
+    ws: 'wss://api.mainnet-beta.trezoa.com',
   },
 }
 
 function createClientInstance(network: string) {
   const config = NETWORK_CONFIG[network] || NETWORK_CONFIG.devnet
-  const rpc = createSolanaRpc(config.http)
-  const rpcSubscriptions = createSolanaRpcSubscriptions(config.ws)
+  const rpc = createTrezoaRpc(config.http)
+  const rpcSubscriptions = createTrezoaRpcSubscriptions(config.ws)
   const sendAndConfirmTransaction = sendAndConfirmTransactionFactory({ rpc, rpcSubscriptions })
 
   return {
@@ -136,10 +136,10 @@ async function validateClaim(clientInstance: any, signerAddress: string): Promis
   const balance = await clientInstance.rpc.getBalance(address(signerAddress)).send()
   const balanceLamports = Number(balance.value)
 
-  const minBalanceLamports = AIRDROP_CONFIG.MIN_SOL_BALANCE * 1e9
+  const minBalanceLamports = AIRDROP_CONFIG.MIN_TRZ_BALANCE * 1e9
   if (balanceLamports < minBalanceLamports) {
     throw new Error(
-      `Insufficient SOL balance: ${balanceLamports / 1e9} SOL. Need at least ${AIRDROP_CONFIG.MIN_SOL_BALANCE} SOL for transaction fees.`,
+      `Insufficient TRZ balance: ${balanceLamports / 1e9} TRZ. Need at least ${AIRDROP_CONFIG.MIN_TRZ_BALANCE} TRZ for transaction fees.`,
     )
   }
 

@@ -1,10 +1,10 @@
 import { useGetProgramAccountQuery } from '@/features/basic/data-access/use-get-program-account-query'
 
 import { AppAlert } from '@/components/app-alert'
-import { useSolana } from '@/components/solana/use-solana'
+import { useTrezoa } from '@/components/trezoa/use-trezoa'
 
 export function BasicUiProgram() {
-  const { cluster } = useSolana()
+  const { cluster } = useTrezoa()
   const query = useGetProgramAccountQuery()
 
   if (query.isLoading) {

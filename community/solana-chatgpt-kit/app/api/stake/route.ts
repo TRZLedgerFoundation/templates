@@ -1,15 +1,15 @@
 import { NextResponse } from 'next/server'
-import { VersionedTransaction, PublicKey } from '@solana/web3.js'
+import { VersionedTransaction, PublicKey } from '@trezoa/web3.js'
 import {
-  getSolanaConnection,
+  getTrezoaConnection,
   getWalletKeypair,
   JUPITER_API,
   TOKENS,
   TOKEN_DECIMALS,
-  JUPSOL_MINT,
+  JUPTRZ_MINT,
   LST_DECIMALS,
   externalWallet,
-} from '@/lib/solana-config'
+} from '@/lib/trezoa-config'
 
 type TokenInfo = {
   address: string
@@ -24,7 +24,7 @@ function isMint(s: string): boolean {
 }
 
 async function resolveLstMintAndDecimals(param?: string): Promise<{ mint: string; decimals: number; symbol: string }> {
-  const desiredRaw = (param || 'JupSOL').trim()
+  const desiredRaw = (param || 'JupTRZ').trim()
   if (isMint(desiredRaw)) {
     // Assume 9 decimals for LSTs; Jupiter quote returns outAmount in base units
     return { mint: desiredRaw, decimals: 9, symbol: desiredRaw }
@@ -32,11 +32,11 @@ async function resolveLstMintAndDecimals(param?: string): Promise<{ mint: string
 
   const desired = desiredRaw.replace(/^\$/i, '')
   if (desired.toLowerCase() === 'jupsol') {
-    return { mint: JUPSOL_MINT, decimals: LST_DECIMALS.JUPSOL || 9, symbol: 'JupSOL' }
+    return { mint: JUPTRZ_MINT, decimals: LST_DECIMALS.JUPTRZ || 9, symbol: 'JupTRZ' }
   }
 
   // If symbol not recognized and not a mint, require a contract address
-  throw new Error(`Unknown LST. Provide a mint address or use 'JupSOL'.`)
+  throw new Error(`Unknown LST. Provide a mint address or use 'JupTRZ'.`)
 }
 
 export async function POST(request: Request) {
@@ -53,13 +53,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'userPublicKey is required when using external wallet' }, { status: 400 })
     }
 
-    const connection = getSolanaConnection()
+    const connection = getTrezoaConnection()
     const wallet = externalWallet ? null : getWalletKeypair()
     const publicKeyString = externalWallet ? userPublicKey : wallet!.publicKey.toString()
 
-    // Input is SOL → output is LST (default JupSOL)
-    const inputMint = TOKENS.SOL
-    const inputDecimals = TOKEN_DECIMALS.SOL || 9
+    // Input is TRZ → output is LST (default JupTRZ)
+    const inputMint = TOKENS.TRZ
+    const inputDecimals = TOKEN_DECIMALS.TRZ || 9
     const scaledAmount = Math.floor(parseFloat(amount) * Math.pow(10, inputDecimals))
 
     const { mint: lstMint, decimals: lstDecimals, symbol: lstSymbol } = await resolveLstMintAndDecimals(lst)
@@ -112,7 +112,7 @@ export async function POST(request: Request) {
         swapTransaction, // base64 encoded unsigned transaction
         expectedOutputAmount: outputAmount,
         inputAmount: parseFloat(amount),
-        inputToken: 'SOL',
+        inputToken: 'TRZ',
         outputToken: lstSymbol,
         outputMint: lstMint,
         timestamp: new Date().toISOString(),
@@ -136,7 +136,7 @@ export async function POST(request: Request) {
       signature,
       explorerUrl: `https://solscan.io/tx/${signature}`,
       inputAmount: parseFloat(amount),
-      inputToken: 'SOL',
+      inputToken: 'TRZ',
       outputAmount,
       outputToken: lstSymbol,
       outputMint: lstMint,
@@ -144,6 +144,6 @@ export async function POST(request: Request) {
     })
   } catch (error) {
     console.error('[STAKE] error:', error)
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to stake SOL' }, { status: 500 })
+    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to stake TRZ' }, { status: 500 })
   }
 }

@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { toAddress } from '@solana/client'
-import { useSolanaClient, useClusterState } from '@solana/react-hooks'
+import { toAddress } from '@trezoa/client'
+import { useTrezoaClient, useClusterState } from '@trezoa/react-hooks'
 
 type SignatureResult = {
   blockTime: number | null
@@ -14,7 +14,7 @@ type SignatureResult = {
 }
 
 export function useGetSignaturesQuery({ address }: { address: string }) {
-  const client = useSolanaClient()
+  const client = useTrezoaClient()
   const cluster = useClusterState()
   const [data, setData] = useState<SignatureResult[] | undefined>()
   const [isLoading, setIsLoading] = useState(true)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Linking } from 'react-native'
 import Clipboard from '@react-native-clipboard/clipboard'
-import { useWalletUi } from '@/components/solana/use-wallet-ui'
+import { useWalletUi } from '@/components/trezoa/use-wallet-ui'
 import { ellipsify } from '@/utils/ellipsify'
 import { useCluster } from '@/components/cluster/cluster-provider'
 import { Button, ButtonProps, Menu } from 'react-native-paper'

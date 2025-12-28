@@ -3,7 +3,7 @@
 This is a Vite app containing:
 
 - Tailwind CSS setup for styling
-- Useful wallet UI elements setup using [@solana/web3.js](https://www.npmjs.com/package/@solana/web3.js)
+- Useful wallet UI elements setup using [@trezoa/web3.js](https://www.npmjs.com/package/@trezoa/web3.js)
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ This is a Vite app containing:
 #### Download the template
 
 ```shell
-pnpm create solana-dapp@latest -t gh:solana-foundation/templates/web3js/web3js-react-vite-tailwind
+pnpm create trezoa-dapp@latest -t gh:trezoa-foundation/templates/web3js/web3js-react-vite-tailwind
 ```
 
 #### Install Dependencies

@@ -1,4 +1,4 @@
-import { TOKENS, TOKEN_DECIMALS } from '@/lib/solana-config'
+import { TOKENS, TOKEN_DECIMALS } from '@/lib/trezoa-config'
 
 export type ResolvedToken = {
   mint: string
