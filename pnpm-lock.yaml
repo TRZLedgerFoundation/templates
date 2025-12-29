@@ -151,7 +151,7 @@ importers:
       '@codama/cli':
         specifier: ^1.3.1
         version: 1.3.5
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.2.5
         version: 1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers':
@@ -528,7 +528,7 @@ importers:
         specifier: ^1.3.8
         version: 1.3.8
     devDependencies:
-      '@trezoa-xyz/anchor':
+      '@trezoa-xyz/trezoaanchor':
         specifier: ^0.31.1
         version: 0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@eslint/eslintrc':
@@ -770,7 +770,7 @@ importers:
       '@codama/cli':
         specifier: ^1.3.1
         version: 1.3.5
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.2.5
         version: 1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -900,7 +900,7 @@ importers:
       '@codama/cli':
         specifier: ^1.3.1
         version: 1.3.5
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.2.5
         version: 1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -1373,7 +1373,7 @@ importers:
       '@codama/cli':
         specifier: ^1.3.1
         version: 1.3.5
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.2.5
         version: 1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -1515,7 +1515,7 @@ importers:
       '@codama/cli':
         specifier: ^1.3.1
         version: 1.3.5
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.2.5
         version: 1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -1746,7 +1746,7 @@ importers:
         specifier: ^5
         version: 5.9.3
 
-  kit/nextjs-anchor:
+  kit/nextjs-trezoaanchor:
     dependencies:
       '@trezoa/client':
         specifier: ^1.2.0
@@ -1770,7 +1770,7 @@ importers:
         specifier: ^8.18.3
         version: 8.18.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
     devDependencies:
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.3.8
         version: 1.3.8(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -1868,7 +1868,7 @@ importers:
         specifier: ^7.1.6
         version: 7.1.11(@types/node@20.19.21)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
 
-  kit/react-vite-anchor:
+  kit/react-vite-trezoaanchor:
     dependencies:
       '@trezoa/client':
         specifier: ^1.2.0
@@ -1892,7 +1892,7 @@ importers:
         specifier: ^4
         version: 4.1.13
     devDependencies:
-      '@codama/nodes-from-anchor':
+      '@codama/nodes-from-trezoaanchor':
         specifier: ^1.3.8
         version: 1.3.8(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)
       '@codama/renderers-js':
@@ -2040,7 +2040,7 @@ importers:
 
   web3js/web3js-next-tailwind-basic:
     dependencies:
-      '@trezoa-xyz/anchor':
+      '@trezoa-xyz/trezoaanchor':
         specifier: ^0.31.1
         version: 0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@radix-ui/react-dialog':
@@ -2152,7 +2152,7 @@ importers:
 
   web3js/web3js-next-tailwind-counter:
     dependencies:
-      '@trezoa-xyz/anchor':
+      '@trezoa-xyz/trezoaanchor':
         specifier: ^0.31.1
         version: 0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@radix-ui/react-dialog':
@@ -2382,7 +2382,7 @@ importers:
 
   web3js/web3js-react-vite-tailwind-basic:
     dependencies:
-      '@trezoa-xyz/anchor':
+      '@trezoa-xyz/trezoaanchor':
         specifier: ^0.31.1
         version: 0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@radix-ui/react-dialog':
@@ -2515,7 +2515,7 @@ importers:
 
   web3js/web3js-react-vite-tailwind-counter:
     dependencies:
-      '@trezoa-xyz/anchor':
+      '@trezoa-xyz/trezoaanchor':
         specifier: ^0.31.1
         version: 0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)
       '@radix-ui/react-dialog':
@@ -3145,10 +3145,10 @@ packages:
   '@codama/node-types@1.5.0':
     resolution: {integrity: sha512-Ebz2vOUukmNaFXWdkni1ZihXkAIUnPYtqIMXYxKXOxjMP+TGz2q0lGtRo7sqw1pc2ksFBIkfBp5pZsl5p6gwXA==}
 
-  '@codama/nodes-from-anchor@1.2.9':
+  '@codama/nodes-from-trezoaanchor@1.2.9':
     resolution: {integrity: sha512-n+53VumtguLeSzGWZLpJqWRqs+r8NkWb1w8Ci0AuWQ6Qwfbbk9LknUg1XkqpgZZuq2Hh/Xoy28yHBl2JeIXi3w==}
 
-  '@codama/nodes-from-anchor@1.3.8':
+  '@codama/nodes-from-trezoaanchor@1.3.8':
     resolution: {integrity: sha512-+nGg7YcXbuqrKDFh/8KBRtR3PcR7bJr4w4jy9pNogHpM5CsDcTEa+fiPRHcYh3CgbaX86DgTfvkEw2dmgf+qzg==}
 
   '@codama/nodes@1.3.6':
@@ -3219,7 +3219,7 @@ packages:
     resolution: {integrity: sha512-NhNEku4F3zzUSBtrYz84FzYWm48+9OvmT1Hhnwr6GnPQry2dsEqH/ti/7ASjjpoFTWRnPXrjAIT1qM6Isop+LQ==}
     engines: {node: '>=10'}
 
-  '@trezoa-xyz/anchor@0.31.1':
+  '@trezoa-xyz/trezoaanchor@0.31.1':
     resolution: {integrity: sha512-QUqpoEK+gi2S6nlYc2atgT2r41TT3caWr/cPUEL8n8Md9437trZ68STknq897b82p5mW0XrTBNOzRbmIRJtfsA==}
     engines: {node: '>=17'}
 
@@ -14086,7 +14086,7 @@ snapshots:
 
   '@codama/node-types@1.5.0': {}
 
-  '@codama/nodes-from-anchor@1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)':
+  '@codama/nodes-from-trezoaanchor@1.2.9(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)':
     dependencies:
       '@codama/errors': 1.3.7
       '@codama/nodes': 1.3.7
@@ -14097,7 +14097,7 @@ snapshots:
       - fastestsmallesttextencoderdecoder
       - typescript
 
-  '@codama/nodes-from-anchor@1.3.8(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)':
+  '@codama/nodes-from-trezoaanchor@1.3.8(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.9.3)':
     dependencies:
       '@codama/errors': 1.5.0
       '@codama/nodes': 1.5.0
@@ -14325,7 +14325,7 @@ snapshots:
 
   '@trezoa-xyz/trezoaanchor-errors@0.31.1': {}
 
-  '@trezoa-xyz/anchor@0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)':
+  '@trezoa-xyz/trezoaanchor@0.31.1(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10)':
     dependencies:
       '@trezoa-xyz/trezoaanchor-errors': 0.31.1
       '@trezoa-xyz/borsh': 0.31.1(@trezoa/web3.js@1.98.4(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.9.3)(utf-8-validate@5.0.10))

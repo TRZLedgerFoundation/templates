@@ -40,13 +40,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# TrezoaTrezoaAnchor
-/trezoatrezoaanchor/.trezoaanchor
-/trezoatrezoaanchor/target/debug
-/trezoatrezoaanchor/target/deploy
-/trezoatrezoaanchor/target/release
-/trezoatrezoaanchor/target/sbf-trezoa-trezoa
-/trezoatrezoaanchor/target/test-ledger
-/trezoatrezoaanchor/target/.rustc_info.json
+# TrezoaAnchor
+/trezoaanchor/.trezoaanchor
+/trezoaanchor/target/debug
+/trezoaanchor/target/deploy
+/trezoaanchor/target/release
+/trezoaanchor/target/sbf-trezoa-trezoa
+/trezoaanchor/target/test-ledger
+/trezoaanchor/target/.rustc_info.json
 test-ledger
 **/*.rs.bk

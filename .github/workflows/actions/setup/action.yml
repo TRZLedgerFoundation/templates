@@ -12,9 +12,9 @@ runs:
   using: 'composite'
   steps:
     - name: Setup TrezoaAnchor
-      uses: metadaoproject/setup-trezoatrezoaanchor@v3.1
+      uses: metadaoproject/setup-trezoaanchor@v3.1
       with:
-        trezoatrezoatrezoaanchor-version: '0.30.1'
+        trezoaanchor-version: '0.30.1'
         trezoa-cli-version: '2.0.21'
         node-version: ${{ inputs.node-version }}
 
