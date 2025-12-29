@@ -145,7 +145,7 @@ Once connected to ChatGPT, you can use natural language commands:
 "Swap 0.001 TRZ to USDC"
 "I want to exchange 10 USDC for TRZ"
 "Convert 0.5 TRZ to $SEND"
-"Swap TRZ to DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"  (mint address)
+"Swap TRZ to 4bQS9HtwaePjiMHzo3cP4a644huPULaPDn5yn1TgoDkW"  (mint address)
 ```
 
 ### Send TRZ
@@ -174,8 +174,8 @@ Once connected to ChatGPT, you can use natural language commands:
 ### Get Token Prices
 
 ```
-"What's the price of EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v?"  (USDC mint)
-"Get the price for DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263"  (BONK mint)
+"What's the price of EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS?"  (USDC mint)
+"Get the price for 4bQS9HtwaePjiMHzo3cP4a644huPULaPDn5yn1TgoDkW"  (BONK mint)
 ```
 
 ## 🏗️ Architecture
@@ -273,7 +273,7 @@ When using external wallet mode (`externalWallet = true` in `lib/trezoa-config.t
 - Client-side payment: `x402-trezoa/client` package (see `app/transfer/page.tsx`)
 - Server-side verification: `x402-trezoa/server` package (see `lib/x402-config.ts`)
 - API route integration: `app/api/transfer/route.ts`
-- Payment token: USDC (mainnet: `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`)
+- Payment token: USDC (mainnet: `EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS`)
 
 **Important Notes:**
 
@@ -292,9 +292,9 @@ Edit `lib/trezoa-config.ts`:
 ```typescript
 export const TOKENS = {
   TRZ: 'Tr11111111111111111111111111111111111111112',
-  USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-  USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
-  BONK: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
+  USDC: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
+  USDT: 'GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA',
+  BONK: '4bQS9HtwaePjiMHzo3cP4a644huPULaPDn5yn1TgoDkW',
   // Add more tokens here
 }
 

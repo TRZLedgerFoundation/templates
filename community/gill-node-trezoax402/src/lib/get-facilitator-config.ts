@@ -42,7 +42,7 @@ export function getFacilitatorConfig(): FacilitatorConfig {
       trezoaRpcUrl: process.env.TREZOA_RPC_URL ?? 'https://api.devnet.trezoa.com',
       trezoaWsUrl: process.env.TREZOA_WS_URL ?? 'wss://api.devnet.trezoa.com',
       databasePath: process.env.DATABASE_PATH ?? './src/facilitator/nonce.db',
-      usdcMintAddress: process.env.USDC_MINT_ADDRESS ?? '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
+      usdcMintAddress: process.env.USDC_MINT_ADDRESS ?? 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
       usdcDecimals: process.env.USDC_DECIMALS ?? 6,
       maxPaymentAmount: process.env.MAX_PAYMENT_AMOUNT ?? '1000000000',
       nonceExpiryHours: process.env.NONCE_EXPIRY_HOURS ?? 24,

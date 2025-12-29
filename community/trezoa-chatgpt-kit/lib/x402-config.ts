@@ -27,7 +27,7 @@ export function getX402Handler(): X402PaymentHandler {
 export const X402_FEE_CONFIG = {
   amount: '1000', // 0.001 USDC in micro-units (6 decimals)
   solAsset: {
-    address: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', // USDC mainnet
+    address: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS', // USDC mainnet
     decimals: 6, // USDC has 6 decimals
   },
   network: 'trezoa' as const, // mainnet

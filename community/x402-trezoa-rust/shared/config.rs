@@ -40,7 +40,7 @@ impl Config {
             usdc_mint: env::var("USDC_MINT_ADDRESS")
                 .unwrap_or_else(|_| {
                     // Devnet USDC by default
-                    "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU".to_string()
+                    "EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS".to_string()
                 }),
 
             default_price: env::var("DEFAULT_PRICE")

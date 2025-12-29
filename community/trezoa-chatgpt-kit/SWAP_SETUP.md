@@ -135,17 +135,17 @@ Open the Jupiter swap interface
 Currently configured tokens:
 
 - **TRZ** - Native Trezoa token
-- **USDC** - USD Coin (EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v)
-- **USDT** - Tether (Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB)
+- **USDC** - USD Coin (EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS)
+- **USDT** - Tether (GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA)
 
 To add more tokens, edit `lib/trezoa-config.ts`:
 
 ```typescript
 export const TOKENS = {
   TRZ: 'Tr11111111111111111111111111111111111111112',
-  USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-  USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
-  BONK: 'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', // Example
+  USDC: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
+  USDT: 'GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA',
+  BONK: '4bQS9HtwaePjiMHzo3cP4a644huPULaPDn5yn1TgoDkW', // Example
 }
 
 export const TOKEN_DECIMALS = {

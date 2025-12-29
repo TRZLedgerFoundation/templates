@@ -29,8 +29,8 @@ config();
 const SERVER_URL = process.env.SERVER_URL || 'http://localhost:3000';
 const RESOURCE_URL = '/api/premium-data';
 const FACILITATOR_PUBLIC_KEY = process.env.FACILITATOR_PUBLIC_KEY || ''; // Fee payer
-const MERCHANT_ADDRESS = process.env.MERCHANT_TRZANA_ADDRESS || ''; // Payment recipient
-const RPC_URL = process.env.TRZANA_RPC_URL || 'https://api.devnet.trezoa.com';
+const MERCHANT_ADDRESS = process.env.MERCHANT_TREZOA_ADDRESS || ''; // Payment recipient
+const RPC_URL = process.env.TREZOA_RPC_URL || 'https://api.devnet.trezoa.com';
 
 // Load client keypair
 const keypairData = JSON.parse(fs.readFileSync('./test-client-keypair.json', 'utf-8'));

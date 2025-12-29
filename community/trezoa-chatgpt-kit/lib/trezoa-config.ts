@@ -9,18 +9,20 @@ export const externalWallet = true
 // Token addresses
 export const TOKENS = {
   TRZ: 'Tr11111111111111111111111111111111111111112',
-  USDC: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
-  USDT: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
+  USDC: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
+  USDT: 'GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA',
+  BONK: '4bQS9HtwaePjiMHzo3cP4a644huPULaPDn5yn1TgoDkW',
 } as const
 
 export const TOKEN_DECIMALS = {
   TRZ: 9,
   USDC: 6,
   USDT: 6,
+  BONK: 5,
 } as const
 
 // Liquid Staking Tokens (LST)
-export const JUPTRZ_MINT = 'jupTrLaHXQiZZTSfEWMTRRgpnyFm8f6sZdosWBjx93v' // JupTRZ mint
+export const JUPTRZ_MINT = 'E1Z3dD7QNFzvdDrkSHdvxgqzfVJzFurfbfvhj2zMMrqL' // JupTRZ mint
 export const LST_DECIMALS = {
   JUPTRZ: 9,
 } as const
